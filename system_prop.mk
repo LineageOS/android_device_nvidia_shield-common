@@ -8,7 +8,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.override_lcd_density=1 \
     persist.tegra.compositor=glcomposer \
-    persist.tegra.decompression = cde-client
+    persist.tegra.decompression=cde-client
 
 # Input
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -16,7 +16,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Nvmm
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.tegra.nvmmlite = 1
+    persist.tegra.nvmmlite=1
+
+# USB
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp
 
 # WiFi
 PRODUCT_PROPERTY_OVERRIDES += \

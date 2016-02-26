@@ -51,15 +51,41 @@ else ifneq ($(filter $(TARGET_TEGRA_TOUCH),sharp),)
         PRODUCT_PACKAGES += init.sharp_touch.rc
 endif
 
+ifneq ($(filter $(TARGET_TEGRA_MODEM),icera),)
+        PRODUCT_PACKAGES += init.icera.rc
+endif
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
+    frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml
+
+# Audio
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio.usb.default \
+    audio.r_submix.default \
+    libaudio-resampler \
+    libaudiospdif \
+    libtinyalsa \
+    libtinycompress \
+    tinycap \
+    tinymix \
+    tinyplay \
+    xaplay
+
 # idc
 ifneq ($(TARGET_TEGRA_TOUCH),)
         PRODUCT_PACKAGES += \
+            init.cal.rc \
             touch.idc \
             sensor00fn11.idc
-endif
-
-ifneq ($(filter $(TARGET_TEGRA_MODEM),icera),)
-        PRODUCT_PACKAGES += init.icera.rc
 endif
 
 # keylayout
@@ -70,3 +96,15 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7210.kl:system/usr/keylayout/Vendor_0955_Product_7203.kl \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7210.kl:system/usr/keylayout/Vendor_0955_Product_7210.kl \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7210.kl:system/usr/keylayout/Vendor_0955_Product_7212.kl
+
+# Wifi
+# All Shield devices xurrently use broadcom wifi / bluetooth modules
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
+PRODUCT_PACKAGES += \
+    hostapd \
+    wpa_supplicant \
+    wpa_supplicant.conf
+
+# USB
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
