@@ -189,9 +189,6 @@ on device-added-/sys/block/sda
 on device-removed-/sys/block/sda
   umount /mnt/media_rw/usbdrive
 
-# unified scaling setup
-import init.ussrd.rc
-
 # Enable rbe
 # thresIncr:50  thresIncrCntMax:6  thresDecr:70  thresDecrCntMax:2
 # The change from default is the thresDecrCntMax.  Default is 3.
