@@ -54,13 +54,6 @@ on post-fs-data
     mkdir /data/nvcam 0700 media camera
     chown dhcp dhcp /data/misc/dhcp
 
-    #create folder for stats and audio stats
-    mkdir /data/stats_share 0771 system system
-    mkdir /data/stats_share/audio 0771 system system
-    write /data/stats_share/audio/audio_stats.txt 0
-    chown system system /data/stats_share/audio/audio_stats.txt
-    chmod 666 /data/stats_share/audio/audio_stats.txt
-
     #create Nv sensors socket dir
     mkdir /data/misc/nvsipc 0777 system system
 
