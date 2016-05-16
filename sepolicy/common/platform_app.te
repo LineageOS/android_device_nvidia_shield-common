@@ -32,6 +32,8 @@ allow platform_app anr_data_file:file write;
 allow platform_app fuseblk:dir create_dir_perms;
 allow platform_app fuseblk:file create_file_perms;
 
+allow platform_app healthd_service:service_manager find;
+
 # Sku files and RP3 partition
 r_dir_file(platform_app, factoryconfig_block_device)
 r_dir_file(platform_app, factoryconfig_file)

@@ -149,6 +149,3 @@ type cifs, sdcard_type, fs_type, mlstrustedobject;
 
 # /vendor/oem/media
 type oem_media_file, file_type;
-
-# /data/stats_share
-type stats_share_file, file_type, data_file_type;

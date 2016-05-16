@@ -31,5 +31,4 @@ userdebug_or_eng(`
   domain_auto_trans(qvs, zygote_exec, zygote)
   allow qvs self:process setcurrent;
   allow qvs su:process dyntransition;
-  allow zygote qvs:fd use;
 ')
