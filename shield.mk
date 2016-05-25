@@ -30,8 +30,6 @@ PRODUCT_PACKAGES += \
     init.nv_dev_board.usb.rc \
     init.none.rc \
     init.tegra.rc \
-    init.tegra_emmc.rc \
-    init.tegra_sata.rc \
     init.tlk.rc
 
 ifneq ($(filter $(TARGET_TEGRA_VERSION),t124),)
