@@ -64,8 +64,6 @@
 /dev/nvhost-ctrl-nvdec			u:object_r:tee_device:s0
 # Blake OTA path
 /dev/ozwpan				u:object_r:ozmo_device:s0
-# i2c devices
-/dev/i2c-[0-9]+				u:object_r:i2c_device:s0
 # phs
 /dev/socket/phsd			u:object_r:phsd_socket:s0
 # dual wifi

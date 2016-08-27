@@ -57,9 +57,6 @@ type phsd_socket, file_type;
 # /dev/socket/charon..
 type charon_socket, file_type;
 
-# /sys/devices/virtual/thermal(/.*)
-type sysfs_thermal, fs_type, sysfs_type;
-
 # /sys/devices/platform/host1x/tegradc.0/smartdimmer/...
 type sysfs_smartdimmer, fs_type, sysfs_type;
 
