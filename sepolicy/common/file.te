@@ -12,9 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Filesystem type
-type ntfs, sdcard_type, fs_type, mlstrustedobject;
-
 # /sys/power/sysedp/...
 type sysfs_sysedp, fs_type, sysfs_type;
 
@@ -111,9 +108,6 @@ type factory_file, fs_type, contextmount_type;
 
 # /usercalib
 type user_calib_file, file_type, data_file_type;
-
-# Needed to mount fuseblk filesystem
-type fuseblk, sdcard_type, fs_type, mlstrustedobject;
 
 # /sys/devices/platform/tegra.*i2c\.[0-9]+(/.*)?
 # /sys/devices/platform/[0-9a-f]+\.i2c(/.*)?
