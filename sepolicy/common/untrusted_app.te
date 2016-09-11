@@ -20,12 +20,6 @@ r_dir_file(untrusted_app, sysfs_soc)
 
 allow untrusted_app system_app_service:service_manager find;
 
-# allow to write to nvfeedback.log
-allow untrusted_app anr_data_file:file write;
-
 # allow external storage access, like gallery app
 allow untrusted_app fuseblk:dir r_dir_perms;
 allow untrusted_app fuseblk:file r_file_perms;
-
-# Allow chrome to access wireless stats using ioctl 8B0F
-allow untrusted_app self:udp_socket 0x8B0F;

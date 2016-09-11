@@ -22,7 +22,6 @@ set_prop(pbc, system_prop)
 allow pbc sysfs_devices_system_cpu:file rw_file_perms;
 allow pbc pmqos_device:chr_file rw_file_perms;
 allow pbc sysfs_cfboost:file rw_file_perms;
-allow pbc debugfs:file r_file_perms;
 allow pbc pbc_prop:property_service set;
 
 # i2c control
