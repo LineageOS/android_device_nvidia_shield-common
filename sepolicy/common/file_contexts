@@ -109,8 +109,6 @@
 (/system)?/vendor/bin/ss_status.sh	u:object_r:tee_exec:s0
 # wifi
 /system/bin/wifi_loader.sh		u:object_r:wifi_loader_exec:s0
-# bt
-/system/bin/bt_loader.sh		u:object_r:bt_loader_exec:s0
 # ethernet
 /system/bin/rebindEthernet.sh		u:object_r:rebindEthernet_exec:s0
 # gps
