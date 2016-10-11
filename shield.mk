@@ -15,9 +15,11 @@
 #
 
 # Overlay
+ifneq ($(TARGET_TEGRA_DISABLE_OVERLAY),true)
 DEVICE_PACKAGE_OVERLAYS += \
     device/nvidia/shield-common/overlay/common \
     device/nvidia/shield-common/overlay/tablet-do
+endif
 
 # System properties
 -include $(LOCAL_PATH)/system_prop.mk
@@ -29,26 +31,33 @@ PRODUCT_PACKAGES += \
     init.hdcp.rc \
     init.nv_dev_board.usb.rc \
     init.none.rc \
-    init.tegra.rc \
-    init.tlk.rc
+    init.tegra.rc
 
-ifneq ($(filter $(TARGET_TEGRA_VERSION),t124),)
+ifeq ($(TARGET_TEGRA_VERSION),t114)
+	PRODUCT_PACKAGES += init.tf.rc
+else
+	PRODUCT_PACKAGES += init.tlk.rc
+endif
+
+ifeq ($(TARGET_TEGRA_VERSION),t114)
+        PRODUCT_PACKAGES += init.t114.rc
+else ifeq ($(TARGET_TEGRA_VERSION),t124)
         PRODUCT_PACKAGES += init.t124.rc
-else ifneq ($(filter $(TARGET_TEGRA_VERSION),t210),)
+else ifeq ($(TARGET_TEGRA_VERSION),t210)
         PRODUCT_PACKAGES += \
             init.t210.rc \
             init.t210_common.rc
 endif
 
-ifneq ($(filter $(TARGET_TEGRA_TOUCH),nvtouch),)
+ifeq ($(TARGET_TEGRA_TOUCH),nvtouch)
         PRODUCT_PACKAGES += init.nv_touch.rc
-else ifneq ($(filter $(TARGET_TEGRA_TOUCH),raydium),)
+else ifeq ($(TARGET_TEGRA_TOUCH),raydium)
         PRODUCT_PACKAGES += init.ray_touch.rc
-else ifneq ($(filter $(TARGET_TEGRA_TOUCH),sharp),)
+else ifeq ($(TARGET_TEGRA_TOUCH),sharp)
         PRODUCT_PACKAGES += init.sharp_touch.rc
 endif
 
-ifneq ($(filter $(TARGET_TEGRA_MODEM),icera),)
+ifeq ($(TARGET_TEGRA_MODEM),icera)
         PRODUCT_PACKAGES += init.icera.rc
 endif
 
@@ -57,11 +66,14 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml \
-    frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml
+
+ifneq ($(TARGET_TEGRA_VERSION),t114)
+	PRODUCT_COPY_FILES += frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml
+endif
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -71,16 +83,20 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     libaudiospdif \
     libtinyalsa \
-    libtinycompress \
     tinycap \
     tinymix \
     tinyplay \
     xaplay
 
+ifneq ($(TARGET_TEGRA_VERSION),t114)
+	PRODUCT_PACKAGES += libtinycompress
+endif
+
 # idc
 ifneq ($(TARGET_TEGRA_TOUCH),)
         PRODUCT_PACKAGES += \
             init.cal.rc \
+            raydium_ts.idc \
             touch.idc \
             sensor00fn11.idc
 endif

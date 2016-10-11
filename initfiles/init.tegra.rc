@@ -133,7 +133,8 @@ on boot
     chown system system /sys/class/ozmo_wpan/ozwpan/bind
     chmod 0660 /sys/class/ozmo_wpan/ozwpan/bind
 
-# TLK storage service
+# TF or TLK storage service
+import init.tf.rc
 import init.tlk.rc
 
 # set hwui properties depending on the screen resolution and the memory size

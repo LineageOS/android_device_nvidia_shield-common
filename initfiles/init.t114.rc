@@ -1,0 +1,59 @@
+on boot
+# Power management settings
+    write /sys/devices/system/cpu/cpuquiet/tegra_cpuquiet/no_lp 0
+    #write /sys/module/tegra3_emc/parameters/emc_enable 0
+    #write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 1000000
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
+
+    write /sys/devices/system/cpu/cpufreq/conservative/up_threshold 95
+    write /sys/devices/system/cpu/cpufreq/conservative/down_threshold 75
+    write /sys/devices/system/cpu/cpufreq/conservative/freq_step 1
+
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpufreq/interactive/boost_factor 2
+    write /sys/devices/system/cpu/cpufreq/interactive/sustain_load 85
+    write /sys/devices/system/cpu/cpufreq/interactive/midrange_freq 1500000
+    write /sys/devices/system/cpu/cpufreq/interactive/midrange_max_boost 110000
+    write /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load 90
+    write /sys/devices/system/cpu/cpuquiet/tegra_cpuquiet/enable 1
+    write /sys/devices/system/cpu/cpuquiet/tegra_cpuquiet/down_delay 500
+    write /sys/devices/system/cpu/cpuquiet/current_governor runnable
+    write /sys/module/cpuidle_t11x/parameters/cpu_power_gating_in_idle 31
+    write /sys/module/cpuidle_t11x/parameters/slow_cluster_power_gating_noncpu 1
+    write /sys/module/cpuidle/parameters/power_down_in_idle 1
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/boost_factor
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/go_maxspeed_load
+    chown system system /sys/devices/system/cpu/cpufreq/interactive/max_boost
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+    chown system system /sys/devices/tegradc.0/enable
+    chown system system /sys/devices/tegradc.1/enable
+    chown system system /sys/devices/platform/host1x/nvavp/boost_sclk
+    chown system system /sys/class/input/input0/enabled
+    chown system system /sys/class/input/input1/enabled
+    chown system system /sys/class/input/input2/enabled
+
+    chown system system /sys/kernel/tegra_cap/cbus_cap_level
+    chown system system /sys/kernel/tegra_cap/cbus_cap_state
+    chown system system /sys/devices/platform/host1x/gr3d/enable_3d_scaling
+    chown system system /sys/devices/platform/pwm-fan/state_cap
+    chown system system /sys/module/edp/parameters/edp_volt_temp_mode
+    chown system system /sys/kernel/tegra_core_edp/profile
+    chown system system /sys/kernel/tegra_floor/h1x_floor_state
+    chown system system /sys/kernel/tegra_floor/emc_floor_state
+    chown system system /sys/kernel/tegra_floor/cbus_floor_state
+    chown system system /sys/bus/platform/devices/palmas-pmic/auto_smps45_ctrl
+    chown system system /sys/devices/platform/sdhci-tegra.0/handle_turbo_mode
+
+    # TODO: Remove once powerhal takes over app profiles
+    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+
+on init
+#set GPS GPIO property, which is used in gps_select
+    setprop ro.gps.gpio 49
