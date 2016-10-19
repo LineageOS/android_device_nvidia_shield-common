@@ -107,8 +107,6 @@
 (/system)?/vendor/bin/tlk_daemon	u:object_r:tee_exec:s0
 (/system)?/vendor/bin/ss_status		u:object_r:tee_exec:s0
 (/system)?/vendor/bin/ss_status.sh	u:object_r:tee_exec:s0
-# wifi
-/system/bin/wifi_loader.sh		u:object_r:wifi_loader_exec:s0
 # ethernet
 /system/bin/rebindEthernet.sh		u:object_r:rebindEthernet_exec:s0
 # gps
@@ -168,9 +166,6 @@
 # Misc data
 # phs data
 /data/misc/phs(/.*)?			u:object_r:phsd_data:s0
-# dual wifi
-/data/misc/wifi[0-9]			u:object_r:wifi_data_file:s0
-/data/misc/wifi[0-9]/sockets		u:object_r:wpa_socket:s0
 # cvc data folder
 /data/misc/cvc(/.*)?			u:object_r:cvc_data_file:s0
 # mediaserver EGL blob cache

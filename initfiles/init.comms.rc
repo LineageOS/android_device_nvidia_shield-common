@@ -39,16 +39,6 @@ on post-fs-data
     chown gps system /data/system/gps/
     chmod 0770 /data/system/gps/
 
-    start wifiloader
-
-# wifiloader - set the wifi commchip_id accordingly
-service wifiloader /system/bin/wifi_loader.sh
-    class main
-    user root
-    group root
-    oneshot
-    disabled
-
 service start-gps /system/bin/gps_select.sh
     user root
     group root

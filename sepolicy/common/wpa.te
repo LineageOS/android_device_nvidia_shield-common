@@ -12,7 +12,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Allow wpa_supplicant to access symlinks created by wifi_loader
-allow wpa wifi_data_file:lnk_file { getattr read write };
-
 r_dir_file(wpa, factory_file)
