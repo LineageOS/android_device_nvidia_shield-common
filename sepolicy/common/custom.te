@@ -19,3 +19,23 @@ allow system_server sysfs_smartdimmer:file rw_file_perms;
 # Trusted Executiion
 allow tee shell_exec:file { getattr };
 allow tee toolbox_exec:file rx_file_perms;
+
+# Camera
+allow mediacodec camera_device:chr_file rw_file_perms;
+allow mediaserver camera_device:chr_file rw_file_perms;
+
+# DRM
+allow mediadrmserver gpu_device:chr_file rw_file_perms;
+allow mediadrmserver video_device:chr_file rw_file_perms;
+
+# Media
+r_dir_file(mediacodec, sysfs_soc);
+
+# Factory prop
+allow system_server factory_prop:file r_file_perms;
+
+# Shims
+allow init gpsd:process noatsecure;
+allow init audioserver:process noatsecure;
+allow init mediaserver:process noatsecure;
+allow init mediadrmserver:process noatsecure;
