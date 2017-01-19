@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@ allow system_app asec_apk_file:file r_file_perms;
 
 # /sys/devices/virtual/thermal/...
 allow system_app sysfs_thermal:file rw_file_perms;
+allow system_app sysfs_thermal:lnk_file rw_file_perms;
 allow system_app sysfs_thermal:dir r_dir_perms;
 
 # /dev/constraint_*
@@ -40,6 +41,9 @@ allow system_app sysfs_cmu:file rw_file_perms;
 # sys/devices/soc*/...
 allow system_app sysfs_soc:file r_file_perms;
 allow system_app sysfs_soc:dir r_dir_perms;
+
+# /sys/devices/virtual/misc/uhid/0005:0955:7213.*/timeout
+allow system_app sysfs_pepper_timeout:file rw_file_perms;
 
 # /dev/tegra_dc_*
 allow system_app tegradc_device:chr_file rw_file_perms;
@@ -74,6 +78,9 @@ allow system_app cvc_data_file:dir r_dir_perms;
 allow system_app cvc_data_file:file rw_file_perms;
 allow system_app system_app_service:service_manager add;
 allow system_app sysfs_tcp_window_divisor:file rw_file_perms;
+allow system_app keylayout_data_file:file rw_file_perms;
+allow system_app keylayout_data_file:file create_file_perms;
+allow system_app keylayout_data_file:dir rw_dir_perms;
 
 # Read and write /data/data subdirectory.
 allow system_app system_app_data_file:lnk_file create_file_perms;
@@ -86,10 +93,8 @@ allow system_app ctl_charon_prop:property_service set;
 allow system_app sysfs_gamepad:file rw_file_perms;
 
 # Sku files and RP3 partition
-r_dir_file(system_app, factoryconfig_block_device)
-r_dir_file(system_app, factoryconfig_file)
-
-allow system_app factory_prop:property_service set;
+r_dir_file(system_app, rpx_block_device)
+r_dir_file(system_app, rpx_file)
 
 # Variable refresh rate
 allow system_app sysfs_vrr:file rw_file_perms;
@@ -97,8 +102,54 @@ allow system_app sysfs_vrr:file rw_file_perms;
 #Shield Remote
 allow system_app uhid_device:chr_file rw_file_perms;
 
+# usb mode setting for Darcy
+set_prop(system_app, usb_mode_prop);
+allow system_app sysfs_usb_convertible:file rw_file_perms;
+allow system_app sysfs_usb_convertible:lnk_file { read write };
+
 # nvfeedback to use dumpstate in order to collect full bugreport
 allow system_app ctl_default_prop:property_service set;
 allow system_app dumpstate_exec:file { read getattr open execute execute_no_trans };
 allow system_app anr_data_file:dir remove_name;
 allow system_app media_rw_data_file:dir { read getattr open search };
+
+# stats share files
+r_dir_file(system_app, stats_share_file)
+
+# ShieldBluetoothManager share ts_config.conf bluetooth data file
+r_dir_file(system_app, bluetooth_data_file)
+
+# Bluedroid log
+r_dir_file(system_app, bluetooth_log_file)
+
+# Allow GL to access ptimer_scale_factor
+allow system_app sysfs_gpu:file r_file_perms;
+
+# Allow system_app to access debugfs_clock
+allow system_app debugfs_clock:file r_file_perms;
+
+# allow system_app to access bluetooth_prop
+set_prop(system_app, bluetooth_prop)
+
+# IDS reads wifi files
+r_dir_file(system_app, wifi_data_file)
+allow system_app self:netlink_socket create_socket_perms;
+
+# allow system app to access suspend_time
+allow system_app debugfs_suspend_time_stats:file r_file_perms;
+
+# allow system app to access wakeup_irq
+allow system_app debugfs_wake_irq_stats:file r_file_perms;
+
+# allow system app to access emc avg_activity
+allow system_app debugfs_emc_load:file r_file_perms;
+
+# Allow netcfg access
+r_dir_file(system_app, sysfs_netcfg)
+
+# Allow system app to get kernel log to report issue
+allow system_app kernel:system syslog_read;
+
+# Allow Settings to recover after resolution changes
+dontaudit system_app self:capability2 { block_suspend };
+

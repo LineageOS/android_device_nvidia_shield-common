@@ -1,4 +1,4 @@
-# Copyright (c) 2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,3 +19,9 @@ auditallow uncrypt usercalib_block_device:blk_file rw_file_perms;
 # Access factory calibration block device.
 allow uncrypt factorycalib_block_device:blk_file rw_file_perms;
 auditallow uncrypt factorycalib_block_device:blk_file rw_file_perms;
+
+# Get hddstat
+allow uncrypt fscheck_block_device:blk_file rw_file_perms;
+allow uncrypt shell_exec:file rx_file_perms;
+allow uncrypt system_file:file rx_file_perms;
+set_prop(uncrypt, system_prop);

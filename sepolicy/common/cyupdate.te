@@ -16,7 +16,6 @@ type cyupdate, domain;
 type cyupdate_exec, exec_type, file_type;
 
 init_daemon_domain(cyupdate)
-unix_socket_connect(cyupdate, property, init)
 
 allow cyupdate shell_exec:file rx_file_perms;
 allow cyupdate system_file:file execute_no_trans;

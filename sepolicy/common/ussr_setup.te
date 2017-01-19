@@ -22,10 +22,12 @@ init_daemon_domain(ussr_setup)
 
 allow ussr_setup self:capability { dac_override chown fowner fsetid };
 set_prop(ussr_setup, thermal_prop)
+set_prop(ussr_setup, phs_prop)
 
 # file access
 allow ussr_setup system_file:file x_file_perms;
 allow ussr_setup shell_exec:file rx_file_perms;
+allow ussr_setup toolbox_exec:file rx_file_perms;
 
 # thermal
 allow ussr_setup sysfs_thermal:dir { setattr rw_dir_perms };

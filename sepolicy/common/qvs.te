@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -31,4 +31,17 @@ userdebug_or_eng(`
   domain_auto_trans(qvs, zygote_exec, zygote)
   allow qvs self:process setcurrent;
   allow qvs su:process dyntransition;
+  allow zygote qvs:fd use;
+  allow qvs domain:dir search;
+  allow qvs domain:{ file lnk_file } read;
+  allow qvs gpu_device:chr_file rw_file_perms;
+  allow qvs self:capability dac_override;
+  allow qvs appdomain:dir search;
+  allow qvs appdomain:lnk_file read;
+  allow qvs sysfs_thermal:dir search;
+  allow qvs sysfs_thermal:file r_file_perms;
+  allow qvs pmqos_device:chr_file r_file_perms;
+  allow qvs device:chr_file { getattr ioctl lock };
+  allow qvs untrusted_app:lnk_file read;
+  allow qvs untrusted_app:dir search;
 ')

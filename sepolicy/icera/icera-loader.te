@@ -21,10 +21,10 @@ type icera-loader_exec, exec_type, file_type;
 
 init_daemon_domain(icera-loader)
 
-unix_socket_connect(icera-loader, property, init)
-allow icera-loader ctl_default_prop:property_service set;
-allow icera-loader ctl_rildaemon_prop:property_service set;
-allow icera-loader radio_prop:property_service set;
+set_prop(icera-loader, ctl_default_prop)
+set_prop(icera-loader, ctl_rildaemon_prop)
+set_prop(icera-loader, radio_prop)
+
 allow icera-loader radio_device:chr_file rw_file_perms;
 allow icera-loader devpts:chr_file rw_file_perms;
 allow icera-loader icera-loader_exec:file open;

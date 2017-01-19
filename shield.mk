@@ -61,6 +61,10 @@ ifeq ($(TARGET_TEGRA_MODEM),icera)
         PRODUCT_PACKAGES += init.icera.rc
 endif
 
+ifeq ($(AB_OTA_UPDATER),true)
+	PRODUCT_PACKAGES += init.update_engine.rc
+endif
+
 # Permissions
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
@@ -105,10 +109,12 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/tegra-kbc.kl:system/usr/keylayout/tegra-kbc.kl \
     $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-    $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7210.kl:system/usr/keylayout/Vendor_0955_Product_7202.kl \
-    $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7210.kl:system/usr/keylayout/Vendor_0955_Product_7203.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7202.kl:system/usr/keylayout/Vendor_0955_Product_7202.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7203.kl:system/usr/keylayout/Vendor_0955_Product_7203.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7205.kl:system/usr/keylayout/Vendor_0955_Product_7205.kl \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7210.kl:system/usr/keylayout/Vendor_0955_Product_7210.kl \
-    $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7210.kl:system/usr/keylayout/Vendor_0955_Product_7212.kl
+    $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7212.kl:system/usr/keylayout/Vendor_0955_Product_7212.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7214.kl:system/usr/keylayout/Vendor_0955_Product_7214.kl
 
 # Wifi
 # All Shield devices xurrently use broadcom wifi / bluetooth modules

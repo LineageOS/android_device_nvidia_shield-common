@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,3 +14,6 @@
 
 # Need executable memory to have better performance
 allow bootanim self:process execmem;
+
+# Allow GL to access ptimer_scale_factor
+allow bootanim sysfs_gpu:file r_file_perms;

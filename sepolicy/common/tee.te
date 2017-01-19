@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,7 +13,8 @@
 # limitations under the License.
 
 allow tee tee_data_file:dir create_dir_perms;
-allow tee shell_exec:file { read open execute };
+allow tee shell_exec:file rx_file_perms;
+allow tee toolbox_exec:file rx_file_perms;
 allow tee tee_exec:file execute_no_trans;
 allow tee self:capability { setuid setgid sys_rawio };
 allow tee block_device:dir search;

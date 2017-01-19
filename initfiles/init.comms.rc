@@ -1,4 +1,4 @@
-#Copyright (c) 2011-2015 NVIDIA Corporation.  All Rights Reserved.
+#Copyright (c) 2011-2016 NVIDIA Corporation.  All Rights Reserved.
 #
 #NVIDIA Corporation and its licensors retain all intellectual property and
 #proprietary rights in and to this software and related documentation.  Any
@@ -14,7 +14,6 @@ on boot
     # power up/down interface
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /sys/class/rfkill/rfkill0/type
-    write /sys/class/rfkill/rfkill0/state 0
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
 
@@ -22,22 +21,43 @@ on boot
     chown bluetooth net_bt_stack /system/etc/bluetooth
     chown bluetooth net_bt_stack /mnt/factory/bluetooth/bt_mac.txt
 
+# bluetooth mac address programming
+service bt_loader /system/bin/bt_loader.sh
+    class main
+    user root
+    group root
+    oneshot
+
 on fs
     # Wifi support rx-filter
     setprop wifi.rx-filter 1
 
     # Increase rmem_max for 4k GS
-    write /proc/sys/net/core/rmem_max 512000
+    write /proc/sys/net/core/rmem_max 1048576
 
 on post-fs-data
     mkdir /data/misc/wifi 0771 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/wifi/firmware 0770 wifi system
 
     #create gps files
     mkdir /data/system/gps
     chown gps system /data/system/gps/
     chmod 0770 /data/system/gps/
+
+    #create bluedroid_log files
+    mkdir /data/misc/bluedroid_log
+    chown bluetooth system /data/misc/bluedroid_log
+    chmod 0770 /data/misc/bluedroid_log
+
+    start wifiloader
+
+# wifiloader - set the wifi commchip_id accordingly
+service wifiloader /system/bin/wifi_loader.sh
+    class main
+    user root
+    group root
+    oneshot
+    disabled
 
 service start-gps /system/bin/gps_select.sh
     user root
@@ -49,10 +69,61 @@ service start-gps /system/bin/gps_select.sh
 #Start GPS daemon
 service gpsd /system/bin/glgps_nvidiaTegra2android -c /system/etc/gps/gpsconfig.xml
     user gps
+    schedrt
     socket gps seqpacket 0660 gps system
     group system inet sdcard_rw sdcard_r
     class late_start
     disabled
+
+service dhcpcd_p2p_wlan0 /system/bin/dhcpcd p2p-wlan0-0
+    class main
+    disabled
+    oneshot
+
+service dhcpcd_p2p_p2p0 /system/bin/dhcpcd p2p-p2p0-0
+    class main
+    disabled
+    oneshot
+
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABKL -y 0
+    class main
+    disabled
+    oneshot
+
+service dhcpcd_p2p /system/bin/dhcpcd -aABKL
+    class main
+    disabled
+    oneshot
+
+service dhcpcd_eth0 /system/bin/dhcpcd -ABKL -f/system/etc/dhcpcd/dhcpcd.conf
+     class main
+     disabled
+     oneshot
+
+service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
+    class main
+    disabled
+    oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service iprenew_wlan0 /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service iprenew_p2p /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service iprenew_eth0 /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
 
 service wpa_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
@@ -73,6 +144,12 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     socket wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
+
+service supplicant_log /system/bin/supplicant_log_monitor.sh
+    class main
+    user system
+    group system wifi
+    disabled
 
 service dns_masq /system/bin/dnsmasq --no-daemon --no-resolv --no-poll --dhcp-option-force=43,ANDROID_METERED --dhcp-range=192.168.42.2,192.168.42.254,1h &
     class main

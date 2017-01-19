@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,13 +22,31 @@ allow platform_app system_app_service:service_manager find;
 allow platform_app cifs:dir create_dir_perms;
 allow platform_app cifs:file create_file_perms;
 
-# Allow to write to nvfeedback log file
-allow platform_app anr_data_file:file write;
-
 # Access external card
 allow platform_app fuseblk:dir create_dir_perms;
 allow platform_app fuseblk:file create_file_perms;
 
 # Sku files and RP3 partition
-r_dir_file(platform_app, factoryconfig_block_device)
-r_dir_file(platform_app, factoryconfig_file)
+r_dir_file(platform_app, rpx_block_device)
+r_dir_file(platform_app, rpx_file)
+
+# Allow to write to nvfeedback log file
+allow platform_app anr_data_file:file write;
+
+allow platform_app batteryproperties_service:service_manager find;
+
+# Write to properties
+set_prop(platform_app, system_prop)
+
+# Allow to find recovery_service to perform system upgrade
+allow platform_app recovery_service:service_manager find;
+
+# Platform app access to debugfs_clock/debugfs_edp
+allow platform_app debugfs_clock:file r_file_perms;
+allow platform_app debugfs_edp:file r_file_perms;
+
+# Access to zram0
+r_dir_file(platform_app, sysfs_zram)
+
+# Access to change user photo using Nvcamera
+allow platform_app system_app_data_file:file { read write getattr};

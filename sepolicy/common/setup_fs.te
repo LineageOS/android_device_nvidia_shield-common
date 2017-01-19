@@ -1,4 +1,4 @@
-# Copyright (c) 2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2015-2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,6 +19,10 @@ init_daemon_domain(setup_fs)
 
 set_prop(setup_fs, powerctl_prop)
 
+allow setup_fs shell_exec:file rx_file_perms;
+allow setup_fs toolbox_exec:file rx_file_perms;
+allow setup_fs make_f2fs_exec:file rx_file_perms;
+allow setup_fs setup_fs_exec:file execute_no_trans;
 allow setup_fs block_device:dir search;
 allow setup_fs userdata_block_device:blk_file rw_file_perms;
 allow setup_fs cache_block_device:blk_file rw_file_perms;
@@ -27,4 +31,4 @@ allow setup_fs factorycalib_block_device:blk_file rw_file_perms;
 allow setup_fs proc_sysrq:file rw_file_perms;
 allow setup_fs system_file:file execute_no_trans;
 allow setup_fs self:capability sys_boot;
-allow setup_fs factoryconfig_block_device:blk_file rw_file_perms;
+allow setup_fs rpx_block_device:blk_file rw_file_perms;

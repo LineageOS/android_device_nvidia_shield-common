@@ -22,8 +22,7 @@ type config_modem_exec, exec_type, file_type;
 init_daemon_domain(config_modem)
 
 # start/stop fil-daemon service
-unix_socket_connect(config_modem, property, init)
-allow config_modem ctl_fildaemon_prop:property_service set;
+set_prop(config_modem, ctl_fildaemon_prop)
 
 # i2c access to read RF calibration (icera-rfm-eeprom)
 allow config_modem i2c_device:chr_file rw_file_perms;

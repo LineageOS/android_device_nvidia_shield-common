@@ -1,4 +1,4 @@
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (c) 2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# modemnic
-allow modemnic self:capability { sys_module };
-allow modemnic toolbox_exec:file rx_file_perms;
-allow modemnic kernel:system module_request;
-
-# rild
-allow rild toolbox_exec:file rx_file_perms;
+# slideshow can power off the device with the '-p' option
+allow slideshow proc_sysrq:file rw_file_perms;
+allow slideshow self:capability sys_boot;

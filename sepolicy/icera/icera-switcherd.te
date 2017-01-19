@@ -21,10 +21,10 @@ type icera-switcherd_exec, exec_type, file_type;
 
 init_daemon_domain(icera-switcherd)
 
-allow icera-switcherd ctl_rildaemon_prop:property_service set;
+set_prop(icera-switcherd, ctl_rildaemon_prop)
+set_prop(icera-switcherd, radio_prop)
+
 allow icera-switcherd device:dir read;
-unix_socket_connect(icera-switcherd, property, init)
-allow icera-switcherd radio_prop:property_service set;
 allow icera-switcherd usb_device:chr_file rw_file_perms;
 allow icera-switcherd usb_device:dir r_dir_perms;
 

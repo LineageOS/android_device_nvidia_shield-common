@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,8 +13,13 @@
 # limitations under the License.
 
 # For ro.sf.lcd_density
-type surfaceflinger_prop, property_type;
+type mediacodec_prop, property_type, core_property_type;
+type surfaceflinger_prop, property_type, core_property_type;
 type thermal_prop, property_type;
+type phs_prop, property_type;
+
+# for sys.vrr.min-refr-per-ns
+type vrr_prop, property_type;
 
 # For ro.hardware.gps
 type gpsd_prop, property_type;
@@ -23,7 +28,7 @@ type gpsd_prop, property_type;
 type pbc_prop, property_type;
 
 # For properties written by set_hwui_params.sh
-type hwui_prop, property_type;
+type hwui_prop, property_type, core_property_type;
 
 # IKEv2 daemon
 type ctl_charon_prop, property_type;
@@ -40,8 +45,8 @@ type power_button_recovery_prop, property_type;
 # For ro.bt.bdaddr_path
 type bdaddr_path_prop, property_type;
 
-# Factory
-type factory_prop, property_type;
-
 # For handshake between sytem process and vold
 type handshake_sys_vold_prop, property_type;
+
+# darcy convertible usb port mode
+type usb_mode_prop, property_type;

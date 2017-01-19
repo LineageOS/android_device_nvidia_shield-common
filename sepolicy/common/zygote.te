@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,3 +13,8 @@
 # limitations under the License.
 
 allow zygote gpu_device:chr_file rw_file_perms;
+allow zygote cifs:filesystem { unmount };
+binder_use(zygote);
+
+# allow zygote (for media_profile.xml) to read files/dirs in /data/camera_config/
+r_dir_file(zygote, camera_config_file)

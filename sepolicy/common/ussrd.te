@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@
 #
 # ussrd - power management service
 #
-type ussrd, domain;
+type ussrd, domain, mlstrustedsubject;
 type ussrd_exec, exec_type, file_type;
 type ussrd_service, service_manager_type;
 
@@ -33,6 +33,10 @@ allow ussrd phsd_socket:unix_stream_socket rw_stream_socket_perms;
 # R/W sysfs, /dev nodes
 allow ussrd sysfs_devices_system_cpu:file rw_file_perms;
 allow ussrd pmqos_device:chr_file rw_file_perms;
+allow ussrd sysfs:file r_file_perms;
+allow ussrd sysfs_thermal:lnk_file r_file_perms;
+allow ussrd sysfs_tegra_gpu:file r_file_perms;
+allow ussrd sysfs_tegra_emc:file r_file_perms;
 
 # /data/misc/phs
 # Rule states that when a process of type ussrd creates a file in the directory
@@ -51,3 +55,27 @@ allow ussrd sysfs_thermal:file rw_file_perms;
 
 # Allow to write to nvfeedback log file
 allow ussrd anr_data_file:file write;
+
+# Allow ussrd to write to set the VRR system property
+set_prop(ussrd, vrr_prop)
+set_prop(ussrd, thermal_prop)
+set_prop(ussrd, phs_prop)
+
+# Allow writing to cfboost params
+allow ussrd sysfs_cfboost:file rw_file_perms;
+
+#
+# AffinityDaemon functionality
+#
+
+# read /proc
+ifelse(os_type, `android', allow ussrd self:capability sys_ptrace);
+r_dir_file(ussrd, domain)
+
+# set affinity and nice permissions
+allow ussrd domain:process { getsched setsched };
+allow ussrd self:capability sys_nice;
+
+# netlink access
+allow ussrd self:capability net_admin;
+allow ussrd self:netlink_socket create_stream_socket_perms;

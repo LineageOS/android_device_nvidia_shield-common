@@ -1,4 +1,4 @@
-#Copyright (c) 2013-2014 NVIDIA Corporation.  All Rights Reserved.
+#Copyright (c) 2013-2016 NVIDIA Corporation.  All Rights Reserved.
 #
 #NVIDIA Corporation and its licensors retain all intellectual property and
 #proprietary rights in and to this software and related documentation.  Any
@@ -19,15 +19,25 @@
 service tlk_daemon /vendor/bin/tlk_daemon --storagedir /data
     class main
     group keystore
+    writepid /dev/cpuset/system-background/tasks
 
 #
 # ss_status
 #
 # One shot command that queries status of secure storage.
 #
-service ss_status /vendor/bin/ss_status.sh
+service ss_status /vendor/bin/run_ss_status.sh
     class main
     group keystore
+    oneshot
+
+#
+# eks2_client
+#
+# one shot client that installs keys from eks2 in nvcrypto key slots
+#
+service eks2_client /vendor/bin/eks2_client --eks2_path /vendor/app/eks2/eks2.dat
+    class main
     oneshot
 
 on post-fs-data

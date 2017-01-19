@@ -21,6 +21,7 @@ service nvtouch /vendor/bin/nvtouch_daemon
     class main
     user system
     group system input
+    disabled
 
 on post-fs-data
     mkdir /data/nvtouch 0770 system system
@@ -28,9 +29,11 @@ on post-fs-data
 on property:persist.touch.solution=sharp
     write /sys/devices/virtual/nvtouch/nvtouch/driver_mode "1 "
     stop nvtouch
+    enable ShTouch
     start ShTouch
 
 on property:persist.touch.solution=nvtouch
     write /sys/devices/virtual/nvtouch/nvtouch/driver_mode "0 "
     stop ShTouch
+    enable nvtouch
     start nvtouch

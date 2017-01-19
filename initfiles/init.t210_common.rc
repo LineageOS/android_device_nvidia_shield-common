@@ -49,11 +49,16 @@ on boot
 
     chown system system /sys/module/input_cfboost/parameters/boost_freq
     chown system system /sys/module/input_cfboost/parameters/boost_gpu
-    write /sys/module/input_cfboost/parameters/boost_freq 1530000
+    chown system system /sys/module/input_cfboost/parameters/boost_enabled
+    write /sys/module/input_cfboost/parameters/boost_freq 1200000
     write /sys/module/input_cfboost/parameters/boost_emc 300000
-    write /sys/module/input_cfboost/parameters/boost_gpu 540000
-    write /sys/module/input_cfboost/parameters/boost_time 160
+    write /sys/module/input_cfboost/parameters/boost_gpu 537000
+    write /sys/module/input_cfboost/parameters/boost_time 2000
     write /sys/module/input_cfboost/parameters/boost_cpus 3
+
+    #Prepare CPU/EMC freq scaling based on DT by default
+    chown system system /sys/kernel/tegra_cpu_emc/table_src
+    write /sys/kernel/tegra_cpu_emc/table_src 1
 
 # Good driver settings
     # default value for 0x523dc5 in d3doglregs.rky is 0.5
@@ -71,3 +76,4 @@ on boot
 service watchdogd /sbin/watchdogd 20 160
     class core
     seclabel u:r:watchdogd:s0
+    writepid /dev/cpuset/system-background/tasks

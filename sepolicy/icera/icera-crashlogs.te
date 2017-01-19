@@ -21,10 +21,10 @@ type icera-crashlogs_exec, exec_type, file_type;
 
 init_daemon_domain(icera-crashlogs)
 
+set_prop(icera-crashlogs, radio_prop)
+
 allow icera-crashlogs radio_device:chr_file rw_file_perms;
 allow icera-crashlogs kernel:system syslog_read;
-unix_socket_connect(icera-crashlogs, property, init)
-allow icera-crashlogs radio_prop:property_service set;
 allow icera-crashlogs self:capability { fowner chown fsetid dac_override };
 allow icera-crashlogs self:capability2 syslog;
 unix_socket_connect(icera-crashlogs, logdr, logd)

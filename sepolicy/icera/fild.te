@@ -25,8 +25,7 @@ init_daemon_domain(fild)
 allow fild radio_device:chr_file rw_file_perms;
 
 # radio properties access
-unix_socket_connect(fild, property, init)
-allow fild radio_prop:property_service set;
+set_prop(fild, radio_prop)
 
 # sysfs access
 allow fild sysfs_radio:file rw_file_perms;

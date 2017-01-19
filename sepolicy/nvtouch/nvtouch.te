@@ -1,4 +1,4 @@
-# Copyright (c) 2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2015-2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ init_daemon_domain(nvtouch)
 allow nvtouch kmsg_device:chr_file { write getattr open };
 
 allow nvtouch touch_device:chr_file rw_file_perms;
+allow nvtouch sysfs_touch_log:file rw_file_perms;
 allow nvtouch self:capability { net_admin sys_nice };
 
 allow nvtouch nv_touch_data_file:dir create_dir_perms;

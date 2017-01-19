@@ -17,3 +17,5 @@ allow radio system_app_service:service_manager find;
 
 # allow to write to nvfeedback.log
 allow radio anr_data_file:file write;
+
+allow radio system_app_data_file:dir { search getattr };

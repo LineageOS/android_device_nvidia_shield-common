@@ -1,4 +1,4 @@
-# Copyright (c) 2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2015-2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,3 +13,34 @@
 # limitations under the License.
 
 allow dumpstate self:capability sys_admin;
+
+allow dumpstate gatekeeper_service:service_manager find;
+
+# Allow dumpstate read permissions to edid modedb
+r_dir_file(dumpstate, hwc_data_file);
+
+# Allow dumpstate to read and write to sysfs_mmc_host
+r_dir_file(dumpstate, sysfs_mmc_host);
+allow dumpstate sysfs_mmc_host:file w_file_perms;
+
+# Allow dumpstate read permissions to netcfg
+r_dir_file(dumpstate, sysfs_netcfg);
+
+# Allow dumpstate to access WiFi status
+r_dir_file(dumpstate, wifi_data_file);
+
+# Allow dumpstate to get attribute from below block devices
+allow dumpstate block_device:blk_file getattr;
+allow dumpstate userdata_block_device:blk_file getattr;
+allow dumpstate factorycalib_block_device:blk_file getattr;
+allow dumpstate usercalib_block_device:blk_file getattr;
+allow dumpstate user_calib_file:dir getattr;
+
+# allow dumpstate to access suspend_time
+allow dumpstate debugfs_suspend_time_stats:file r_file_perms;
+
+# allow dumpstate to access wakeup_irq
+allow dumpstate debugfs_wake_irq_stats:file r_file_perms;
+
+# allow dumpstate to access emc/avg_activity
+allow dumpstate debugfs_emc_load:file r_file_perms;

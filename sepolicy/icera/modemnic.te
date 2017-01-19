@@ -22,8 +22,7 @@ init_daemon_domain(modemnic)
 net_domain(modemnic)
 
 # ril init properties
-unix_socket_connect(modemnic, property, init)
-allow modemnic radio_prop:property_service set;
+set_prop(modemnic, radio_prop)
 
 # NIC configuration (netlink)
 allow modemnic self:capability { net_raw net_admin };
@@ -39,3 +38,11 @@ allow modemnic proc_net:file rw_file_perms;
 # system() syscall, run in modemnic domain
 allow modemnic shell_exec:file rx_file_perms;
 allow modemnic system_file:file rx_file_perms;
+
+# access to kernel
+allow modemnic kernel:system module_request;
+
+allow modemnic self:capability sys_module;
+
+# execute toybox/toolbox
+allow modemnic toolbox_exec:file rx_file_perms;

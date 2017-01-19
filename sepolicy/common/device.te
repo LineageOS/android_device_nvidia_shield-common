@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -36,8 +36,14 @@ type rpmb_block_device, dev_type;
 # User calibration partion(UCB) block device
 type usercalib_block_device, dev_type;
 
+# Bootloader partition block device
+type bootloader_block_device, dev_type;
+
 # Factory calibration partion(FCT) block device
 type factorycalib_block_device, dev_type;
+
+# fscheck partiton block device
+type fscheck_block_device, dev_type;
 
 # /dev/tegra_cpc
 type cpc_device, dev_type;
@@ -46,7 +52,7 @@ type cpc_device, dev_type;
 type touch_device, dev_type;
 
 # RP3 partition
-type factoryconfig_block_device, dev_type;
+type rpx_block_device, dev_type;
 
 # /dev/cy8c-led-boot
 type cy8c_device, dev_type;
