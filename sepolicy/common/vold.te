@@ -73,7 +73,7 @@ allow vold rpx_file:dir r_dir_perms;
 # upnpfuse
 allow vold self:capability { setuid setgid };
 allow vold upnpfuse_cache_file:dir create_dir_perms;
-domain_auto_trans(vold, upnpfused_exec, priv_app);
+#domain_auto_trans(vold, upnpfused_exec, priv_app);
 
 allow vold sysfs_mmc_host:file rw_file_perms;
 r_dir_file(vold, sysfs_mmc_host)
