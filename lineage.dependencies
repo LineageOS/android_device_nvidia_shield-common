@@ -1,0 +1,10 @@
+[
+ {
+   "repository": "android_hardware_nvidia_libstagefrighthw",
+   "target_path": "hardware/nvidia/libstagefrighthw"
+ },
+ {
+   "repository": "android_hardware_nvidia_power",
+   "target_path": "hardware/nvidia/power"
+ }
+]

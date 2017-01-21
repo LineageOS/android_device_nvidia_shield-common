@@ -90,7 +90,8 @@ PRODUCT_PACKAGES += \
     tinycap \
     tinymix \
     tinyplay \
-    xaplay
+    xaplay \
+    libstagefrighthw
 
 ifneq ($(TARGET_TEGRA_VERSION),t114)
 	PRODUCT_PACKAGES += libtinycompress
