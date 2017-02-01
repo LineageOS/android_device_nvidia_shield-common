@@ -31,7 +31,9 @@ PRODUCT_PACKAGES += \
     init.hdcp.rc \
     init.nv_dev_board.usb.rc \
     init.none.rc \
-    init.tegra.rc
+    init.tegra.rc \
+    init.tegra_emmc.rc \
+    init.tegra_sata.rc
 
 ifeq ($(TARGET_TEGRA_VERSION),t114)
 	PRODUCT_PACKAGES += init.tf.rc
