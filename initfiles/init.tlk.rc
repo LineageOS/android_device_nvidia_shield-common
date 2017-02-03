@@ -38,6 +38,8 @@ service ss_status /vendor/bin/run_ss_status.sh
 #
 service eks2_client /vendor/bin/eks2_client --eks2_path /vendor/app/eks2/eks2.dat
     class main
+    group keystore
+    seclabel u:r:tee:s0
     oneshot
 
 on post-fs-data
