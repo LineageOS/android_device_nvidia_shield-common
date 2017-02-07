@@ -31,3 +31,7 @@ endif
 
 # seccomp
 BOARD_SECCOMP_POLICY := device/nvidia/shield-common/seccomp
+
+# HALs
+TARGET_POWERHAL_VARIANT := tegra
+TARGET_THERMALHAL_VARIANT := tegra
