@@ -40,11 +40,18 @@ on boot
     chown system system /sys/devices/system/cpu/cpufreq/interactive/boost_factor
     write /sys/devices/system/cpu/cpufreq/interactive/io_busy_threshold 50
 
-    write /sys/module/input_cfboost/parameters/boost_freq 1530000
+    chown system system /sys/module/input_cfboost/parameters/boost_freq
+    chown system system /sys/module/input_cfboost/parameters/boost_gpu
+    chown system system /sys/module/input_cfboost/parameters/boost_enabled
+    write /sys/module/input_cfboost/parameters/boost_freq 1200000
     write /sys/module/input_cfboost/parameters/boost_emc 300000
     write /sys/module/input_cfboost/parameters/boost_gpu 540000
-    write /sys/module/input_cfboost/parameters/boost_time 160
+    write /sys/module/input_cfboost/parameters/boost_time 2000
     write /sys/module/input_cfboost/parameters/boost_cpus 3
+
+    #Prepare CPU/EMC freq scaling based on DT by default
+    chown system system /sys/kernel/tegra_cpu_emc/table_src
+    write /sys/kernel/tegra_cpu_emc/table_src 1
 
 on init
     # Mount a tmpfs into /mnt/tmp for hosting nvram, phs shared memory
