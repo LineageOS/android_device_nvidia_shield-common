@@ -35,3 +35,6 @@ BOARD_SECCOMP_POLICY := device/nvidia/shield-common/seccomp
 # HALs
 TARGET_POWERHAL_VARIANT := tegra
 TARGET_THERMALHAL_VARIANT := tegra
+
+# Release tools for bootloader assertion
+TARGET_RELEASETOOLS_EXTENSIONS := device/nvidia/shield-common/releasetools
