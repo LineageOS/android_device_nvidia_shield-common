@@ -45,5 +45,7 @@ allow icera-loader radio_data_icera_file:lnk_file create_file_perms;
 
 # spawn shell in icera-loader domain
 allow icera-loader shell_exec:file rx_file_perms;
+allow icera-loader toolbox_exec:file rx_file_perms;
+
 # downloader, run in icera-loader domain
 allow icera-loader system_file:file rx_file_perms;
