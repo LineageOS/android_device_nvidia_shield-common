@@ -16,9 +16,16 @@
 
 # Overlay
 ifneq ($(TARGET_TEGRA_DISABLE_OVERLAY),true)
-DEVICE_PACKAGE_OVERLAYS += \
-    device/nvidia/shield-common/overlay/common \
-    device/nvidia/shield-common/overlay/tablet-do
+    DEVICE_PACKAGE_OVERLAYS += \
+         device/nvidia/shield-common/overlay/common
+
+    ifeq ($(PRODUCT_IS_ATV),true)
+        DEVICE_PACKAGE_OVERLAYS += \
+            device/nvidia/shield-common/overlay/tv
+    else
+        DEVICE_PACKAGE_OVERLAYS += \
+            device/nvidia/shield-common/overlay/tablet-do
+    endif
 endif
 
 # System properties
