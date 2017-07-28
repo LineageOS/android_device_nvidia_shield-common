@@ -273,6 +273,7 @@
 /sys/devices/platform/gpu.0/devfreq/gpu.0/available_frequencies		u:object_r:sysfs_devfreq:s0
 /sys/devices/platform/psy_extcon.*/power_supply/usb/online		u:object_r:sysfs_power_supply:s0
 /sys/devices/platform/psy_extcon.*/power_supply/ac/online		u:object_r:sysfs_power_supply:s0
+/sys/class/power_supply		u:object_r:sysfs_power_supply:s0
 /sys/devices/platform/pwm-fan.*/pwm_cap		u:object_r:sysfs_pwm_fan:s0
 /sys/devices/platform/pwm-fan.*/pwm_state_map		u:object_r:sysfs_pwm_fan:s0
 /sys/devices/platform/pwm-fan.*/state_cap		u:object_r:sysfs_pwm_fan:s0
