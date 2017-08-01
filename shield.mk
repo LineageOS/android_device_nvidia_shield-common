@@ -132,6 +132,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7212.kl:system/usr/keylayout/Vendor_0955_Product_7212.kl \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7214.kl:system/usr/keylayout/Vendor_0955_Product_7214.kl
 
+# PBC
+ifeq ($(TARGET_TEGRA_VERSION),t210)
+	PRODUCT_PACKAGES += pbc.conf
+endif
+
 # Widevine shim
 PRODUCT_PACKAGES += libwvm_shim
 

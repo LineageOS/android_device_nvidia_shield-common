@@ -279,6 +279,7 @@
 # cfboost sysfs for pbc access
 /sys/module/input_cfboost/parameters/boost_freq		u:object_r:sysfs_cfboost:s0
 /sys/module/input_cfboost/parameters/boost_gpu		u:object_r:sysfs_cfboost:s0
+/sys/devices/platform/pwm-backlight/backlight/pwm-backlight/brightness		u:object_r:sysfs_pwm_backlight:s0
 # phs sysfs
 /sys/devices/virtual/misc/tegra-throughput/fps			u:object_r:sysfs_throughput:s0
 /sys/devices/virtual/misc/tegra-throughput/framecount		u:object_r:sysfs_throughput:s0
