@@ -143,6 +143,13 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf
 
+# Unified scaling
+ifneq ($(TARGET_TEGRA_VERSION),t114)
+	PRODUCT_PACKAGES += \
+	    init.ussrd.rc \
+	    ussrd.conf
+endif
+
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory

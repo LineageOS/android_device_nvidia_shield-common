@@ -151,3 +151,19 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := init.sharp_touch.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := init.ussrd.rc
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := init.ussrd.rc
+LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := ussrd.conf
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := ussrd.$(TARGET_TEGRA_VERSION).conf
+LOCAL_MODULE_PATH  := $(TARGET_ETC_OUT)
+include $(BUILD_PREBUILT)
