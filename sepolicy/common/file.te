@@ -159,6 +159,9 @@ type sysfs_touch_log, fs_type, sysfs_type;
 # /sys/devices/platform/host1x/gpu\.0/ptimer_scale_factor
 type sysfs_gpu, fs_type, sysfs_type;
 
+# /sys/devices/platform/gpu.0/[aebs]*l[cp]g_enable
+type sysfs_gpu_power_knobs, fs_type, sysfs_type;
+
 # /sys/devices/platform/psy_extcon.*/power_supply/usb/online
 # /sys/devices/platform/psy_extcon.*/power_supply/ac/online
 type sysfs_power_supply, fs_type, sysfs_type;

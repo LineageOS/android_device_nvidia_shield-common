@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,20 +12,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-#
-# icera-feedback
-#
-type icera-feedback, domain;
-type icera-feedback_exec, exec_type, file_type;
-
-# don't use init_daemon_domain(), conflicts with app_domain()
-app_domain(icera-feedback)
-
-# logwrapper usage
-allow icera-feedback devpts:chr_file rw_file_perms;
-
-allow icera-feedback system_file:file x_file_perms;
-allow icera-feedback shell_exec:file rx_file_perms;
-allow icera-feedback zygote_exec:file rx_file_perms;
-allow icera-feedback activity_service:service_manager find;
+allow pbc sysfs_pwm_backlight:file r_file_perms;

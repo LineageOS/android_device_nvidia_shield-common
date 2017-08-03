@@ -159,7 +159,7 @@
 /system/bin/rebindEthernet.sh		u:object_r:rebindEthernet_exec:s0
 # gps
 /system/bin/gps_select.sh		u:object_r:gpsd_exec:s0
-(/system)?/vendor/bin/glgps_nvidiaTegra2android	u:object_r:gpsd_exec:s0
+/system/bin/glgps_nvidiaTegra2android	u:object_r:gpsd_exec:s0
 # set_hwui_params.sh
 /system/bin/set_hwui_params.sh		u:object_r:set_hwui_exec:s0
 # adbenable.sh
@@ -279,7 +279,6 @@
 # cfboost sysfs for pbc access
 /sys/module/input_cfboost/parameters/boost_freq		u:object_r:sysfs_cfboost:s0
 /sys/module/input_cfboost/parameters/boost_gpu		u:object_r:sysfs_cfboost:s0
-/sys/devices/platform/pwm-backlight/backlight/pwm-backlight/brightness		u:object_r:sysfs_pwm_backlight:s0
 # phs sysfs
 /sys/devices/virtual/misc/tegra-throughput/fps			u:object_r:sysfs_throughput:s0
 /sys/devices/virtual/misc/tegra-throughput/framecount		u:object_r:sysfs_throughput:s0
@@ -338,6 +337,8 @@
 /sys/devices/platform/tegra-fuse/aid			u:object_r:sysfs_tegrafuse_aid:s0
 # Sysfs node for Pepper timeout
 /sys/devices/virtual/misc/uhid/0005:0955:7213.*/timeout		u:object_r:sysfs_pepper_timeout:s0
+# GPU power knobs exposed to system app
+/sys/devices/platform/gpu.0/[aebs]*l[cp]g_enable	u:object_r:sysfs_gpu_power_knobs:s0
 
 #############################
 # debugfs files
