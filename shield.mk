@@ -125,6 +125,9 @@ PRODUCT_PACKAGES += \
     libstagefrighthw \
     enctune.conf
 
+# Audio shim
+PRODUCT_PACKAGES += libicu_shim
+
 # Bluetooth
 PRODUCT_PACKAGES += \
     libbt-vendor \
