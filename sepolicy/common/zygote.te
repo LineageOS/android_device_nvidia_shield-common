@@ -18,4 +18,4 @@ binder_use(zygote);
 # allow zygote (for media_profile.xml) to read files/dirs in /data/camera_config/
 r_dir_file(zygote, camera_config_file)
 
-allow zygote zygote_tmpfs:file execute;
+#allow zygote zygote_tmpfs:file execute;

@@ -28,8 +28,8 @@ allow raydium kmsg_device:chr_file { write getattr open };
 
 allow raydium touch_device:chr_file rw_file_perms;
 allow raydium self:capability { net_admin sys_nice };
-allow raydium self:netlink_socket create_socket_perms;
-allow raydium self:netlink_kobject_uevent_socket create_socket_perms;
+allow raydium self:netlink_socket create_socket_perms_no_ioctl;
+allow raydium self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
 allow raydium raydium_touch_service:service_manager add;
 allow raydium user_calib_file:dir create_dir_perms;
 allow raydium user_calib_file:file create_file_perms;

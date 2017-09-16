@@ -25,7 +25,8 @@ endif
 ifneq ($(filter $(TARGET_TEGRA_TOUCH),nvtouch),)
 	BOARD_SEPOLICY_DIRS += device/nvidia/shield-common/sepolicy/maxim
 else ifneq ($(filter $(TARGET_TEGRA_TOUCH),raydium),)
-	BOARD_SEPOLICY_DIRS += device/nvidia/shield-common/sepolicy/raydium
+	BOARD_SEPOLICY_DIRS += device/nvidia/shield-common/sepolicy/raydium \
+	                       device/nvidia/shield-common/sepolicy/lineage-raydium
 else ifneq ($(filter $(TARGET_TEGRA_TOUCH),sharp),)
 	BOARD_SEPOLICY_DIRS += device/nvidia/shield-common/sepolicy/sharp
 endif

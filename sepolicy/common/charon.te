@@ -29,10 +29,10 @@ allow charon kernel:system module_request;
 allow charon proc_net:file write;
 allow charon radio_device:chr_file rw_file_perms;
 
-allow charon self:key_socket create_socket_perms;
-allow charon self:tun_socket create_socket_perms;
-allow charon self:netlink_socket create_socket_perms;
-allow charon self:netlink_xfrm_socket { create_socket_perms nlmsg_read nlmsg_write };
+allow charon self:key_socket create_socket_perms_no_ioctl;
+allow charon self:tun_socket create_socket_perms_no_ioctl;
+allow charon self:netlink_socket create_socket_perms_no_ioctl;
+allow charon self:netlink_xfrm_socket { create_socket_perms_no_ioctl nlmsg_read nlmsg_write };
 allow charon self:netlink_route_socket nlmsg_write;
 allow charon self:capability { net_admin net_bind_service net_raw setuid setgid chown dac_override dac_read_search };
 

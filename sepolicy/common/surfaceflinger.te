@@ -42,8 +42,8 @@ allow surfaceflinger device:dir r_dir_perms;
 # domains and types as you can think of to model your usage patterns.
 #
 allow surfaceflinger tmpfs:dir rw_dir_perms;
-allow surfaceflinger surfaceflinger_tmpfs:dir rw_dir_perms;
-allow surfaceflinger surfaceflinger_tmpfs:file create_file_perms;
+#allow surfaceflinger surfaceflinger_tmpfs:dir rw_dir_perms;
+allow surfaceflinger tmpfs:file create_file_perms;
 
 allow surfaceflinger surfaceflinger_fc:dir rw_dir_perms;
 allow surfaceflinger surfaceflinger_fc:file create_file_perms;

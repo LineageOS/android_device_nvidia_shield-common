@@ -46,7 +46,7 @@ allow ussrd phsd_data:dir { setattr rw_dir_perms };
 allow ussrd phsd_data:file create_file_perms;
 
 # /mnt/tmp/fc[0-9] files.
-allow ussrd surfaceflinger_tmpfs:file r_file_perms;
+allow ussrd tmpfs:file r_file_perms;
 allow ussrd surfaceflinger_fc:file r_file_perms;
 
 # thermal
@@ -78,4 +78,4 @@ allow ussrd self:capability sys_nice;
 
 # netlink access
 allow ussrd self:capability net_admin;
-allow ussrd self:netlink_socket create_stream_socket_perms;
+allow ussrd self:netlink_socket { create_socket_perms_no_ioctl listen accept };

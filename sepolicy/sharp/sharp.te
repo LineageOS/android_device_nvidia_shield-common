@@ -28,8 +28,8 @@ allow sharp sysfs_touch_log:file rw_file_perms;
 allow sharp sh_touch_data_file:dir create_dir_perms;
 allow sharp sh_touch_data_file:file create_file_perms;
 allow sharp self:capability { net_admin sys_nice };
-allow sharp self:netlink_socket create_socket_perms;
-allow sharp self:netlink_kobject_uevent_socket create_socket_perms;
+allow sharp self:netlink_socket create_socket_perms_no_ioctl;
+allow sharp self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
 
 binder_use(sharp);
 binder_service(sharp);

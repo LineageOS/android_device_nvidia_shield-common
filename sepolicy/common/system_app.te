@@ -63,8 +63,8 @@ allow system_app sysfs_ozmo:file rw_file_perms;
 allow system_app sysfs_hid:dir r_dir_perms;
 allow system_app sysfs_hid:file rw_file_perms;
 allow system_app hidraw_device:chr_file rw_file_perms;
-allow system_app input_device:dir r_dir_perms;
-allow system_app input_device:chr_file r_file_perms;
+#allow system_app input_device:dir r_dir_perms;
+#allow system_app input_device:chr_file r_file_perms;
 allow system_app ozmo_device:chr_file rw_file_perms;
 allow system_app sysfs_blake:file rw_file_perms;
 allow system_app oem_media_file:dir r_dir_perms;
@@ -139,7 +139,7 @@ set_prop(system_app, bluetooth_prop)
 
 # IDS reads wifi files
 r_dir_file(system_app, wifi_data_file)
-allow system_app self:netlink_socket create_socket_perms;
+allow system_app self:netlink_socket create_socket_perms_no_ioctl;
 
 # allow system app to access suspend_time
 allow system_app debugfs_suspend_time_stats:file r_file_perms;
@@ -154,7 +154,7 @@ allow system_app debugfs_emc_load:file r_file_perms;
 r_dir_file(system_app, sysfs_netcfg)
 
 # Allow system app to get kernel log to report issue
-allow system_app kernel:system syslog_read;
+#allow system_app kernel:system syslog_read;
 
 # Allow Settings to recover after resolution changes
 dontaudit system_app self:capability2 { block_suspend };

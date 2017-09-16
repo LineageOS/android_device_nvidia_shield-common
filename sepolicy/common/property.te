@@ -13,8 +13,8 @@
 # limitations under the License.
 
 # For ro.sf.lcd_density
-type mediacodec_prop, property_type, core_property_type;
-type surfaceflinger_prop, property_type, core_property_type;
+type mediacodec_prop, property_type;
+type surfaceflinger_prop, property_type;
 type thermal_prop, property_type;
 type phs_prop, property_type;
 
@@ -28,7 +28,7 @@ type gpsd_prop, property_type;
 type pbc_prop, property_type;
 
 # For properties written by set_hwui_params.sh
-type hwui_prop, property_type, core_property_type;
+type hwui_prop, property_type;
 
 # IKEv2 daemon
 type ctl_charon_prop, property_type;

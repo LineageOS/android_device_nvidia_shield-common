@@ -12,5 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+unix_socket_connect(system_server, gps, gpsd)
+allow system_server gps_device:chr_file rw_file_perms;
+
 allow system_server sysfs_pwm_backlight:file rw_file_perms;
 allow system_server sysfs_smartdimmer:file rw_file_perms;

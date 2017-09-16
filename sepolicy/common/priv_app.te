@@ -26,7 +26,7 @@ r_dir_file(priv_app, sysfs_netcfg)
 r_dir_file(priv_app, sysfs_mmc_host)
 
 # Read /data/data subdirectory.
-allow priv_app system_app_data_file:file r_file_perms;
+#allow priv_app system_app_data_file:file r_file_perms;
 # Read /mnt/asec/<pkg-cid>/base.apk which is mounted from app on sdcard (asec)
 allow priv_app asec_apk_file:file r_file_perms;
 

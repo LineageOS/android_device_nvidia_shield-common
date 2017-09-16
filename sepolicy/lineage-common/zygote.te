@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015 NVIDIA CORPORATION.  All rights reserved.
+# Copyright (C) 2018 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +12,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-type cvc, domain;
-type cvc_exec, exec_type, file_type;
-init_daemon_domain(cvc)
-
-allow cvc self:netlink_socket create_socket_perms_no_ioctl;
-allow cvc cvc_data_file:dir rw_dir_perms;
-allow cvc cvc_data_file:file create_file_perms;
-allow cvc sysfs_cvc:dir r_dir_perms;
-allow cvc sysfs_cvc:file rw_file_perms;
+get_prop(zygote, surfaceflinger_prop)

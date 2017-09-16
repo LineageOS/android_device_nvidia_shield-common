@@ -26,13 +26,13 @@ allow hubcore hubcore_data_file:dir create_dir_perms;
 allow hubcore hubcore_data_file:file create_file_perms;
 allow hubcore self:capability { net_raw net_admin };
 allow hubcore proc_net:file rw_file_perms;
-allow hubcore self:packet_socket create_socket_perms;
+allow hubcore self:packet_socket create_socket_perms_no_ioctl;
 
 # Allow access to service_manager
 allow hubcore hubcore:service_manager { add find };
 
 # Allow access to TEE
-allow hubcore tee_device:chr_file { read write open ioctl };
+#allow hubcore tee_device:chr_file { read write open ioctl };
 
 # Allow access to usb_devices
 allow hubcore device:dir read;

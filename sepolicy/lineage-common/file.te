@@ -14,3 +14,7 @@
 
 # /sys/devices/platform/pwm-backlight.*
 type sysfs_pwm_backlight, fs_type, sysfs_type;
+
+# /data/gps
+type gps_data_file, file_type, data_file_type;
+type gps_socket, file_type;

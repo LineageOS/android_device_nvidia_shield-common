@@ -18,5 +18,5 @@ type bt_restart_exec, exec_type, file_type;
 init_daemon_domain(bt_restart)
 binder_use(bt_restart)
 binder_call(bt_restart, system_server)
-allow bt_restart self:netlink_kobject_uevent_socket create_socket_perms;
+allow bt_restart self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
 allow bt_restart self:capability net_admin;

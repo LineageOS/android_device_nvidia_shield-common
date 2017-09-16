@@ -19,10 +19,6 @@ r_dir_file(platform_app, sysfs_thermal)
 # Access service manager
 allow platform_app system_app_service:service_manager find;
 
-# Access external card
-allow platform_app fuseblk:dir create_dir_perms;
-allow platform_app fuseblk:file create_file_perms;
-
 # Sku files and RP3 partition
 r_dir_file(platform_app, rpx_block_device)
 r_dir_file(platform_app, rpx_file)

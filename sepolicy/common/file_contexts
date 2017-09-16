@@ -82,7 +82,6 @@
 /dev/block/platform/sdhci-tegra(.*)/by-name/RP3		u:object_r:rpx_block_device:s0
 /dev/block/platform/sdhci-tegra(.*)/by-name/LNX		u:object_r:boot_block_device:s0
 /dev/block/platform/sdhci-tegra(.*)/by-name/SOS		u:object_r:recovery_block_device:s0
-/dev/block/platform/sdhci-tegra(.*)/by-name/SMD		u:object_r:bootctrl_block_device:s0
 /dev/block/platform/sdhci-tegra(.*)/by-name/MDA		u:object_r:metadata_block_device:s0
 # AB system partition
 /dev/block/platform/sdhci-tegra(.*)/by-name/LNX-A		u:object_r:boot_block_device:s0
@@ -179,7 +178,7 @@
 (/system)?/vendor/bin/ussrd		u:object_r:ussrd_exec:s0
 /system/bin/ussr_setup.sh		u:object_r:ussr_setup_exec:s0
 # dual wifi
-/system/bin/wpa_supplicant_2		u:object_r:wpa_exec:s0
+/system/bin/wpa_supplicant_2		u:object_r:hal_wifi_supplicant_default_exec:s0
 # frostaudiortp
 /system/bin/frostaudiortp		u:object_r:frostaudiortp_exec:s0
 # pbc
@@ -199,8 +198,6 @@
 /system/bin/setup_fs			u:object_r:setup_fs_exec:s0
 # nv_setupfs.sh
 /system/bin/nv_setupfs.sh               u:object_r:setup_fs_exec:s0
-# make_f2fs
-/system/bin/make_f2fs                   u:object_r:make_f2fs_exec:s0
 # bt restart service
 /system/bin/bt_restart			u:object_r:bt_restart_exec:s0
 # IKEv2 daemon
