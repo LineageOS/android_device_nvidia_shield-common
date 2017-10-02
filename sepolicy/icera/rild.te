@@ -39,3 +39,6 @@ allow rild radio_data_icera_file:lnk_file create_file_perms;
 
 # mock_modem socket (NvMTT RIL tests)
 unix_socket_connect(rild, mock_modem, mock_modem)
+
+# execute toybox/toolbox
+allow rild toolbox_exec:file rx_file_perms;

@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@ set_hwui_params		u:object_r:system_app_service:s0
 ShieldStats		u:object_r:system_app_service:s0
 shield_virtual_remote	u:object_r:shield_remote_service:s0
 thermalstats		u:object_r:system_app_service:s0
+fanstats		u:object_r:system_app_service:s0
 ndiscoveryservice           u:object_r:system_app_service:s0
 NvRemotePlaybackService     u:object_r:system_app_service:s0
 com.smartcom.root.APNWidgetRootService	u:object_r:system_app_service:s0
@@ -35,3 +36,5 @@ android.display.hwcomposer	u:object_r:surfaceflinger_service:s0
 nvidia.inputservice         u:object_r:input_service:s0
 
 RemoteControlService		u:object_r:accessibility_service:s0
+
+com.smartthings.service.IHubCore	u:object_r:hubcore:s0

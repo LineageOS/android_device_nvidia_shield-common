@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -169,6 +169,8 @@
 (/system)?/vendor/bin/diag_perm.sh	u:object_r:diag_exec:s0
 # gpload
 (/system)?/vendor/bin/gpload		u:object_r:gpload_exec:s0
+# hubcore
+(/system)?/vendor/bin/hubcore		u:object_r:hubcore_exec:s0
 # ctload
 (/system)?/vendor/bin/ctload		u:object_r:ctload_exec:s0
 # update_js_touch_fw
@@ -178,6 +180,8 @@
 /system/bin/ussr_setup.sh		u:object_r:ussr_setup_exec:s0
 # dual wifi
 /system/bin/wpa_supplicant_2		u:object_r:wpa_exec:s0
+# frostaudiortp
+/system/bin/frostaudiortp		u:object_r:frostaudiortp_exec:s0
 # pbc
 (/system)?/vendor/bin/pbc		u:object_r:pbc_exec:s0
 (/system)?/vendor/bin/pbc2		u:object_r:pbc_exec:s0
@@ -205,6 +209,9 @@
 (/system)?/vendor/oem/media(/.*)?	u:object_r:oem_media_file:s0
 # camera config
 /system/bin/config_cameras.sh		u:object_r:config_cameras_exec:s0
+# service to dump logs
+(/system)?/vendor/bin/cac_log_dumper	u:object_r:cac_log_dumper_exec:s0
+
 
 #############################
 # Data files
@@ -244,6 +251,14 @@
 /data/upnpfuse(/.*)?			u:object_r:upnpfuse_cache_file:s0
 # bluedroid_log
 /data/misc/bluedroid_log(/.*)?		u:object_r:bluetooth_log_file:s0
+# hubcore
+/data/misc/smartthings(/.*)?		u:object_r:hubcore_data_file:s0
+# cac_log_dumper data file
+/cache/logs(/.*)?			u:object_r:cache_log_dumper_file:s0
+# Frost's log files
+/data/misc/frostlog(/.*)? 		u:object_r:frostlog_file:s0
+# Coredump
+/data/core(/.*)?			u:object_r:coredump_data_file:s0
 
 #############################
 # sysfs files
@@ -273,15 +288,27 @@
 /sys/devices/platform/gpu.0/devfreq/gpu.0/available_frequencies		u:object_r:sysfs_devfreq:s0
 /sys/devices/platform/psy_extcon.*/power_supply/usb/online		u:object_r:sysfs_power_supply:s0
 /sys/devices/platform/psy_extcon.*/power_supply/ac/online		u:object_r:sysfs_power_supply:s0
-/sys/devices/platform/pwm-fan.*/pwm_cap		u:object_r:sysfs_pwm_fan:s0
-/sys/devices/platform/pwm-fan.*/pwm_state_map		u:object_r:sysfs_pwm_fan:s0
-/sys/devices/platform/pwm-fan.*/state_cap		u:object_r:sysfs_pwm_fan:s0
+
+# pwm-fan sysfs nodes
+/sys/devices/platform/pwm-fan/pwm_cap   		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/pwm_state_map		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/state_cap 		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/cur_pwm   		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/pwm_rpm_table		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/rpm_measured		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/step_time 	    	u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/tach_enable		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/target_pwm		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/temp_control		u:object_r:sysfs_pwm_fan:s0
+
 # cfboost sysfs for pbc access
 /sys/module/input_cfboost/parameters/boost_freq		u:object_r:sysfs_cfboost:s0
 /sys/module/input_cfboost/parameters/boost_gpu		u:object_r:sysfs_cfboost:s0
 # phs sysfs
 /sys/devices/virtual/misc/tegra-throughput/fps			u:object_r:sysfs_throughput:s0
 /sys/devices/virtual/misc/tegra-throughput/framecount		u:object_r:sysfs_throughput:s0
+# Jarvis sysfs
+/sys/bus/hid/drivers/Jarvis/hid_miss_stats		u:object_r:sysfs_jarvis_stats:s0
 # Sound sysfs nodes
 /sys/class/sound(/.*)?			u:object_r:sysfs_sound:s0
 # Configure Ozmo driver

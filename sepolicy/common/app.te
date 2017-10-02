@@ -15,10 +15,6 @@
 allow_use_phs(appdomain)
 allow { appdomain -isolated_app } ussrd_service:service_manager find;
 
-# allow app to access cifs file/directory
-allow appdomain cifs:dir r_dir_perms;
-allow appdomain cifs:file rw_file_perms;
-
 allow appdomain sysfs_gpu:file r_file_perms;
 allow appdomain sysfs_mmc_host:dir search;
 

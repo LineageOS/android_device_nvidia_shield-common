@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,3 +29,9 @@ r_dir_file(priv_app, sysfs_mmc_host)
 allow priv_app system_app_data_file:file r_file_perms;
 # Read /mnt/asec/<pkg-cid>/base.apk which is mounted from app on sdcard (asec)
 allow priv_app asec_apk_file:file r_file_perms;
+
+# dvb_device access
+allow priv_app dvb_device:chr_file rw_file_perms;
+
+# Allow getattr access permission to app specific directories
+allow priv_app system_app_data_file:dir getattr;

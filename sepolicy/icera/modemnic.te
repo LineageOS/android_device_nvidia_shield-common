@@ -46,3 +46,6 @@ allow modemnic self:capability sys_module;
 
 # execute toybox/toolbox
 allow modemnic toolbox_exec:file rx_file_perms;
+
+allow modemnic sysfs_netcfg:dir r_dir_perms;
+auditallow modemnic sysfs_netcfg:dir r_dir_perms;

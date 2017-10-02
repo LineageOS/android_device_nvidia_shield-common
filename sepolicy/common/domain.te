@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -21,3 +21,9 @@ allow domain system_data_file:file { getattr read };
 # Allow domains to search for debugfs_clock/debugfs_edp
 allow domain debugfs_clock:dir search;
 allow domain debugfs_edp:dir search;
+
+# Allow domains to search and create core files
+userdebug_or_eng(`
+allow { domain -recovery -untrusted_app -recovery_refresh -recovery_persist -logd } coredump_data_file:dir create_dir_perms;
+allow { domain -recovery -untrusted_app -recovery_refresh -recovery_persist -logd } coredump_data_file:file create_file_perms;
+')

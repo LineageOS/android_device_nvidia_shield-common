@@ -44,4 +44,14 @@ userdebug_or_eng(`
   allow qvs device:chr_file { getattr ioctl lock };
   allow qvs untrusted_app:lnk_file read;
   allow qvs untrusted_app:dir search;
+  # allows getattr permission for qvs on rootfs
+  allow qvs rootfs:lnk_file getattr;
+  #allows execmem permission for zygote started by qvs.
+  allow zygote self:process execmem;
+  allow zygote ashmem_device:chr_file execute;
+  #allows to find power service for qvs zygote
+  allow zygote power_service:service_manager find;
+  #allows to find input service for qvs zygote
+  allow zygote input_service:service_manager find;
+  allow zygote system_server:binder call;
 ')

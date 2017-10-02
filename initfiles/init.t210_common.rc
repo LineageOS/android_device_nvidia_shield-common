@@ -69,8 +69,11 @@ on boot
 # WAR for bug 1536227: Restrict all ZBC clears to transparent black:
     setprop persist.tegra.AF73C63E 0x80007ffd
 
-#set HW acceleration to true
+# set HW acceleration to true
     setprop skia.jpeg.hwaccelerate 1
+
+# Isochronous mode disable on xudc for T210 chip
+    setprop ro.xudc.isochronous.enable 0
 
 # Thie yields each tegra wdt expiration to be at 45 secs and fourth expiration for reboot at 180 secs.
 service watchdogd /sbin/watchdogd 20 160

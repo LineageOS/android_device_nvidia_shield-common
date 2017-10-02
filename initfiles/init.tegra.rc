@@ -176,14 +176,15 @@ service bugreport /system/bin/dumpstate -d -p -B -z -o /data/user_de/0/com.andro
     keycodes 116 115 114
 
 # nvidiafeedback triggered by nvidiafeedback app
-service nvidiafeedback /system/bin/dumpstate -n -o /data/anr/nvfeedback.log
+service nvidiafeedback /system/bin/dumpstate -n -B -z -o /data/anr/nvfeedback
     class main
     disabled
     oneshot
 
 on property:init.svc.nvidiafeedback=stopped
-    # change permission for nvfeedback.log file
-    chmod 0664 /data/anr/nvfeedback.log.txt
+    # change permission for nvfeedback.zip file
+    chown system system /data/anr/nvfeedback.zip
+    chmod 0664 /data/anr/nvfeedback.zip
 
 # Mount usb drives as /usbdrive. Generally usb drives are formatted with FAT
 # filesystem, so we support FAT as of now.
@@ -195,14 +196,6 @@ on device-removed-/sys/block/sda
 
 # unified scaling setup
 import init.ussrd.rc
-
-# Enable rbe
-# thresIncr:50  thresIncrCntMax:6  thresDecr:70  thresDecrCntMax:2
-# The change from default is the thresDecrCntMax.  Default is 3.
-service wlbwservice /system/bin/wlbwservice -t 50 6 70 2
-    class main
-    user system
-    group system inet net_admin
 
 # Customers should remove this line
 import init.qvs.rc

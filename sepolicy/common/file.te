@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -51,6 +51,9 @@ type nv_camera_data_file, file_type, data_file_type;
 # /data/misc/nvsipc
 type nvs_socket, file_type;
 
+# /data/core
+type coredump_data_file, file_type, data_file_type;
+
 # /data/misc
 type phsd_data, file_type;
 
@@ -80,6 +83,9 @@ type sysfs_ozmo, fs_type, sysfs_type;
 
 # /sys/devices/platform/ozwpan/.../mode
 type sysfs_blake, fs_type, sysfs_type;
+
+# /sys/bus/hid/drivers/Jarvis/hid_miss_stats
+type sysfs_jarvis_stats, fs_type, sysfs_type;
 
 # /sys/devices/virtual/misc/touch/slowscan_enable
 type sysfs_slowscan, fs_type, sysfs_type;
@@ -124,6 +130,9 @@ type factory_file, fs_type, contextmount_type;
 # /usercalib
 type user_calib_file, file_type, data_file_type;
 
+# /hubcore
+type hubcore_data_file, file_type, data_file_type;
+
 # /sys/devices/platform/tegra.*i2c\.[0-9]+(/.*)?
 # /sys/devices/platform/[0-9a-f]+\.i2c(/.*)?
 type sysfs_nvi2c, fs_type, sysfs_type, mlstrustedobject;
@@ -165,9 +174,6 @@ type sysfs_gpu_power_knobs, fs_type, sysfs_type;
 # /sys/devices/platform/psy_extcon.*/power_supply/usb/online
 # /sys/devices/platform/psy_extcon.*/power_supply/ac/online
 type sysfs_power_supply, fs_type, sysfs_type;
-
-# Filesystem type CIFS
-type cifs, sdcard_type, fs_type, mlstrustedobject;
 
 # usb convertible mode: host or device
 type sysfs_usb_convertible, fs_type, sysfs_type;
@@ -227,3 +233,9 @@ type debugfs_cluster, fs_type, debugfs_type, mlstrustedobject;
 
 # /data/system/devices/keylayout(/.*)?
 type keylayout_data_file, file_type, data_file_type;
+
+# /cache/last_boot_(.*).txt
+type cache_log_dumper_file, file_type, mlstrustedobject;
+
+# /data/misc/frostlog(/.*)?
+type frostlog_file, file_type, data_file_type;

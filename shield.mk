@@ -113,6 +113,12 @@ PRODUCT_PACKAGES += power.tegra \
                     thermal.tegra
 
 # idc
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/idc/Vendor_0955_Product_7210.idc:system/usr/idc/Vendor_0955_Product_7210.idc \
+    $(LOCAL_PATH)/idc/Vendor_0955_Product_7212.idc:system/usr/idc/Vendor_0955_Product_7212.idc \
+    $(LOCAL_PATH)/idc/Vendor_0955_Product_7213.idc:system/usr/idc/Vendor_0955_Product_7213.idc \
+    $(LOCAL_PATH)/idc/Vendor_0955_Product_7214.idc:system/usr/idc/Vendor_0955_Product_7214.idc
+
 ifneq ($(TARGET_TEGRA_TOUCH),)
         PRODUCT_PACKAGES += \
             init.cal.rc \
@@ -130,7 +136,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7205.kl:system/usr/keylayout/Vendor_0955_Product_7205.kl \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7210.kl:system/usr/keylayout/Vendor_0955_Product_7210.kl \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7212.kl:system/usr/keylayout/Vendor_0955_Product_7212.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7213.kl:system/usr/keylayout/Vendor_0955_Product_7213.kl \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7214.kl:system/usr/keylayout/Vendor_0955_Product_7214.kl
+
+# Steam controller keylayouts
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/keylayout/Vendor_28de_Product_1102.kl:system/usr/keylayout/Vendor_28de_Product_1102.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_28de_Product_1142.kl:system/usr/keylayout/Vendor_28de_Product_1142.kl
 
 # PBC
 ifeq ($(TARGET_TEGRA_VERSION),t210)
@@ -141,8 +153,11 @@ endif
 PRODUCT_PACKAGES += libwvm_shim
 
 # Wifi
-# All Shield devices xurrently use broadcom wifi / bluetooth modules
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
+# All Shield devices currently use broadcom wifi / bluetooth modules
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/comms/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    hardware/broadcom/wlan/bcmdhd/config/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+
 PRODUCT_PACKAGES += \
     hostapd \
     wpa_supplicant \
