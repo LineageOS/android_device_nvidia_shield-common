@@ -127,6 +127,3 @@ allow system_server keylayout_data_file:dir search;
 
 # allow system_server to control gpu power knobs
 allow system_server sysfs_gpu_power_knobs:file rw_file_perms;
-
-# Access dvb device
-allow system_server dvb_device:chr_file rw_file_perms;
