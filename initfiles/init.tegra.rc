@@ -14,8 +14,6 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug mode=0755
 
 on init
-    export LD_SHIM_LIBS "/system/vendor/lib/libwvm.so|libwvm_shim.so"
-
     mkdir /dev/camera 0755 media camera
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
 
