@@ -102,7 +102,8 @@ PRODUCT_PACKAGES += \
     tinymix \
     tinyplay \
     xaplay \
-    libstagefrighthw
+    libstagefrighthw \
+    enctune.conf
 
 ifneq ($(TARGET_TEGRA_VERSION),t114)
 	PRODUCT_PACKAGES += libtinycompress
@@ -163,6 +164,7 @@ PRODUCT_PACKAGES += \
 # Unified scaling
 ifneq ($(TARGET_TEGRA_VERSION),t114)
 	PRODUCT_PACKAGES += \
+	    ussr_setup \
 	    init.ussrd.rc \
 	    ussrd.conf
 endif
