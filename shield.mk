@@ -98,16 +98,13 @@ PRODUCT_PACKAGES += \
     libaudio-resampler \
     libaudiospdif \
     libtinyalsa \
+    libtinycompress \
     tinycap \
     tinymix \
     tinyplay \
     xaplay \
     libstagefrighthw \
     enctune.conf
-
-ifneq ($(TARGET_TEGRA_VERSION),t114)
-	PRODUCT_PACKAGES += libtinycompress
-endif
 
 # HALs
 PRODUCT_PACKAGES += power.tegra \
