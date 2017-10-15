@@ -7,8 +7,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.override_lcd_density=1 \
-    persist.tegra.compositor=glcomposer \
     persist.tegra.decompression=cde-client
+
+ifeq ($(TARGET_TEGRA_VERSION),t114)
+	PRODUCT_PROPERTY_OVERRIDES += persist.tegra.compositor=surfaceflinger
+else
+	PRODUCT_PROPERTY_OVERRIDES += persist.tegra.compositor=glcomposer
+endif
 
 # Input
 PRODUCT_PROPERTY_OVERRIDES += \
