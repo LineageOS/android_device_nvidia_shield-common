@@ -39,3 +39,6 @@ TARGET_THERMALHAL_VARIANT := tegra
 
 # Release tools for bootloader assertion
 TARGET_RELEASETOOLS_EXTENSIONS := device/nvidia/shield-common/releasetools
+
+# Use unified vendor
+TARGET_TEGRA_VARIANT := shield
