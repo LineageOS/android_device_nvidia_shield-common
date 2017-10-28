@@ -37,6 +37,7 @@ PRODUCT_PACKAGES += \
     init.dualwifi.rc \
     init.hdcp.rc \
     init.nv_dev_board.usb.rc \
+    init.recovery.nv_dev_board.usb.rc \
     init.none.rc \
     init.tegra.rc \
     init.tegra_emmc.rc \
@@ -61,7 +62,9 @@ endif
 ifeq ($(TARGET_TEGRA_TOUCH),nvtouch)
         PRODUCT_PACKAGES += init.nv_touch.rc
 else ifeq ($(TARGET_TEGRA_TOUCH),raydium)
-        PRODUCT_PACKAGES += init.ray_touch.rc
+        PRODUCT_PACKAGES += \
+			    init.ray_touch.rc \
+			    init.recovery.ray_touch.rc
 
 	TARGET_RECOVERY_DEVICE_MODULES := rm-wrapper
 
