@@ -42,3 +42,8 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/nvidia/shield-common/releasetools
 
 # Use unified vendor
 TARGET_TEGRA_VARIANT := shield
+
+# TWRP Support
+ifeq ($(WITH_TWRP),true)
+-include device/nvidia/shield-common/twrp.mk
+endif
