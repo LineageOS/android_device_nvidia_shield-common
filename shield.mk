@@ -62,6 +62,20 @@ ifeq ($(TARGET_TEGRA_TOUCH),nvtouch)
         PRODUCT_PACKAGES += init.nv_touch.rc
 else ifeq ($(TARGET_TEGRA_TOUCH),raydium)
         PRODUCT_PACKAGES += init.ray_touch.rc
+
+	TARGET_RECOVERY_DEVICE_MODULES := rm-wrapper
+
+	# Raydium userspace is 32-bit, need to explicitly include the libs for recovery when 64-bit (only t210 atm)
+        ifeq ($(TARGET_TEGRA_VERSION),t210)
+		PRODUCT_COPY_FILES += \
+                                      $(OUT)/system/bin/linker:recovery/root/system/bin/linker \
+                                      $(OUT)/system/lib/libc.so:recovery/root/system/lib/libc.so \
+                                      $(OUT)/system/lib/libdl.so:recovery/root/system/lib/libdl.so \
+                                      $(OUT)/system/lib/liblog.so:recovery/root/system/lib/liblog.so \
+                                      $(OUT)/system/lib/libm.so:recovery/root/system/lib/libm.so \
+                                      $(OUT)/system/lib/libc++.so:recovery/root/system/lib/libc++.so \
+                                      $(OUT)/system/lib/libstdc++.so:recovery/root/system/lib/libstdc++.so
+	endif
 else ifeq ($(TARGET_TEGRA_TOUCH),sharp)
         PRODUCT_PACKAGES += init.sharp_touch.rc
 endif
