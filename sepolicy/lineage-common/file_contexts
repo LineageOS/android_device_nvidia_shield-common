@@ -17,3 +17,6 @@
 
 # TEE
 (/system)?/vendor/bin/tf_daemon	u:object_r:tee_exec:s0
+
+# user calibration
+/data/misc/touchscreen(/.*)?			u:object_r:user_calib_file:s0

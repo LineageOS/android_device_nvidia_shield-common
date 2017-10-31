@@ -23,7 +23,7 @@ on boot
 #Raydium touch setting
 service rm-wrapper    /sbin/rm-wrapper
     setenv TOUCH_CONF_DIR /mnt/factory/touchscreen
-    setenv TOUCH_DATA_DIR /data/touchscreen
+    setenv TOUCH_DATA_DIR /data/misc/touchscreen
     setenv LD_LIBRARY_PATH /system/lib:/system/lib/hw
     seclabel u:r:raydium:s0
     disabled
