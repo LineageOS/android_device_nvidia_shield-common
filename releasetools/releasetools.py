@@ -16,13 +16,18 @@ import re
 import os
 
 TARGET_DIR = os.getenv('OUT')
+BLOB_NAME = 'blob'
+STAGING_PART = '/dev/block/platform/sdhci-tegra.3/by-name/USP'
 
 def FullOTA_Assertions(info):
-  AddBootloaderAssertion(info, info.input_zip)
+  if 'INSTALL/' + BLOB_NAME in info.input_zip.namelist():
+    AddBootloaderFlash(info, info.input_zip)
+  else:
+    AddBootloaderAssertion(info, info.input_zip)
 
 
 def IncrementalOTA_Assertions(info):
-  AddBootloaderAssertion(info, info.target_zip)
+  FullOTA_Assertions(info)
 
 
 def AddBootloaderAssertion(info, input_zip):
@@ -33,3 +38,22 @@ def AddBootloaderAssertion(info, input_zip):
     if "*" not in bootloaders:
       info.script.AssertSomeBootloader(*bootloaders)
     info.metadata["pre-bootloader"] = m.group(1)
+
+
+def AddBootloaderFlash(info, input_zip):
+  android_info = input_zip.read("OTA/android-info.txt")
+  m = re.search(r"require\s+version-bootloader\s*=\s*(\S+)", android_info)
+  if m:
+    bootloaders = m.group(1).split("|")
+    info.metadata["pre-bootloader"] = m.group(1)
+    if "*" not in bootloaders:
+      info.script.AppendExtra('ifelse(')
+      info.script.AppendExtra('  ' + ' || '.join(['getprop("ro.bootloader") == "%s"' % (b,) for b in bootloaders]) + ',')
+      info.script.AppendExtra('  (')
+      info.script.AppendExtra('    ui_print("Correct bootloader already installed");')
+      info.script.AppendExtra('  ),')
+      info.script.AppendExtra('  (')
+      info.script.AppendExtra('    ui_print("Flashing updated bootloader");')
+      info.script.AppendExtra('    package_extract_file("install/' + BLOB_NAME + '", "' + STAGING_PART + '");')
+      info.script.AppendExtra('  )')
+      info.script.AppendExtra(');')
