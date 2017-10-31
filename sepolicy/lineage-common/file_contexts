@@ -14,3 +14,6 @@
 
 (/system)?/vendor/bin/glgps_nvidiaTegra2android	u:object_r:gpsd_exec:s0
 /sys/devices/platform/pwm-backlight/backlight/pwm-backlight/brightness	u:object_r:sysfs_pwm_backlight:s0
+
+# TEE
+(/system)?/vendor/bin/tf_daemon	u:object_r:tee_exec:s0
