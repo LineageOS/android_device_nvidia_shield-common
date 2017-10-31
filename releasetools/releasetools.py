@@ -11,19 +11,33 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
+""" Custom OTA commands for shield devices """
+
+import common
 import re
 import os
 
 TARGET_DIR = os.getenv('OUT')
+STAGING_PART = '/dev/block/platform/sdhci-tegra.3/by-name/USP'
 
 def FullOTA_Assertions(info):
-  AddBootloaderAssertion(info, info.input_zip)
-
+  if 'RADIO/' in info.input_zip.namelist():
+    CopyBlobs(info.input_zip, info.output_zip)
+    AddBootloaderFlash(info, info.input_zip)
+  else:
+    AddBootloaderAssertion(info, info.input_zip)
 
 def IncrementalOTA_Assertions(info):
-  AddBootloaderAssertion(info, info.target_zip)
+  FullOTA_Assertions(info)
 
+def CopyBlobs(input_zip, output_zip):
+  for info in input_zip.infolist():
+    f = info.filename
+    if f.startswith("RADIO/") and (f.__len__() > len("RADIO/")):
+      fn = f[6:]
+      common.ZipWriteStr(output_zip, "firmware-update/" + fn, input_zip.read(f))
 
 def AddBootloaderAssertion(info, input_zip):
   android_info = input_zip.read("OTA/android-info.txt")
@@ -33,3 +47,21 @@ def AddBootloaderAssertion(info, input_zip):
     if "*" not in bootloaders:
       info.script.AssertSomeBootloader(*bootloaders)
     info.metadata["pre-bootloader"] = m.group(1)
+
+def AddBootloaderFlash(info, input_zip):
+  android_info = input_zip.read("OTA/android-info.txt")
+  m = re.search(r"require\s+version-bootloader\s*=\s*(\S+)", android_info)
+  if m:
+    bootloaders = m.group(1).split("|")
+    info.metadata["pre-bootloader"] = m.group(1)
+    if "*" not in bootloaders:
+      info.script.AppendExtra('ifelse(')
+      info.script.AppendExtra('  ' + ' || '.join(['getprop("ro.bootloader") == "%s"' % (b,) for b in bootloaders]) + ',')
+      info.script.AppendExtra('  (')
+      info.script.AppendExtra('    ui_print("Correct bootloader already installed");')
+      info.script.AppendExtra('  ),')
+      info.script.AppendExtra('  (')
+      info.script.AppendExtra('    ui_print("Flashing updated bootloader");')
+      info.script.AppendExtra('    package_extract_file("firmware-update/" + getprop(ro.hardware) + ".bin", "' + STAGING_PART + '");')
+      info.script.AppendExtra('  )')
+      info.script.AppendExtra(');')
