@@ -21,13 +21,6 @@ on boot
     chown bluetooth net_bt_stack /system/etc/bluetooth
     chown bluetooth net_bt_stack /mnt/factory/bluetooth/bt_mac.txt
 
-# bluetooth mac address programming
-service bt_loader /system/bin/bt_loader.sh
-    class main
-    user root
-    group root
-    oneshot
-
 on fs
     # Wifi support rx-filter
     setprop wifi.rx-filter 1
@@ -48,16 +41,6 @@ on post-fs-data
     mkdir /data/misc/bluedroid_log
     chown bluetooth system /data/misc/bluedroid_log
     chmod 0770 /data/misc/bluedroid_log
-
-    start wifiloader
-
-# wifiloader - set the wifi commchip_id accordingly
-service wifiloader /system/bin/wifi_loader.sh
-    class main
-    user root
-    group root
-    oneshot
-    disabled
 
 service start-gps /system/bin/gps_select.sh
     user root
