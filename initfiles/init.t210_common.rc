@@ -60,6 +60,10 @@ on boot
     chown system system /sys/kernel/tegra_cpu_emc/table_src
     write /sys/kernel/tegra_cpu_emc/table_src 1
 
+    #Change usb blacklist owner & group
+    chown system system /sys/module/xhci_hcd/parameters/downgraded_usb3
+    chown system system /sys/devices/platform/tegra-xhci/downgrade_usb3
+
 # Good driver settings
     # default value for 0x523dc5 in d3doglregs.rky is 0.5
     setprop persist.tegra.0x523dc5 0x3f000000

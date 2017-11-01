@@ -211,7 +211,8 @@
 /system/bin/config_cameras.sh		u:object_r:config_cameras_exec:s0
 # service to dump logs
 (/system)?/vendor/bin/cac_log_dumper	u:object_r:cac_log_dumper_exec:s0
-
+# factory_tests
+(/system)?/vendor/bin/factory_tests	u:object_r:factory_tests_exec:s0
 
 #############################
 # Data files
@@ -230,6 +231,8 @@
 /data/stats_share(/.*)?                 u:object_r:stats_share_file:s0
 # Keyboard layout files
 /data/system/devices/keylayout(/.*)?		u:object_r:keylayout_data_file:s0
+# dx_provTest data folder
+/data/provTest(/.*)?			u:object_r:dx_data_file:s0
 
 # Misc data
 # phs data
@@ -366,6 +369,9 @@
 /sys/devices/virtual/misc/uhid/0005:0955:7213.*/timeout		u:object_r:sysfs_pepper_timeout:s0
 # GPU power knobs exposed to system app
 /sys/devices/platform/gpu.0/[aebs]*l[cp]g_enable	u:object_r:sysfs_gpu_power_knobs:s0
+# USB 3.0 blacklist
+/sys/module/xhci_hcd/parameters/downgraded_usb3		u:object_r:sysfs_usb_blacklist:s0
+/sys/devices/platform/tegra-xhci/downgrade_usb3		u:object_r:sysfs_usb_blacklist:s0
 
 #############################
 # debugfs files
@@ -395,3 +401,4 @@
 
 # Variable refresh rate sysfs
 /sys/devices/platform/host1x/tegradc.[0-1]/vrr(/.*)    u:object_r:sysfs_vrr:s0
+

@@ -173,3 +173,9 @@ set_prop(system_app, frost_oqa_prop)
 # The file is /sys/class/net/wlan0/device/histogram/stat
 r_dir_file(system_app, sysfs_mmc_host)
 
+# Allow system_app to access /data/misc/audioserver dir/files
+allow system_app audioserver_data_file:dir r_dir_perms;
+allow system_app audioserver_data_file:file r_file_perms;
+
+# Allow system_app to r/w to downgrade usb3 nodes
+allow system_app sysfs_usb_blacklist:file rw_file_perms;

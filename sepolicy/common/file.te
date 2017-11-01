@@ -239,3 +239,9 @@ type cache_log_dumper_file, file_type, mlstrustedobject;
 
 # /data/misc/frostlog(/.*)?
 type frostlog_file, file_type, data_file_type;
+
+# /data/provTest(/.*)?
+type dx_data_file, file_type, data_file_type;
+
+# /sys/module/xhci_hcd/parameters/...
+type sysfs_usb_blacklist, fs_type, sysfs_type;
