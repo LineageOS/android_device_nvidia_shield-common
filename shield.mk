@@ -112,6 +112,8 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
+    android.hardware.audio@2.0-impl \
+    android.hardware.audio.effect@2.0-impl \
     libaudio-resampler \
     libaudiospdif \
     libtinyalsa \
@@ -123,9 +125,32 @@ PRODUCT_PACKAGES += \
     libstagefrighthw \
     enctune.conf
 
-# HALs
-PRODUCT_PACKAGES += power.tegra \
-                    thermal.tegra
+# Bluetooth
+PRODUCT_PACKAGES += \
+    libbt-vendor \
+    android.hardware.bluetooth@1.0-impl
+
+# DRM HAL
+PRODUCT_PACKAGES += \
+    android.hardware.drm@1.0-impl
+
+# Gatekeeper HAL
+ifeq ($(TARGET_TEGRA_VERSION),t210)
+	PRODUCT_PACKAGES += \
+	    android.hardware.gatekeeper@1.0-impl \
+	    android.hardware.gatekeeper@1.0-service
+endif
+
+# Graphics
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.mapper@2.0-impl
+
+# Health HAL
+PRODUCT_PACKAGES += \
+    android.hardware.health@1.0-impl
 
 # idc
 PRODUCT_COPY_FILES += \
@@ -164,9 +189,43 @@ ifeq ($(PRODUCT_IS_ATV),true)
     $(call inherit-product, vendor/google/atv/atv-common.mk)
 endif
 
+# Keymaster
+PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl \
+    android.hardware.keymaster@3.0-service
+
+# Memtrack
+PRODUCT_PACKAGES += \
+    android.hardware.memtrack@1.0-impl
+
 # PBC
 ifeq ($(TARGET_TEGRA_VERSION),t210)
 	PRODUCT_PACKAGES += pbc.conf
+endif
+
+# Power
+PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl \
+    power.tegra
+
+# Renderscript
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0-impl
+
+# Sensors
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl
+
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-impl \
+    thermal.tegra
+
+# TV specific hals
+ifeq ($(PRODUCT_IS_ATV),true)
+    PRODUCT_PACKAGES += \
+        android.hardware.tv.cec@1.0-impl \
+        android.hardware.tv.input@1.0-impl
 endif
 
 # Wifi
@@ -174,7 +233,9 @@ endif
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/config/config-bcm.mk)
 
 PRODUCT_PACKAGES += \
+    android.hardware.wifi@1.0-service \
     hostapd \
+    wificond \
     wpa_supplicant \
     wpa_supplicant.conf
 
@@ -188,6 +249,7 @@ endif
 
 # USB
 PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service \
     com.android.future.usb.accessory
 
 # Only set if framework modifications for nvcpl and shieldtech are available.

@@ -15,6 +15,10 @@ else
 	PRODUCT_PROPERTY_OVERRIDES += persist.tegra.compositor=glcomposer
 endif
 
+# DRM
+PRODUCT_PROPERTY_OVERRIDES += \
+    drm.service.enabled=true
+
 # Input
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.input.noresample=1
