@@ -186,3 +186,10 @@ endif
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
+
+# Only set if framework modifications for nvcpl and shieldtech are available.
+# Can be overridden per device.
+NV_ANDROID_FRAMEWORK_ENHANCEMENTS := TRUE
+
+# Only set if framework modifications for blakepairing are available.
+NV_ANDROID_FRAMEWORK_ENHANCEMENTS_BLAKE := FALSE
