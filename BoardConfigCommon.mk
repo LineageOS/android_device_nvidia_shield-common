@@ -43,6 +43,8 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/nvidia/shield-common/releasetools
 # Use unified vendor
 TARGET_TEGRA_VARIANT := shield
 
+TARGET_INPUTHOOK_VENDOR_LIB := libinputhook_shield
+
 # TWRP Support
 ifeq ($(WITH_TWRP),true)
 -include device/nvidia/shield-common/twrp.mk
