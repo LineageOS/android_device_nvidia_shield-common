@@ -17,6 +17,9 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_MODULE_TAGS := optional
-LOCAL_SRC_FILES := TouchRotate.cpp
+LOCAL_C_INCLUDES := frameworks/native/services/inputflinger
+LOCAL_SRC_FILES := TouchRotate.cpp \
+                   InputHook.cpp \
+                   NvInputHook_Host.cpp
 LOCAL_MODULE := libinputhook_shield
 include $(BUILD_STATIC_LIBRARY)
