@@ -1,11 +1,12 @@
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
+#include <android-base/properties.h>
+#include <android-base/logging.h>
 
 #include "init_shield.h"
 #include "init.h"
 #include "vendor_init.h"
 #include "property_service.h"
-#include "log.h"
 #include "util.h"
 
 #include <unistd.h>
@@ -26,20 +27,20 @@ void property_override(char const prop[], char const value[])
 
 void shield_init::gsm_properties()
 {
-    property_set("cm.icera.enabled", "1");
-    property_set("ril.icera-config-args", "notifier:ON,datastall:ON,lwaactivate");
-    property_set("gsm.modem.power.device", "/sys/devices/platform/tegra_usb_modem_power/modem_reset/value,0,1");
-    property_set("gsm.modem.edp.device", "/sys/power/sysedp");
-    property_set("gsm.modem.edp.state", "/sys/devices/platform/sysedp_modem/sysedp_state");
-    property_set("ro.ril.devicename", "/dev/ttyACM0");
-    property_set("mdc_initial_max_retry", "10");
-    property_set("rild.libpath", "libril-icera.so");
-    property_set("rild.libargs", "-e rmnet0 -e rmnet0:0 -e rmnet0:1 -n");
-    property_set("gsm.modem.crashlogs.directory", "/data/rfs/data/debug");
-    property_set("ril.maxretries", "15");
-    property_set("gsm.modem.powercontrol", "enabled");
-    property_set("ro.ril.wake_lock_timeout", "200000");
-    property_set("ro.telephony.default_network", "9");
+    android::init::property_set("cm.icera.enabled", "1");
+    android::init::property_set("ril.icera-config-args", "notifier:ON,datastall:ON,lwaactivate");
+    android::init::property_set("gsm.modem.power.device", "/sys/devices/platform/tegra_usb_modem_power/modem_reset/value,0,1");
+    android::init::property_set("gsm.modem.edp.device", "/sys/power/sysedp");
+    android::init::property_set("gsm.modem.edp.state", "/sys/devices/platform/sysedp_modem/sysedp_state");
+    android::init::property_set("ro.ril.devicename", "/dev/ttyACM0");
+    android::init::property_set("mdc_initial_max_retry", "10");
+    android::init::property_set("rild.libpath", "libril-icera.so");
+    android::init::property_set("rild.libargs", "-e rmnet0 -e rmnet0:0 -e rmnet0:1 -n");
+    android::init::property_set("gsm.modem.crashlogs.directory", "/data/rfs/data/debug");
+    android::init::property_set("ril.maxretries", "15");
+    android::init::property_set("gsm.modem.powercontrol", "enabled");
+    android::init::property_set("ro.ril.wake_lock_timeout", "200000");
+    android::init::property_set("ro.telephony.default_network", "9");
 }
 
 bool shield_init::detect_model_override()
@@ -59,7 +60,7 @@ bool shield_init::detect_model_override()
 
 void shield_init::detect_model_devicetree()
 {
-    std::string hardware = property_get("ro.hardware");
+    std::string hardware = android::base::GetProperty("ro.hardware", "");
 
     for (auto & device : shield_devices) {
         if (!device.name.compare(hardware)) {
@@ -75,11 +76,15 @@ void shield_init::detect_model_boardinfo()
 
     // Get model from /proc/cmdline
     std::ifstream file("/proc/cmdline");
-    if (!file.is_open())
+    if (!file.is_open()) {
+        LOG(ERROR) << "shield_init: Could not open /proc/cmdline";
         return;
+    }
 
-    if (!std::getline(file, line))
+    if (!std::getline(file, line)) {
+        LOG(ERROR) << "shield_init: /proc/cmdline is empty";
         return;
+    }
 
     std::stringstream linestream(line);
     while (std::getline(linestream, boardinfo, ' ')) {
@@ -103,8 +108,10 @@ void shield_init::detect_model_boardinfo()
 bool shield_init::detect_model()
 {
     // If no devices were passed, just bail
-    if (!shield_devices.size())
+    if (!shield_devices.size()) {
+        LOG(ERROR) << "shield_init: device list is empty, aborting";
         return false;
+    }
 
     // If only one device is defined, just use that one
     if (shield_devices.size() == 1) {
@@ -160,37 +167,39 @@ void shield_init::recovery_links()
 
 void shield_init::set_properties()
 {
-    std::string platform = property_get("ro.board.platform");
+    std::string platform = android::base::GetProperty("ro.board.platform", "");
 
     // If device is not what this was compiled for, bail
     if (platform.compare(ANDROID_TARGET))
         return;
 
     if (!detect_model()) {
-        ERROR("Failed to get model\n");
+        LOG(ERROR) << "shield_init: could not detect model, aborting";
         return;
     }
 
+    LOG(ERROR) << "shield_init: found model " << chosen_device->name;
+
     switch (chosen_device->gsm_support) {
         case gsm_support_type::NONE:
-            property_set("ro.radio.noril", "true");
+            android::init::property_set("ro.radio.noril", "true");
             break;
 
         case gsm_support_type::DATA_ONLY:
             gsm_properties();
-            property_set("ro.modem.do", "1");
+            android::init::property_set("ro.modem.do", "1");
             break;
 
         case gsm_support_type::VOICE:
             gsm_properties();
-            property_set("ro.modem.vc", "1");
+            android::init::property_set("ro.modem.vc", "1");
             break;
     }
 
-    property_set("ro.product.first_api_level", std::to_string(chosen_device->first_api).c_str());
+    android::init::property_set("ro.product.first_api_level", std::to_string(chosen_device->first_api).c_str());
 
     if (chosen_device->dpi)
-        property_set("ro.sf.lcd_density", std::to_string(chosen_device->dpi).c_str());
+        android::init::property_set("ro.sf.lcd_density", std::to_string(chosen_device->dpi).c_str());
 
     property_override("ro.product.name",   chosen_device->name.c_str());
     property_override("ro.build.product",  chosen_device->device.c_str());
@@ -201,6 +210,4 @@ void shield_init::set_properties()
 
     if (parts.size())
 	    recovery_links();
-
-    ERROR("Setting build properties for %s model\n", chosen_device->name.c_str());
 }

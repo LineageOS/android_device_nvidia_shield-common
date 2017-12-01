@@ -5,12 +5,12 @@
 
 int shield_handle_control_message(const std::string &msg, const std::string &arg)
 {
-    Service *sf_svc = NULL;
-    Service *zg_svc = NULL;
+    android::init::Service *sf_svc = NULL;
+    android::init::Service *zg_svc = NULL;
 
     if (!msg.compare("restart") && !arg.compare("consolemode")) {
-        sf_svc = ServiceManager::GetInstance().FindServiceByName("surfaceflinger");
-        zg_svc = ServiceManager::GetInstance().FindServiceByName("zygote");
+        sf_svc = android::init::ServiceManager::GetInstance().FindServiceByName("surfaceflinger");
+        zg_svc = android::init::ServiceManager::GetInstance().FindServiceByName("zygote");
 
         if (sf_svc && zg_svc) {
             zg_svc->Stop();
