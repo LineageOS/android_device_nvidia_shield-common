@@ -159,6 +159,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/Vendor_28de_Product_1102.kl:system/usr/keylayout/Vendor_28de_Product_1102.kl \
     $(LOCAL_PATH)/keylayout/Vendor_28de_Product_1142.kl:system/usr/keylayout/Vendor_28de_Product_1142.kl
 
+# Leanback apps
+ifeq ($(PRODUCT_IS_ATV),true)
+    $(call inherit-product, vendor/google/atv/atv-common.mk)
+endif
+
 # PBC
 ifeq ($(TARGET_TEGRA_VERSION),t210)
 	PRODUCT_PACKAGES += pbc.conf
