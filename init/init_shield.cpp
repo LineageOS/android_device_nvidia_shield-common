@@ -102,6 +102,16 @@ void shield_init::detect_model_boardinfo()
 
 bool shield_init::detect_model()
 {
+    // If no devices were passed, just bail
+    if (!shield_devices.size())
+        return false;
+
+    // If only one device is defined, just use that one
+    if (shield_devices.size() == 1) {
+        chosen_device = &shield_devices[0];
+        return true;
+    }
+
     if (!detect_model_override()) {
         if (dt_detect)
              detect_model_devicetree();
