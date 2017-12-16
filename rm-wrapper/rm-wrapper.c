@@ -81,17 +81,6 @@ FILE* fopen(const char* path, const char* mode) {
     return _fopen(path, mode);
 }
 
-size_t fread(void* ptr, size_t size, size_t count, FILE* stream) {
-    static size_t (*_fread)(void*, size_t, size_t, FILE*) = NULL;
-    if (!_fread)
-        _fread = dlsym(RTLD_NEXT, "fread");
-    
-    if (stream->_p == POWER_MAGIC)
-        return 0;
-    
-    return _fread(ptr, size, count, stream);
-}
-
 int (*ts_main_init)();
 int (*ts_main_resume)();
 int (*ts_main_calc)();
