@@ -178,10 +178,6 @@
     <!-- Integer indicating wpa_supplicant scan interval when p2p is connected in milliseconds -->
     <integer translatable="false" name="config_wifi_scan_interval_p2p_connected">15000</integer>
 
-    <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
-         autodetected from the Configuration. -->
-    <bool name="config_showNavigationBar">true</bool>
-
     <!--  Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">8</integer>
     <!-- Whether UI for multi user should be shown -->
