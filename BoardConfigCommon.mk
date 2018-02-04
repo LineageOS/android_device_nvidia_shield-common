@@ -31,6 +31,9 @@ else ifneq ($(filter $(TARGET_TEGRA_TOUCH),sharp),)
 	BOARD_SEPOLICY_DIRS += device/nvidia/shield-common/sepolicy/sharp
 endif
 
+# Needed for graphics hal
+BOARD_DISABLE_VSNPRINTF_FORTIFY := true
+
 # HALs
 TARGET_POWERHAL_VARIANT := tegra
 TARGET_THERMALHAL_VARIANT := tegra
