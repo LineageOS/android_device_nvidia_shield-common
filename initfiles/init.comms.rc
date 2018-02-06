@@ -45,7 +45,7 @@ on post-fs-data
     chown bluetooth system /data/misc/bluedroid_log
     chmod 0770 /data/misc/bluedroid_log
 
-service start-gps /system/bin/gps_select.sh
+service start-gps /vendor/bin/gps_select.sh
     user root
     group root
     class late_start
