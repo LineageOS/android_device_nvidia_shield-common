@@ -152,7 +152,8 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@2.0-impl
 
 # Graphics shim
-PRODUCT_PACKAGES += libs
+PRODUCT_PACKAGES += libs \
+                    libshim_zw
 
 # Health HAL
 PRODUCT_PACKAGES += \
