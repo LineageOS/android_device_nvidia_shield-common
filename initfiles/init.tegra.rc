@@ -15,7 +15,6 @@ on early-init
 
 on init
     export LD_PRELOAD "libshim_zw.so"
-    export LD_SHIM_LIBS "/system/lib/libicuuc.so|libicu_shim.so"
 
     mkdir /dev/camera 0755 media camera
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
