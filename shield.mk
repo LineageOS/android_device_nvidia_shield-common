@@ -192,7 +192,7 @@ PRODUCT_COPY_FILES += \
 
 # Leanback apps
 ifeq ($(PRODUCT_IS_ATV),true)
-    $(call inherit-product, vendor/google/atv/atv-common.mk)
+    $(call inherit-product-if-exists, vendor/google/atv/atv-common.mk)
 endif
 
 # Keymaster
