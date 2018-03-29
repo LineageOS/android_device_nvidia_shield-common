@@ -273,3 +273,8 @@ NV_ANDROID_FRAMEWORK_ENHANCEMENTS := TRUE
 
 # Only set if framework modifications for blakepairing are available.
 NV_ANDROID_FRAMEWORK_ENHANCEMENTS_BLAKE := FALSE
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    ro.adb.secure=0 \
+    ro.secure=0 \
+    ro.debuggable=1
