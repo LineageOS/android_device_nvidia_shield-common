@@ -131,8 +131,8 @@ bool shield_init::detect_model()
 
 void shield_init::set_fingerprints()
 {
-    property_override("ro.build.fingerprint", ("NVIDIA/" + chosen_device->name + "/" + 
-                                               chosen_device->device + ":" + 
+    property_override("ro.build.fingerprint", ("NVIDIA/" + chosen_device->name + "/" +
+                                               chosen_device->device + ":" +
                                                fp_version.android_version + "/" +
                                                fp_version.android_release + "/" +
                                                fp_version.nvidia_version +
@@ -142,6 +142,17 @@ void shield_init::set_fingerprints()
                                                fp_version.android_release + " " +
                                                fp_version.nvidia_version +
                                                " release-keys").c_str());
+    property_override("ro.vendor.build.fingerprint", ("NVIDIA/" + chosen_device->name + "/" +
+                                                      chosen_device->device + ":" +
+                                                      fp_version.android_version + "/" +
+                                                      fp_version.android_release + "/" +
+                                                      fp_version.nvidia_version +
+                                                      ":user/release-keys").c_str());
+    property_override("ro.vendor.build.description", (chosen_device->name + "-user " +
+                                                      fp_version.android_version + " " +
+                                                      fp_version.android_release + " " +
+                                                      fp_version.nvidia_version +
+                                                      " release-keys").c_str());
 }
 
 void shield_init::recovery_links()
@@ -205,6 +216,11 @@ void shield_init::set_properties()
     property_override("ro.build.product",  chosen_device->device.c_str());
     property_override("ro.product.device", chosen_device->device.c_str());
     property_override("ro.product.model",  chosen_device->model.c_str());
+
+    property_override("ro.vendor.product.name",   chosen_device->name.c_str());
+    property_override("ro.vendor.build.product",  chosen_device->device.c_str());
+    property_override("ro.vendor.product.device", chosen_device->device.c_str());
+    property_override("ro.vendor.product.model",  chosen_device->model.c_str());
 
     set_fingerprints();
 
