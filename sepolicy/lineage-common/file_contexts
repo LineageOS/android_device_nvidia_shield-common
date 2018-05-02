@@ -20,3 +20,7 @@
 
 # TEE
 (/system)?/vendor/bin/tf_daemon	u:object_r:tee_exec:s0
+
+# Updater
+/dev/block/platform/sdhci-tegra(.*)/by-name/MSC                u:object_r:misc_block_device:s0
+/dev/block/platform/tegra-sata(.*)/by-name/MSC		u:object_r:misc_block_device:s0
