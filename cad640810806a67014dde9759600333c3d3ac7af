@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c25b162c_2999d3cd",
+        "filename": "sepolicy/lineage-common/file_contexts",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 10067
+      },
+      "writtenOn": "2018-05-02T18:28:22Z",
+      "side": 1,
+      "message": "use tabs here ^.^",
+      "range": {
+        "startLine": 25,
+        "startChar": 47,
+        "endLine": 25,
+        "endChar": 63
+      },
+      "revId": "cad640810806a67014dde9759600333c3d3ac7af",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
