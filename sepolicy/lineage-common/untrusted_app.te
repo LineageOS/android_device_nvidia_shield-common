@@ -14,3 +14,6 @@
 
 # Used by nvcpl
 allow untrusted_app_all system_app_service:service_manager find;
+
+# Used by various apps for license checks
+allow untrusted_app_all tsec_device:chr_file rw_file_perms;
