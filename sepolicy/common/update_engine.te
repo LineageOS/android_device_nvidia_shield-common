@@ -12,9 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Allow update_engine to write /sys/block/mmcblk0boot0/force_ro
-allow update_engine sysfs_mmc_host:dir search;
-allow update_engine sysfs_mmc_host:file { getattr open read write };
+# Allow update_engine to read/write misc partition
+allow update_engine  misc_block_device:blk_file rw_file_perms;
 
-# Allow update_engine to write emmc boot partitions
-allow update_engine bootloader_block_device:blk_file rw_file_perms;
+# Allow update_engine to call TegraOTA service
+binder_call(update_engine, platform_app);

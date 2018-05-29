@@ -23,6 +23,7 @@ allow bt_loader toolbox_exec:file rx_file_perms;
 allow bt_loader system_file:file execute_no_trans;
 allow bt_loader devpts:chr_file rw_file_perms;
 allow bt_loader proc_bluetooth_mac:file r_file_perms;
+allow bt_loader sysfs_bluetooth_mac:file r_file_perms;
 
 # Allow bt_loader to read a custom MAC address from /mnt/factory/<bluetooth>
 r_dir_file(bt_loader, factory_file)

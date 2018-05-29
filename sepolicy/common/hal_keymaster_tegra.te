@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,9 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-allow zygote gpu_device:chr_file rw_file_perms;
-binder_use(zygote);
+# Vendor keymaster implementation is identical to AOSP implementation.
+# Only loading logic is modified.
+type hal_keymaster_tegra, domain;
+hal_server_domain(hal_keymaster_tegra, hal_keymaster)
 
-# allow zygote (for media_profile.xml) to read files/dirs in /data/camera_config/
-r_dir_file(zygote, camera_config_file)
-
+type hal_keymaster_tegra_exec, exec_type, file_type;
+init_daemon_domain(hal_keymaster_tegra)

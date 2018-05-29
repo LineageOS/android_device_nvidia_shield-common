@@ -1,4 +1,4 @@
-# Copyright (c) 2015-2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2015-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -28,8 +28,16 @@ allow init self:capability sys_nice;
 allow init fscheck_block_device:blk_file rw_file_perms;
 allow init tmpfs:lnk_file { create_file_perms relabelfrom };
 
+# configfs
+allow init configfs:{ file lnk_file } { create write unlink };
+
 # Access to write debugfs
 allow init debugfs:file write;
+allow init debugfs:dir write;
+
+# Allow init.rc to read/write /sys/class/gps_wake/gps_device/gps_enable
+allow init sysfs_gps_wake:dir r_dir_perms;
+allow init sysfs_gps_wake:{ file lnk_file } rw_file_perms;
 
 # For init to write to kmsg
 userdebug_or_eng(`
@@ -42,3 +50,10 @@ allow init sysfs_mmc_host:lnk_file rw_file_perms;
 # allow init to change power hints node
 allow init sysfs_netcfg:lnk_file rw_file_perms;
 allow init debugfs_cluster:file rw_file_perms;
+
+# allow init to write to /proc/sys/net/core/wmem_max
+allow init proc_wmem_max_writable:file write;
+
+# allow init to format block after flash
+allow init cache_block_device:blk_file w_file_perms;
+allow init userdata_block_device:blk_file w_file_perms;

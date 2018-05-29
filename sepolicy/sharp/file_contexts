@@ -1,4 +1,4 @@
-# Copyright (c) 2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2015-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,5 +15,4 @@
 # touch raw data
 /data/shtouch(/.*)?     u:object_r:sh_touch_data_file:s0
 
-(/system)?/vendor/bin/shtouch32		u:object_r:sharp_exec:s0
-(/system)?/vendor/bin/shtouch64		u:object_r:sharp_exec:s0
+(/system)?/vendor/bin/shtouch		u:object_r:sharp_exec:s0

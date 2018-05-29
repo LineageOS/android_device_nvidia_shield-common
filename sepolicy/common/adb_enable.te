@@ -1,4 +1,4 @@
-# Copyright (c) 2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2015-2016, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,5 +19,11 @@ init_daemon_domain(adb_enable)
 set_prop(adb_enable, system_radio_prop)
 set_prop(adb_enable, udc_prop)
 
-allow adb_enable shell_exec:file read;
+allow adb_enable shell_exec:file rx_file_perms;
 allow adb_enable system_file:file execute_no_trans;
+allow adb_enable toolbox_exec:file rx_file_perms;
+
+allow adb_enable configfs:dir search;
+allow adb_enable configfs:file r_file_perms;
+
+r_dir_file(adb_enable, sysfs_class_udc)

@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -29,6 +29,7 @@ type pmqos_device, dev_type;
 
 # Tegra graphics devices
 type tegradc_device, dev_type;
+type tegracec_device, dev_type;
 
 # /dev/block/mmcblk0rpmb
 type rpmb_block_device, dev_type;
@@ -56,3 +57,5 @@ type rpx_block_device, dev_type;
 
 # /dev/cy8c-led-boot
 type cy8c_device, dev_type;
+
+type gps_device, dev_type;

@@ -25,8 +25,6 @@ allow shield_remote surfaceflinger_service:service_manager find;
 allow shield_remote mediaserver_service:service_manager find;
 allow shield_remote shield_remote_service:service_manager { add find };
 allow shield_remote uhid_device:chr_file rw_file_perms;
-#allow shield_remote input_device:chr_file rw_file_perms;
-#allow shield_remote input_device:dir search;
 
 # Create /data/anr/traces.txt.
 allow shield_remote anr_data_file:dir ra_dir_perms;

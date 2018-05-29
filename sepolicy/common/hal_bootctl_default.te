@@ -12,12 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-allow mediaextractor gpu_device:chr_file { open read write };
+# Allow hal_bootctl_default to write /sys/block/mmcblk0boot0/force_ro
+allow hal_bootctl_default sysfs_mmc_host:dir search;
+allow hal_bootctl_default sysfs_mmc_host:file rw_file_perms;
 
-# allow setup to show how to first pair
-allow mediaextractor oem_media_file:file r_file_perms;
+# Allow hal_bootctl_default to write emmc boot partitions
+allow hal_bootctl_default bootloader_block_device:blk_file rw_file_perms;
 
-userdebug_or_eng(`
-  # allow multiplayer to access media files in sdcards/pen drives
-  allow mediaextractor fuse:file r_file_perms;
-')
+# Allow hal_bootctl_default to read OTA properties.
+get_prop(hal_bootctl_default, ota_prop)
+
+# Allow hal_bootctl_default to search /dev/block folder.
+allow hal_bootctl_default block_device:dir search;

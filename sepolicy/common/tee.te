@@ -16,7 +16,7 @@ allow tee tee_data_file:dir create_dir_perms;
 allow tee shell_exec:file rx_file_perms;
 allow tee toolbox_exec:file rx_file_perms;
 allow tee tee_exec:file execute_no_trans;
-allow tee self:capability { setuid setgid sys_rawio };
+allow tee self:capability { setuid setgid sys_rawio ipc_lock };
 allow tee block_device:dir search;
 allow tee rpmb_block_device:blk_file rw_file_perms;
 allow tee cpc_device:chr_file rw_file_perms;
