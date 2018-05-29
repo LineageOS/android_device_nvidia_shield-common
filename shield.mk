@@ -41,7 +41,8 @@ PRODUCT_PACKAGES += \
     init.none.rc \
     init.tegra.rc \
     init.tegra_emmc.rc \
-    init.tegra_sata.rc
+    init.tegra_sata.rc \
+    init.sata.configs.rc
 
 ifeq ($(TARGET_TEGRA_VERSION),t114)
 	PRODUCT_PACKAGES += init.tf.rc
@@ -257,9 +258,9 @@ PRODUCT_PACKAGES += \
 # Unified scaling
 ifneq ($(TARGET_TEGRA_VERSION),t114)
 	PRODUCT_PACKAGES += \
-	    ussr_setup \
-	    init.ussrd.rc \
-	    ussrd.conf
+	    nvphsd_setup \
+	    init.nvphsd.rc \
+	    nvphsd.conf
 endif
 
 # USB

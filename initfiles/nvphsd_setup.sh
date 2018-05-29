@@ -71,5 +71,3 @@ do
         done
     fi
 done
-
-setprop phs.bql.perfmodes.mask 3
