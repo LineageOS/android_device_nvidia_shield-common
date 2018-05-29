@@ -118,9 +118,6 @@ PRODUCT_PACKAGES += \
     libstagefrighthw \
     enctune.conf
 
-# Audio shim
-PRODUCT_PACKAGES += libicu_shim
-
 # Bluetooth
 PRODUCT_PACKAGES += \
     libbt-vendor \
@@ -143,10 +140,6 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.composer@2.1-impl \
     android.hardware.graphics.mapper@2.0-impl
-
-# Graphics shim
-PRODUCT_PACKAGES += libs \
-                    libshim_zw
 
 # Health HAL
 PRODUCT_PACKAGES += \
