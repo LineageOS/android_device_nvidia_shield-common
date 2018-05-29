@@ -1,4 +1,4 @@
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (c) 2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Used by nvcpl
-allow untrusted_app_all system_app_service:service_manager find;
+# ShieldTech
+vendor.nvidia.hardware.shieldtech.inputflinger::IInputHook		u:object_r:hal_shieldtech_hwservice:s0
+vendor.nvidia.hardware.shieldtech.input::IInputDetails		u:object_r:hal_shieldtech_hwservice:s0
 
-# Used by various apps for license checks
-allow untrusted_app_all tsec_device:chr_file rw_file_perms;
+# Tegra powerhal
+vendor.nvidia.hardware.power::IPower		u:object_r:hal_power_hwservice:s0

@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
+# copyright (c) 2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,9 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-allow zygote gpu_device:chr_file rw_file_perms;
-binder_use(zygote);
+# IMS ipsec daemon
+type imsipsec, domain;
+type imsipsec_exec, exec_type, file_type;
 
-# allow zygote (for media_profile.xml) to read files/dirs in /data/camera_config/
-r_dir_file(zygote, camera_config_file)
+init_daemon_domain(imsipsec)
 
+allow imsipsec kernel:system module_request;
+allow imsipsec self:key_socket create_socket_perms_no_ioctl;
+allow imsipsec self:capability { net_admin };
+
+unix_socket_connect(imsipsec, property, init)

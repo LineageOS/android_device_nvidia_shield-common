@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -31,3 +31,6 @@ allow ueventd sysfs_mmc_host:file rw_file_perms;
 r_dir_file(ueventd, sysfs_mmc_host)
 allow ueventd sysfs_pci_device:file rw_file_perms;
 r_dir_file(ueventd, sysfs_pci_device)
+allow ueventd sysfs_hid:file rw_file_perms;
+allow ueventd sysfs_input_dev:file rw_file_perms;
+allow ueventd sysfs_input_dev:dir r_dir_perms;

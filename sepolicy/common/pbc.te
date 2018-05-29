@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -30,3 +30,4 @@ allow pbc sysfs_nvi2c:{ file lnk_file } rw_file_perms;
 
 # Available frequencies access
 allow pbc sysfs_devfreq:file r_file_perms;
+allow pbc sysfs_devfreq:dir r_dir_perms;

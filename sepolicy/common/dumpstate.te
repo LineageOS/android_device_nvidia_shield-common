@@ -36,14 +36,27 @@ allow dumpstate factorycalib_block_device:blk_file getattr;
 allow dumpstate usercalib_block_device:blk_file getattr;
 allow dumpstate user_calib_file:dir getattr;
 
+allow dumpstate mnt_expand_file:dir search;
+
 # allow dumpstate to access suspend_time
 allow dumpstate debugfs_suspend_time_stats:file r_file_perms;
 
 # allow dumpstate to access wakeup_irq
 allow dumpstate debugfs_wake_irq_stats:file r_file_perms;
 
-# allow dumpstate to access emc/avg_activity
-allow dumpstate debugfs_emc_load:file r_file_perms;
+# allow dumpstate access to mmc
+allow dumpstate debugfs_mmc:dir search;
+allow dumpstate debugfs_mmc:file { read open getattr };
 
-# allow dumpstate to access /data/misc/frostlog
-r_dir_file(dumpstate, frostlog_file)
+# allow dumpstate to access /d/nvmap/iovmm debugfs_nvmap
+allow dumpstate debugfs_nvmap:file r_file_perms;
+
+# allow dumpstate access to installd binder
+allow dumpstate installd:binder call;
+
+# allow dumpstate to access to /proc/modules, /proc/stats
+allow dumpstate proc_modules:file { getattr read open };
+allow dumpstate proc_stat:file { read open };
+
+# allow dumpstate to access wifi config file
+allow dumpstate rpx_file:dir getattr;

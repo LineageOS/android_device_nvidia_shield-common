@@ -1,4 +1,4 @@
-# Copyright (C) 2017 The LineageOS Project
+# Copyright (c) 2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,9 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# /sys/devices/platform/pwm-backlight.*
-type sysfs_pwm_backlight, fs_type, sysfs_type;
+type hal_shieldtech_default, domain;
+hal_server_domain(hal_shieldtech_default, hal_shieldtech)
 
-# /data/gps
-type gps_data_file, file_type, data_file_type;
-type gps_socket, file_type;
+type hal_shieldtech_default_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(hal_shieldtech_default)
+
+binder_call(hal_shieldtech_default, servicemanager)
+
+# SysFS access
+r_dir_file(hal_shieldtech_default, sysfs_hid)
+r_dir_file(hal_shieldtech_default, sysfs_bus_usb)
+r_dir_file(hal_shieldtech_default, sysfs)
