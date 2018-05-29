@@ -1,4 +1,4 @@
-# Copyright (c) 2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2016-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,6 +23,10 @@ allow cameraserver nv_camera_data_file:file create_file_perms;
 # NVSensor socket files
 allow cameraserver nvs_socket:dir rw_dir_perms;
 allow cameraserver nvs_socket:sock_file rw_file_perms;
+
+# Argus socket server
+allow cameraserver argus_socket:dir rw_dir_perms;
+allow cameraserver argus_socket:sock_file create_file_perms;
 
 # cameraserver searches through sysfs, so we need to allow it to search all dirs we retag
 r_dir_file(cameraserver, sysfs)
@@ -49,9 +53,12 @@ allow cameraserver media_data_file:dir create_dir_perms;
 allow cameraserver media_data_file:file create_file_perms;
 allow cameraserver system_file:dir r_dir_perms;
 
+# Allow cameraserver to read files/dirs in sysfs_pci_device
+r_dir_file(cameraserver, sysfs_pci_device)
+
 # Allow cameraserver to access system app services using service manager
 allow cameraserver system_app_service:service_manager find;
-allow cameraserver ussrd_service:service_manager find;
+allow cameraserver nvphsd_service:service_manager find;
 
 # Allow cameraserver to access sensor service to get orientation and
 # video stabilization data.
@@ -75,3 +82,10 @@ allow cameraserver sysfs_gpu:file r_file_perms;
 
 # allow cameraserver to read files/dirs in /data/camera_config/
 r_dir_file(cameraserver, camera_config_file)
+
+# Allow dumping process core file to /data/core directory
+# in userdebug mode or eng mode.
+userdebug_or_eng(`
+allow cameraserver coredump_data_file:dir create_dir_perms;
+allow cameraserver coredump_data_file:file create_file_perms;
+')

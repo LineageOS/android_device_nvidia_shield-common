@@ -1,4 +1,4 @@
-# Copyright (c) 2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2016-2017, NVIDIA CORPORATION. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,7 +16,4 @@
 dontaudit system_server self:process execmem;
 dontaudit system_server dalvikcache_data_file:file w_file_perms;
 dontaudit system_app dalvikcache_data_file:file w_file_perms;
-#dontaudit untrusted_app user_profile_foreign_dex_data_file:file { open read };
-#dontaudit priv_app user_profile_foreign_dex_data_file:file { open read };
-#dontaudit radio user_profile_foreign_dex_data_file:file { open read };
 

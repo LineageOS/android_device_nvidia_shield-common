@@ -1,4 +1,4 @@
-# Copyright (C) 2017 The LineageOS Project
+# Copyright (c) 2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,12 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# fstab formattable flag
-allow init rpx_block_device:blk_file rw_file_perms;
+# allow backlight HAL to adjust lcd panel brightness
+allow hal_light_default sysfs_class_backlight:file  rw_file_perms;
+allow hal_light_default sysfs_class_backlight:dir  rw_dir_perms;
 
-allow init sysfs_mmc_host:file rw_file_perms;
-
-allow init proc_wmem_max_writable:file rw_file_perms;
-
-# Shims
-allow init zygote:process noatsecure;
+# allow backlight HAL to read/write below backlight I2C bus node
+# e.x /sys/devices/(*).i2c/i2c-(*)/backlight/pwm-backlight/brightness
+allow hal_light_default sysfs_nvi2c:file  rw_file_perms;
+allow hal_light_default sysfs_nvi2c:dir  rw_dir_perms;

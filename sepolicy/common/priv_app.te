@@ -12,23 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# upnpfuse
-allow priv_app vold:fifo_file { read write getattr };
-allow priv_app upnpfuse_cache_file:dir create_dir_perms;
-allow priv_app upnpfuse_cache_file:file create_file_perms;
-
 allow priv_app storage_stub_file:dir getattr;
 
 allow priv_app system_app_service:service_manager find;
 
-# Allow netcfg/mmc_host access
+# Allow netcfg/mmc_host/pci access
 r_dir_file(priv_app, sysfs_netcfg)
 r_dir_file(priv_app, sysfs_mmc_host)
+r_dir_file(priv_app, sysfs_pci_device)
 
-# Read /data/data subdirectory.
-#allow priv_app system_app_data_file:file r_file_perms;
 # Read /mnt/asec/<pkg-cid>/base.apk which is mounted from app on sdcard (asec)
+allow priv_app asec_apk_file:dir r_dir_perms;
 allow priv_app asec_apk_file:file r_file_perms;
-
-# Allow getattr access permission to app specific directories
-allow priv_app system_app_data_file:dir getattr;
+allow priv_app asec_public_file:dir r_dir_perms;
+allow priv_app asec_public_file:file r_file_perms;

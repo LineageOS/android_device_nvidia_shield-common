@@ -70,15 +70,22 @@ allow vold fscheck_block_device:blk_file rw_file_perms;
 # Give vold the ability to read the RPx folder during mounting via fstab
 allow vold rpx_file:dir r_dir_perms;
 
-# upnpfuse
-allow vold self:capability { setuid setgid };
-allow vold upnpfuse_cache_file:dir create_dir_perms;
-
 allow vold sysfs_mmc_host:file rw_file_perms;
 r_dir_file(vold, sysfs_mmc_host)
 
 # make_f2fs
 allow vold make_f2fs_exec:file rx_file_perms;
 
-# Allow vold to access its tmpfs
-allow vold tmpfs:file create_file_perms;
+# Allow vold to read misc_block_device
+allow vold misc_block_device:blk_file r_file_perms;
+
+# Allow vold to access pci device sysfs
+allow vold sysfs_pci_device:file rw_file_perms;
+r_dir_file(vold, sysfs_pci_device)
+
+# Allow vold to remount asec (fix perms on apps on sdcard)
+allow vold labeledfs:filesystem { remount };
+
+# Allow vold to read asec_public_file (apps on sdcard)
+allow vold asec_public_file:dir r_dir_perms;
+allow vold asec_public_file:file r_file_perms;

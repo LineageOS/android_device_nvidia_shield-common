@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -36,14 +36,12 @@ allow surfaceflinger device:dir r_dir_perms;
 # because the first line is also required).
 #
 # Then, further, I also give permissions to the /mnt/tmp/fc<N> nodes
-# explicitly (r/w/c to surfaceflinger and r to ussrd) which may not be
+# explicitly (r/w/c to surfaceflinger and r to nvphsd) which may not be
 # strictly needed after the first two but seems to be in line with how
 # sepolicies are written, i.e. come up with as many contexts and
 # domains and types as you can think of to model your usage patterns.
 #
 allow surfaceflinger tmpfs:dir rw_dir_perms;
-#allow surfaceflinger surfaceflinger_tmpfs:dir rw_dir_perms;
-allow surfaceflinger tmpfs:file create_file_perms;
 
 allow surfaceflinger surfaceflinger_fc:dir rw_dir_perms;
 allow surfaceflinger surfaceflinger_fc:file create_file_perms;
@@ -52,7 +50,7 @@ allow surfaceflinger tegradc_device:chr_file { read ioctl open write };
 
 # Needed to call NvPHSSendThroughputHints() from surfaceflinger
 allow_use_phs(surfaceflinger);
-allow surfaceflinger ussrd_service:service_manager find;
+allow surfaceflinger nvphsd_service:service_manager find;
 
 allow surfaceflinger self:capability sys_nice;
 
@@ -69,3 +67,6 @@ allow surfaceflinger hwc_data_file:dir {create_dir_perms};
 
 # Allow GL to access ptimer_scale_factor
 allow surfaceflinger sysfs_gpu:file r_file_perms;
+
+# Allow SF access to VRR properties
+allow surfaceflinger vrr_prop:file { r_file_perms };

@@ -40,12 +40,11 @@ r_dir_file(untrusted_app, sysfs_zram)
 allow untrusted_app asec_public_file:dir r_dir_perms;
 allow untrusted_app asec_public_file:file r_file_perms;
 
-# Video apps: access shared oem media assets
-allow untrusted_app oem_media_file:dir r_dir_perms;
-allow untrusted_app oem_media_file:file r_file_perms;
-
 # Dont allow untrusted apps to access MAC address
 dontauditxperm untrusted_app self:udp_socket ioctl SIOCGIFHWADDR;
+
+# Allow frameworks to find 'nvcpl' system service; enables app profiles
+allow untrusted_app_25 system_app_service:service_manager find;
 
 # Allow untrusted_app to access hubcore. In this case, we have the
 # SmartThings app from the playstore which needs to access the
@@ -53,5 +52,12 @@ dontauditxperm untrusted_app self:udp_socket ioctl SIOCGIFHWADDR;
 allow untrusted_app hubcore:service_manager find;
 binder_call(untrusted_app, hubcore)
 
-# Allow untrusted_app to access gamestreaming_prop
-get_prop(untrusted_app, gamestreaming_prop)
+# Allow untrusted apps to access tsecb dev node
+allow untrusted_app_25 tsec_device:chr_file rw_file_perms;
+
+# Allow apps on sdcard to access their lib path inside apk
+allow untrusted_app_all asec_public_file:dir r_dir_perms;
+allow untrusted_app_all asec_public_file:file r_file_perms;
+
+# Allow untrusted apps to access oem media files
+r_dir_file(untrusted_app, oem_media_file)

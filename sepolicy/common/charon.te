@@ -1,4 +1,4 @@
-# Copyright (c) 2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2015-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -36,12 +36,14 @@ allow charon self:netlink_xfrm_socket { create_socket_perms_no_ioctl nlmsg_read 
 allow charon self:netlink_route_socket nlmsg_write;
 allow charon self:capability { net_admin net_bind_service net_raw setuid setgid chown dac_override dac_read_search };
 
+allow charon system_file:dir r_dir_perms;
 allow charon system_file:file rx_file_perms;
 allow charon vpn_data_file:file create_file_perms;
 allow charon vpn_data_file:dir w_dir_perms;
 
 set_prop(charon, net_radio_prop)
 
+wakelock_use(charon)
 use_keystore(charon)
 
 # charon (VPN) has a restricted set of permissions from the default.

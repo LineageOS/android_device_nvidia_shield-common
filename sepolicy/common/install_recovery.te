@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2016 NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,17 +12,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-type set_hwui, domain;
-type set_hwui_exec, exec_type, file_type;
-
-init_daemon_domain(set_hwui)
-set_prop(set_hwui, hwui_prop)
-
-allow set_hwui shell_exec:file rx_file_perms;
-allow set_hwui toolbox_exec:file rx_file_perms;
-allow set_hwui system_file:file execute_no_trans;
-
-allow set_hwui proc_meminfo:file r_file_perms;
-
-# Allow access for sys/class/graphics/fb0/modes
-allow set_hwui sysfs_graphics:file r_file_perms;
+allow install_recovery mtd_device:dir r_dir_perms;
+allow install_recovery mtd_device:chr_file rw_file_perms;
