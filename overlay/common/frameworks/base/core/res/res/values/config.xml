@@ -141,8 +141,8 @@
     </integer-array>
 
     <!-- Eraser Cursor Default Configuration Value -->
-    <add-resource type="integer" name="config_eraserCursor" />
-    <integer name="config_eraserCursor">0</integer>
+    <!-- <add-resource type="integer" name="config_eraserCursor" />
+    <integer name="config_eraserCursor">0</integer> -->
 
     <!-- Max space (in MB) allocated to DownloadManager to store the downloaded files
          if they are to be stored in DownloadManager's data dir,
@@ -187,8 +187,8 @@
     <!-- Whether a sim card removal needs to trigger a full device reboot
          NV proprietary up to KK
          Use config_hotswapCapable (AOSP) from L onward -->
-    <add-resource type="bool" name="config_rebootOnSimHotSwap"/>
-    <bool name="config_rebootOnSimHotSwap">false</bool>
+    <!-- <add-resource type="bool" name="config_rebootOnSimHotSwap"/>
+    <bool name="config_rebootOnSimHotSwap">false</bool> -->
 
     <!-- Is the device capable of hot swapping an UICC Card -->
     <add-resource type="bool" name="config_hotswapCapable"/>
@@ -202,12 +202,12 @@
     </string-array>
 
     <!-- Allow shutdown at battery level 0% even though any charger is plugged in -->
-    <add-resource type="bool" name="config_allowShutdownWithCharger"/>
-    <bool name="config_allowShutdownWithCharger">true</bool>
+    <!-- <add-resource type="bool" name="config_allowShutdownWithCharger"/>
+    <bool name="config_allowShutdownWithCharger">true</bool> -->
 
     <!-- Whether enable controller mapper -->
-    <add-resource type="bool" name="config_controllerMapper"/>
-    <bool name="config_controllerMapper">true</bool>
+    <!-- <add-resource type="bool" name="config_controllerMapper"/>
+    <bool name="config_controllerMapper">true</bool> -->
 
     <!-- MMS user agent string -->
     <add-resource type="string" name="config_mms_user_agent"/>
