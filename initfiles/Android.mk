@@ -169,24 +169,32 @@ LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := init.ussrd.rc
+LOCAL_MODULE       := init.sata.configs.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.ussrd.rc
+LOCAL_SRC_FILES    := init.sata.configs.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := ussrd.conf
+LOCAL_MODULE       := init.nvphsd.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := ussrd.$(TARGET_TEGRA_VERSION).conf
+LOCAL_SRC_FILES    := init.nvphsd.rc
+LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE       := nvphsd.conf
+LOCAL_MODULE_TAGS  := optional eng
+LOCAL_MODULE_CLASS := ETC
+LOCAL_SRC_FILES    := nvphsd.$(TARGET_TEGRA_VERSION).conf
 LOCAL_MODULE_PATH  := $(TARGET_ETC_OUT)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := ussr_setup
-LOCAL_SRC_FILES := ussr_setup.sh
+LOCAL_MODULE := nvphsd_setup
+LOCAL_SRC_FILES := nvphsd_setup.sh
 LOCAL_MODULE_SUFFIX := .sh
 LOCAL_MODULE_CLASS := SCRIPTS
 LOCAL_MODULE_PATH := $(TARGET_OUT_EXECUTABLES)
