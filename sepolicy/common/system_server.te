@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -30,14 +30,12 @@ allow system_server sysfs_hid:dir r_dir_perms;
 allow system_server sysfs_hid:file rw_file_perms;
 allow system_server hidraw_device:chr_file rw_file_perms;
 
-# Jarvis
-allow system_server sysfs_jarvis_stats:file r_file_perms;
-
 # netcfg
 r_dir_file(system_server, sysfs_netcfg)
 
-# Wi-Fi
+# Wi-Fi/BT
 allow system_server wifi_data_file:lnk_file read;
+set_prop(system_server, bluetooth_prop)
 
 # Allow system_server to control Foster LED lightbar
 allow system_server sysfs_lightbar:file rw_file_perms;
@@ -54,7 +52,7 @@ allow system_server sysfs_nvi2c:{ file lnk_file } rw_file_perms;
 
 # phs
 allow_use_phs(system_server)
-allow system_server ussrd_service:service_manager find;
+allow system_server nvphsd_service:service_manager find;
 
 allow system_server proc_wmem_max_writable:file rw_file_perms;
 r_dir_file(system_server, factory_file)
@@ -113,17 +111,27 @@ allow system_server sysfs_gpu:file r_file_perms;
 # allow system_server (for camera features) to read files/dirs in /data/camera_config/
 r_dir_file(system_server, camera_config_file)
 
-allow system_server user_profile_data_file:dir r_dir_perms;
-
 # allow system_server to access thermal files for Thermal HAL
 allow system_server sysfs_thermal:lnk_file r_file_perms;
 allow system_server sysfs_thermal:dir r_dir_perms;
 
-# allow system_server to change power hints
-allow system_server debugfs_cluster:file rw_file_perms;
+# debugfs
+allow system_server debugfs:lnk_file read;
+
+allow system_server user_profile_data_file:dir r_dir_perms;
 
 # allow system_server to search keylayout_data_file
 allow system_server keylayout_data_file:dir search;
 
+# pci device sysfs search
+r_dir_file(system_server, sysfs_pci_device)
+
+# Use HALs
+hal_client_domain(system_server, hal_shieldtech)
+hal_client_domain(system_app, hal_power)
+
 # allow system_server to control gpu power knobs
 allow system_server sysfs_gpu_power_knobs:file rw_file_perms;
+
+# ShieldTech
+allow system_server hal_shieldtech_default:fifo_file read;

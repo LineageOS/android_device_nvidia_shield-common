@@ -1,4 +1,4 @@
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (c) 2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,4 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-get_prop(zygote, surfaceflinger_prop)
+# HwBinder IPC from client to server, and callbacks
+binder_call(hal_shieldtech_client, hal_shieldtech_server)
+binder_call(hal_shieldtech_server, hal_shieldtech_client)
+
+add_hwservice(hal_shieldtech_server, hal_shieldtech_hwservice)
+allow hal_shieldtech_client hal_shieldtech_hwservice:hwservice_manager find;

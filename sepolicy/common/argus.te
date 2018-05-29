@@ -1,4 +1,4 @@
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (c) 2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-allow hal_wifi_default sysfs_wifi:file rw_file_perms;
-allow hal_wifi_default wifi_data_file:lnk_file r_file_perms;
-r_dir_file(hal_wifi_default, factory_file)
+allow shell argus_socket:dir search;
+allow shell argus_socket:sock_file { read write };
+allow shell cameraserver:unix_stream_socket { connectto read write shutdown };
+

@@ -24,6 +24,10 @@ allow mediaserver stats_share_file:file create_file_perms;
 allow mediaserver nvs_socket:dir rw_dir_perms;
 allow mediaserver nvs_socket:sock_file rw_file_perms;
 
+#Argus socket server
+allow mediaserver argus_socket:dir rw_dir_perms;
+allow mediaserver argus_socket:sock_file create_file_perms;
+
 # Mediaserver searches through sysfs, so we need to allow it to search all dirs we retag
 r_dir_file(mediaserver, sysfs_thermal);
 r_dir_file(mediaserver, sysfs_ozmo);
@@ -43,7 +47,7 @@ binder_call(mediaserver, system_server)
 binder_use(mediaserver)
 
 allow_use_phs(mediaserver)
-allow mediaserver ussrd_service:service_manager find;
+allow mediaserver nvphsd_service:service_manager find;
 
 r_dir_file(mediaserver, factory_file)
 

@@ -1,4 +1,4 @@
-# Copyright (c) 2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2015-2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -26,3 +26,6 @@ allow cyupdate sysfs_nvi2c:dir r_dir_perms;
 allow cyupdate self:capability { net_admin dac_override chown sys_module fowner fsetid };
 allow cyupdate cy8c_device:dir r_dir_perms;
 allow cyupdate cy8c_device:chr_file rw_file_perms;
+allow cyupdate toolbox_exec:file rx_file_perms;
+allow cyupdate sysfs_leds:dir search;
+allow cyupdate sysfs_leds:lnk_file read;

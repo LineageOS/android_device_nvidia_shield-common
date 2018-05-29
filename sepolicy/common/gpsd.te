@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2015, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,6 +12,35 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# gpsd - GPS daemon
+type gpsd, domain;
+type gpsd_exec, exec_type, file_type;
+
+init_daemon_domain(gpsd)
+net_domain(gpsd)
+allow gpsd gps_data_file:dir rw_dir_perms;
+allow gpsd gps_data_file:notdevfile_class_set create_file_perms;
+# Socket is created by the daemon, not by init, and under /data/gps,
+# not under /dev/socket.
+type_transition gpsd gps_data_file:sock_file gps_socket;
+allow gpsd gps_socket:sock_file create_file_perms;
+allow gpsd sysfs_gps:file rw_file_perms;
+
+allow gpsd gps_device:chr_file rw_file_perms;
+
+# Execute the shell or system commands.
+allow gpsd shell_exec:file rx_file_perms;
+allow gpsd system_file:file rx_file_perms;
+allow gpsd toolbox_exec:file rx_file_perms;
+
+###
+### neverallow
+###
+
+# gpsd can never have capabilities other than block_suspend
+neverallow gpsd self:capability *;
+neverallow gpsd self:capability2 ~block_suspend;
+
 # Allow gpsd to read/write sysfs_nvi2c interface
 allow gpsd sysfs_nvi2c:dir r_dir_perms;
 allow gpsd sysfs_nvi2c:file rw_file_perms;
@@ -22,7 +51,7 @@ allow gpsd sysfs_gpio:{ file lnk_file } rw_file_perms;
 
 # Allow gpsd to read/write /sys/class/gps_wake/gps_device/gps_enable
 allow gpsd sysfs_gps_wake:dir r_dir_perms;
-allow gpsd sysfs_gps_wake:file rw_file_perms;
+allow gpsd sysfs_gps_wake:{ file lnk_file } rw_file_perms;
 
 # Allow gpsd access to sysfs_wake_lock
 allow gpsd sysfs_wake_lock:file rw_file_perms;

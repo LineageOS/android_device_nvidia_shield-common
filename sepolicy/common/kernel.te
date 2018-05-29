@@ -13,3 +13,8 @@
 # limitations under the License.
 
 allow kernel self:capability net_raw;
+
+# for kdevtmpfs
+dontaudit kernel device:dir { write create add_name remove_name rmdir };
+dontaudit kernel device:{chr_file blk_file } { create setattr getattr unlink };
+dontaudit kernel self:capability mknod;

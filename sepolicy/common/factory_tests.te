@@ -13,11 +13,13 @@
 # limitations under the License.
 
 type factory_tests, domain;
-type factory_tests_exec, exec_type, file_type;
+type factory_tests_exec, exec_type, vendor_file_type, file_type;
 
 init_daemon_domain(factory_tests)
 
-allow factory_tests shell_exec:file { read getattr execute open execute_no_trans };
+allow factory_tests shell_exec:file rx_file_perms;
+allow factory_tests toolbox_exec:file rx_file_perms;
+allow factory_tests factory_tests_exec:file execute_no_trans;
 allow factory_tests proc:file { open read };
 allow factory_tests tmpfs:dir search;
 allow factory_tests { mnt_user_file storage_file }:lnk_file read;

@@ -50,3 +50,5 @@ r_dir_file(wifi_loader, sysfs_pci_device)
 type_transition wifi_loader wifi_data_file:sock_file wpa_socket;
 
 allow wifi_loader tmpfs:dir r_dir_perms;
+
+allow wifi_loader system_file:system module_load;

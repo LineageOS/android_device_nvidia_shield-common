@@ -1,4 +1,4 @@
-# Copyright (C) 2017 The LineageOS Project
+# Copyright (c) 2016-2017, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,4 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-allow pbc sysfs_pwm_backlight:file r_file_perms;
+type nvpmodel, domain;
+type nvpmodel_exec, exec_type, file_type;
+
+init_daemon_domain(nvpmodel)
+file_type_auto_trans(nvpmodel, system_data_file, nvpmodel_data)
+
+allow nvpmodel sysfs_devices_system_cpu:file rw_file_perms;
+allow nvpmodel sysfs_gpu_freq_limit:file rw_file_perms;
+allow nvpmodel sysfs_nvpmodel:file rw_file_perms;
+allow nvpmodel nvpmodel_data:file rw_file_perms;
+allow nvpmodel sysfs_devfreq:file r_file_perms;
+allow nvpmodel sysfs:file getattr;
