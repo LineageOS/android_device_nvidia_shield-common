@@ -40,7 +40,7 @@ on boot
     #write /sys/devices/system/cpu/cpufreq/interactive/boost_factor 2
     #write /sys/devices/system/cpu/cpufreq/interactive/sustain_load 80
 
-    write /sys/kernel/debug/cpuidle_t210/fast_cluster_states_enable 0xcf
+    write /sys/kernel/debug/cpuidle_t210/fast_cluster_states_enable 2
     write /sys/kernel/debug/cpuidle_t210/slow_cluster_states_enable 0xc9
     write /sys/devices/system/cpu/cpuquiet/tegra_cpuquiet/enable 1
     write /sys/devices/system/cpu/cpuquiet/current_governor runnable
@@ -60,18 +60,24 @@ on boot
     chown system system /sys/kernel/tegra_cpu_emc/table_src
     write /sys/kernel/tegra_cpu_emc/table_src 1
 
+# Good 3D driver settings
+# These are the persist properties that used to get set here. However, once set, persist
+# properties are "sticky" across OTAs, and can only be deleted via a factory reset.
+# But since their values can be changed via OTAs, we set their values to NULL here, which
+# will cause them to be ignored on the device. Going forward, use the read-only properties
+# for the real driver settings.
+
     #Change usb blacklist owner & group
     chown system system /sys/module/xhci_hcd/parameters/downgraded_usb3
     chown system system /sys/devices/platform/tegra-xhci/downgrade_usb3
 
-# Good driver settings
-    # default value for 0x523dc5 in d3doglregs.rky is 0.5
-    setprop persist.tegra.0x523dc5 0x3f000000
-    setprop persist.tegra.58027529 0x00000002
-    setprop persist.tegra.a3456abe 0x087F6080
+    setprop persist.tegra.0x523dc5 ""
+    setprop persist.tegra.58027529 ""
+    setprop persist.tegra.a3456abe ""
 
-# WAR for bug 1536227: Restrict all ZBC clears to transparent black:
-    setprop persist.tegra.AF73C63E 0x80007ffd
+    setprop ro.tegra.0x523dc5 0x3f000000
+    setprop ro.tegra.58027529 0x00000002
+    setprop ro.tegra.a3456abe 0x087F6080
 
 # set HW acceleration to true
     setprop skia.jpeg.hwaccelerate 1
@@ -83,4 +89,8 @@ on boot
 service watchdogd /sbin/watchdogd 20 160
     class core
     seclabel u:r:watchdogd:s0
-    writepid /dev/cpuset/system-background/tasks
+
+on property:sys.boot_completed=1
+    # Disable uevents for Android USB state and VBUS extcon state while suspending.
+    write /sys/devices/virtual/android_usb/android0/uevent_in_suspend N
+    write /sys/devices/7009f000.usb_cd/extcon/extcon1/uevent_in_suspend N
