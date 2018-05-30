@@ -2,7 +2,8 @@
 PRODUCT_PROPERTY_OVERRIDES += \
     af.resampler.quality=7 \
     af.fast_downmix=1 \
-    af.thread.throttle=0
+    af.thread.throttle=0 \
+    media.aac_51_output_enabled=true
 
 # Display
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -22,6 +23,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Input
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.input.noresample=1
+
+# HDMI CEC
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hdmi.device_type=4 \
+    persist.sys.hdmi.keep_awake_false
 
 # Nvmm
 PRODUCT_PROPERTY_OVERRIDES += \
