@@ -145,6 +145,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.health@1.0-impl
 
+# HIDL (needed for shield 8.0 based hidl hals)
+PRODUCT_PACKAGES += \
+     android.hidl.base@1.0 \
+     android.hidl.base@1.0_system \
+     android.hidl.manager@1.0 \
+     android.hidl.manager@1.0-java
+
 # idc
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/Vendor_0955_Product_7210.idc:system/usr/idc/Vendor_0955_Product_7210.idc \
