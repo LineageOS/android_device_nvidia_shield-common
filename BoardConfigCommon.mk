@@ -39,7 +39,7 @@ TARGET_THERMALHAL_VARIANT := tegra
 TARGET_RELEASETOOLS_EXTENSIONS := device/nvidia/shield-common/releasetools
 
 # Forced shims
-TARGET_LD_SHIM_LIBS := /system/vendor/bin/glgps_nvidiaTegra2android|libsensor.so:/system/lib/libcutils.so|libcutils_shim.so:/system/lib64/libcutils.so|libcutils_shim.so:/system/lib/libicuuc.so|libicu_shim.so
+TARGET_LD_SHIM_LIBS := /system/vendor/bin/glgps_nvidiaTegra2android|libsensor.so:/system/vendor/lib/libril-icera.so|libcutils_shim.so::/system/vendor/lib/hw/audio.primary.tegra.so|libicu_shim.so
 
 # Use unified vendor
 TARGET_TEGRA_VARIANT := shield
