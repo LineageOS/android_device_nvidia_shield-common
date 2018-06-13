@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdbe061e_7d03f4cf",
+        "filename": "BoardConfigCommon.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 11883
+      },
+      "writtenOn": "2018-06-13T20:17:28Z",
+      "side": 1,
+      "message": "Derp",
+      "range": {
+        "startLine": 42,
+        "startChar": 134,
+        "endLine": 42,
+        "endChar": 135
+      },
+      "revId": "a97b34ac21207d216bc629b364850279b3133c14",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
