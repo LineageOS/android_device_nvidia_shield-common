@@ -153,6 +153,8 @@ on property:ro.debuggable=1
     # EMC debug interface
     chmod 666 /sys/kernel/debug/tegra_emc/eack_state
 
+    # Disable a lot of kmsg logspam
+    write /sys/kernel/debug/dynamic_debug/control "file nvxxx_udc.c -p"
 
 service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
     class late_start
