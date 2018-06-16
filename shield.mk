@@ -244,8 +244,12 @@ PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
     hostapd \
     wificond \
+    libwpa_client \
     wpa_supplicant \
     wpa_supplicant.conf
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/comms/wifi_scan_config.conf:system/etc/wifi/wifi_scan_config.conf
 
 # Unified scaling
 ifneq ($(TARGET_TEGRA_VERSION),t114)
