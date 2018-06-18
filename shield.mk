@@ -17,7 +17,8 @@
 # Overlay
 ifneq ($(TARGET_TEGRA_DISABLE_OVERLAY),true)
     DEVICE_PACKAGE_OVERLAYS += \
-         device/nvidia/shield-common/overlay/common
+         device/nvidia/shield-common/overlay/common \
+         device/nvidia/shield-common/overlay/lineage
 endif
 
 # System properties
