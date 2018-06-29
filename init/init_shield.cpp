@@ -106,6 +106,15 @@ bool shield_init::detect_model()
     if (!shield_devices.size())
         return false;
 
+    // If hardware name isn't set, attempt to read it from the device tree
+    if (property_get("ro.hardware").empty()) {
+        std::ifstream file("/proc/device-tree/firmware/android/hardware");
+        std::string line;
+        if (file.is_open() && std::getline(file, line)) {
+            property_set("ro.hardware", line.c_str());
+        }
+    }
+
     // If only one device is defined, just use that one
     if (shield_devices.size() == 1) {
         chosen_device = &shield_devices[0];
