@@ -51,8 +51,10 @@ on post-fs-data
     mkdir /data/ss 0700 system keystore
 
 on property:ro.boot.secureos=tlk
+    setprop ro.hardware.gatekeeper tlk.tegra
     start tlk_daemon
     start ss_status
 
 on property:ro.boot.secureos=trusty
     start storageproxyd
+    setprop ro.hardware.gatekeeper trusty.tegra
