@@ -142,6 +142,11 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-impl \
     android.hardware.graphics.mapper@2.0-impl
 
+# Renderscript deps
+ifeq ($(TARGET_ARCH),arm64)
+    PRODUCT_PACKAGES += libLLVM_32
+endif
+
 # Health HAL
 PRODUCT_PACKAGES += \
     android.hardware.health@1.0-impl
