@@ -163,7 +163,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/Vendor_0955_Product_7210.idc:system/usr/idc/Vendor_0955_Product_7210.idc \
     $(LOCAL_PATH)/idc/Vendor_0955_Product_7212.idc:system/usr/idc/Vendor_0955_Product_7212.idc \
     $(LOCAL_PATH)/idc/Vendor_0955_Product_7213.idc:system/usr/idc/Vendor_0955_Product_7213.idc \
-    $(LOCAL_PATH)/idc/Vendor_0955_Product_7214.idc:system/usr/idc/Vendor_0955_Product_7214.idc
+    $(LOCAL_PATH)/idc/Vendor_0955_Product_7214.idc:system/usr/idc/Vendor_0955_Product_7214.idc \
+    $(LOCAL_PATH)/idc/virtual-remote.idc:system/usr/idc/virtual-remote.idc
 
 ifneq ($(TARGET_TEGRA_TOUCH),)
         PRODUCT_PACKAGES += \
