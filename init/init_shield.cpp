@@ -187,12 +187,6 @@ void shield_init::recovery_links()
 
 void shield_init::set_properties()
 {
-    std::string platform = android::base::GetProperty("ro.board.platform", "");
-
-    // If device is not what this was compiled for, bail
-    if (platform.compare(ANDROID_TARGET))
-        return;
-
     if (!detect_model()) {
         LOG(ERROR) << "shield_init: could not detect model, aborting";
         return;
