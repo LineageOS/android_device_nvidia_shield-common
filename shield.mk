@@ -160,6 +160,7 @@ PRODUCT_PACKAGES += \
 
 # idc
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/idc/gpio_ir_recv.idc:system/usr/idc/gpio_ir_recv.idc \
     $(LOCAL_PATH)/idc/Vendor_0955_Product_7210.idc:system/usr/idc/Vendor_0955_Product_7210.idc \
     $(LOCAL_PATH)/idc/Vendor_0955_Product_7212.idc:system/usr/idc/Vendor_0955_Product_7212.idc \
     $(LOCAL_PATH)/idc/Vendor_0955_Product_7213.idc:system/usr/idc/Vendor_0955_Product_7213.idc \

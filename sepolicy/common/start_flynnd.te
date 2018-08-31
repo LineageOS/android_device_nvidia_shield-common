@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2018, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,15 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-######################################
-# Attribute declarations
-#
+type start_flynnd, domain;
+type start_flynnd_exec, exec_type, file_type, vendor_file_type;
 
-# HAL Shieldtech
-attribute hal_shieldtech;
-attribute hal_shieldtech_client;
-attribute hal_shieldtech_server;
+init_daemon_domain(start_flynnd)
 
-attribute hal_flynn;
-attribute hal_flynn_client;
-attribute hal_flynn_server;
+allow start_flynnd shell_exec:file rx_file_perms;
+allow start_flynnd toolbox_exec:file rx_file_perms;
+
+set_prop(start_flynnd, flynnd_prop)
+
+# start_flynnd needs access to some flynn specific nodes under /proc/device-tree/
+allow start_flynnd proc_flynn:file r_file_perms;

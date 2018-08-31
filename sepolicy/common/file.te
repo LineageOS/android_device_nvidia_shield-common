@@ -60,6 +60,9 @@ type proc_net_wifi, fs_type;
 # /proc/device-tree/chosen/plugin-manager/tnspec
 type proc_tnspec, fs_type;
 
+# /proc/device-tree/chosen/nvidia,tegra-flynn-sku
+type proc_flynn, fs_type;
+
 # /sys/firmware/devicetree/base/chosen/plugin-manager/tnspec/
 type sysfs_tnspec, fs_type, sysfs_type;
 
@@ -68,6 +71,9 @@ type sysfs_bluetooth_mac, fs_type, sysfs_type;
 
 # /sys/firmware/devicetree/base/bcmdhd_pcie_wlan/status
 type sysfs_bcmdhd_pcie, fs_type, sysfs_type;
+
+# /(vendor|system/vendor)/firmware(/.*)
+type vendor_firmware_wifi_file, file_type, vendor_file_type;
 
 # /data/nvcam
 type nv_camera_data_file, file_type, data_file_type;

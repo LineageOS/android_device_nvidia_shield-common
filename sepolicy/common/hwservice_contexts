@@ -1,4 +1,4 @@
-# Copyright (c) 2017, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2017-2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,3 +18,8 @@ vendor.nvidia.hardware.shieldtech.input::IInputDetails		u:object_r:hal_shieldtec
 
 # Tegra powerhal
 vendor.nvidia.hardware.power::IPower		u:object_r:hal_power_hwservice:s0
+
+# Flynn
+vendor.nvidia.hardware.flynn::IInput		u:object_r:hal_flynn_hwservice:s0
+vendor.nvidia.hardware.flynn::IVolume		u:object_r:hal_flynn_hwservice:s0
+vendor.nvidia.hardware.flynn::IMcu		u:object_r:hal_flynn_hwservice:s0

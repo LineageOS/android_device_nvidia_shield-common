@@ -21,6 +21,9 @@ recovery_only(`
   allow recovery mtd_device:chr_file rw_file_perms;
   allow recovery vfat:dir { add_name write };
   allow recovery vfat:file { write create };
+  #Fetch uart and logcat logs
+  allow recovery cache_log_dumper_file:dir rw_dir_perms;
+  allow recovery cache_log_dumper_file:file r_file_perms;
 ')
 
 # Change USB mode in recovery kernel

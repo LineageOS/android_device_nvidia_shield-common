@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@ genfscon proc /task_weight			u:object_r:proc_taskweight:s0
 genfscon proc /version				u:object_r:proc_version:s0
 genfscon proc /device-tree/chosen/plugin-manager/tnspec/id		u:object_r:proc_tnspec:s0
 genfscon proc /device-tree/chosen/plugin-manager/tnspec/config		u:object_r:proc_tnspec:s0
+genfscon proc /device-tree/chosen/nvidia,tegra-flynn-sku		u:object_r:proc_flynn:s0
 genfscon proc /sys/net/ipv4/conf/wlan0/drop_unicast_in_l2_multicast	u:object_r:proc_net_wifi:s0
 genfscon proc /sys/net/ipv6/conf/wlan0/drop_unicast_in_l2_multicast	u:object_r:proc_net_wifi:s0
 genfscon proc /sys/net/ipv4/conf/wlan0/drop_gratuitous_arp		u:object_r:proc_net_wifi:s0

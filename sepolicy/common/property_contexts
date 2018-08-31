@@ -70,6 +70,9 @@ sys.usb.udc			u:object_r:udc_prop:s0
 sys.usb.controller		u:object_r:udc_prop:s0
 sys.usb.delay			u:object_r:udc_prop:s0
 
+# flynnd property
+sys.flynnd.enable		u:object_r:flynnd_prop:s0
+
 # audio non persistent properties
 audio.				u:object_r:audio_prop:s0
 

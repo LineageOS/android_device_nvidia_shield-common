@@ -154,6 +154,9 @@ allow system_app hal_shieldtech_hwservice:hwservice_manager find;
 # ShieldTech
 allow system_app hal_shieldtech_default:binder call;
 
+# Allow system apps to communicate with Flynn HAL
+hal_client_domain(system_app, hal_flynn)
+
 # Allow system_app to r/w to downgrade usb3 nodes
 allow system_app sysfs_usb_blacklist:file rw_file_perms;
 

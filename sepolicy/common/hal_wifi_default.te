@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2018, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,15 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-######################################
-# Attribute declarations
-#
+# allow default hal to access wifi vendor firmware file
+allow hal_wifi_default vendor_firmware_wifi_file:file r_file_perms;
 
-# HAL Shieldtech
-attribute hal_shieldtech;
-attribute hal_shieldtech_client;
-attribute hal_shieldtech_server;
+#Allow access to file /mnt/factory/wifi/wifi_mac.txt
+r_dir_file(hal_wifi_default, factory_file)
 
-attribute hal_flynn;
-attribute hal_flynn_client;
-attribute hal_flynn_server;
+r_dir_file(hal_wifi_default, wifi_data_file)

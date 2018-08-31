@@ -15,3 +15,4 @@
 type shield_remote_service, app_api_service, service_manager_type;
 type rpx_service, app_api_service, system_server_service, service_manager_type;
 type mossignerd_service, app_api_service, service_manager_type;
+type nv_mapper_service, service_manager_type;

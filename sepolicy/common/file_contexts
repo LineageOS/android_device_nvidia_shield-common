@@ -51,6 +51,7 @@
 # Trusty device
 /dev/trusty-ipc-dev0		u:object_r:tee_device:s0
 # modem devices
+/dev/ttyUSB.*				u:object_r:radio_device:s0
 /dev/ttyACM.*				u:object_r:radio_device:s0
 # Tegra System Profiler
 /dev/quadd				u:object_r:quadd_device:s0
@@ -148,6 +149,9 @@
 (/system)?/vendor/bin/gpload		u:object_r:gpload_exec:s0
 # hubcore
 (/system)?/vendor/bin/hubcore		u:object_r:hubcore_exec:s0
+# flynnd
+(/system)?/vendor/bin/hw/flynnd		u:object_r:flynnd_exec:s0
+(/system)?/vendor/bin/start_flynnd.sh		u:object_r:start_flynnd_exec:s0
 # ctload
 (/system)?/vendor/bin/ctload		u:object_r:ctload_exec:s0
 # update_js_touch_fw
@@ -276,16 +280,16 @@
 /sys/bus/hid/drivers/hid-nvidia(/.*)?                   u:object_r:sysfs_hid:s0
 /sys/devices/virtual/misc/uhid(/.*)?			        u:object_r:sysfs_hid:s0
 # pwm-fan sysfs nodes
-/sys/devices/platform/pwm-fan(.*)/pwm_cap   		u:object_r:sysfs_pwm_fan:s0
-/sys/devices/platform/pwm-fan(.*)/pwm_state_map		u:object_r:sysfs_pwm_fan:s0
-/sys/devices/platform/pwm-fan(.*)/state_cap 		u:object_r:sysfs_pwm_fan:s0
-/sys/devices/platform/pwm-fan(.*)/cur_pwm   		u:object_r:sysfs_pwm_fan:s0
-/sys/devices/platform/pwm-fan(.*)/pwm_rpm_table		u:object_r:sysfs_pwm_fan:s0
-/sys/devices/platform/pwm-fan(.*)/rpm_measured		u:object_r:sysfs_pwm_fan:s0
-/sys/devices/platform/pwm-fan(.*)/step_time 	    	u:object_r:sysfs_pwm_fan:s0
-/sys/devices/platform/pwm-fan(.*)/tach_enable		u:object_r:sysfs_pwm_fan:s0
-/sys/devices/platform/pwm-fan(.*)/target_pwm		u:object_r:sysfs_pwm_fan:s0
-/sys/devices/platform/pwm-fan(.*)/temp_control		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/pwm_cap   		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/pwm_state_map		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/state_cap 		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/cur_pwm   		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/pwm_rpm_table		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/rpm_measured		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/step_time 	    	u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/tach_enable		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/target_pwm		u:object_r:sysfs_pwm_fan:s0
+/sys/devices/platform/pwm-fan/temp_control		u:object_r:sysfs_pwm_fan:s0
 
 # cfboost sysfs for pbc access
 /sys/module/input_cfboost/parameters/boost_freq		u:object_r:sysfs_cfboost:s0
@@ -385,6 +389,8 @@
 
 # wifi config
 /factory/wifi_config(/.*)?		u:object_r:rpx_file:s0
+/vendor/firmware/fw_bcmdhd.*		u:object_r:vendor_firmware_wifi_file:s0
+/vendor/firmware/nvram.*		u:object_r:vendor_firmware_wifi_file:s0
 
 # Variable refresh rate sysfs
 /sys/devices/platform/host1x/tegradc.[0-1]/vrr(/.*)    u:object_r:sysfs_vrr:s0

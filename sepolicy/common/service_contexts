@@ -40,3 +40,5 @@ RemoteControlService		u:object_r:accessibility_service:s0
 com.smartthings.service.IHubCore		u:object_r:hubcore:s0
 
 mossigner		u:object_r:mossignerd_service:s0
+
+NvMapperService u:object_r:nv_mapper_service:s0

@@ -1,4 +1,4 @@
-# Copyright (c) 2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2016-2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,3 +16,9 @@ user=_app domain=shield_remote seinfo=platform name=com.nvidia.shield.remote.app
 
 # We need system permission to restrict write access further to /factory/wifi_config
 user=system domain=rpx seinfo=platform name=com.nvidia.shieldtech.rpx type=app_data_file
+
+# We need Device Help and Remote Input to have hal access to ShieldTech
+user=_app domain=shieldtech_app seinfo=platform name=com.nvidia.shield.welcome type=app_data_file levelFrom=user
+user=_app domain=shieldtech_app seinfo=platform name=com.nvidia.beyonder.services.input type=app_data_file levelFrom=user
+
+user=system domain=mapper seinfo=platform name=com.nvidia.ControllerMapper type=app_data_file

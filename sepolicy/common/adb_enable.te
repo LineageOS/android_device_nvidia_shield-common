@@ -1,4 +1,4 @@
-# Copyright (c) 2015-2016, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2015-2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,3 +27,12 @@ allow adb_enable configfs:dir search;
 allow adb_enable configfs:file r_file_perms;
 
 r_dir_file(adb_enable, sysfs_class_udc)
+
+# For persist.convertible.usb.mode
+get_prop(adb_enable, usb_mode_prop)
+# For sys.usb.config
+get_prop(adb_enable, system_radio_prop)
+# For accessing /sys/class/extcon/ID/connect (device/host mode)
+allow adb_enable sysfs_usb_convertible:file rw_file_perms;
+# For accessing /proc/device-tree/chosen/nvdia,safe_mode_adb
+allow adb_enable proc:file r_file_perms;

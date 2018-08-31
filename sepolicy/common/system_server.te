@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -129,9 +129,13 @@ r_dir_file(system_server, sysfs_pci_device)
 # Use HALs
 hal_client_domain(system_server, hal_shieldtech)
 hal_client_domain(system_app, hal_power)
+hal_client_domain(system_server, hal_flynn)
 
 # allow system_server to control gpu power knobs
 allow system_server sysfs_gpu_power_knobs:file rw_file_perms;
 
 # ShieldTech
-allow system_server hal_shieldtech_default:fifo_file read;
+allow system_server hal_shieldtech_default:fifo_file { read ioctl };
+
+#mapper
+allow system_server nv_mapper_service:service_manager { find };

@@ -1,4 +1,4 @@
-# Copyright (c) 2014-2017, NVIDIA CORPORATION.  All rights reserved.
+# Copyright (c) 2014-2018, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -51,3 +51,6 @@ type usb_mode_prop, property_type;
 
 # AB OTA properties
 type ota_prop, property_type;
+
+# For flynnd
+type flynnd_prop, property_type;
