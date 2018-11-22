@@ -101,6 +101,11 @@ ifneq ($(TARGET_TEGRA_VERSION),t114)
 	                      frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml
 endif
 
+# NVIDIA
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/permissions/privapp-permissions-nvidia.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/privapp-permissions-nvidia.xml \
+    $(LOCAL_PATH)/permissions/com.nvidia.doze.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/com.nvidia.doze.xml
+
 # Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
