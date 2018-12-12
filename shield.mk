@@ -15,3 +15,9 @@
 #
 
 TARGET_TEGRA_VARIANT := shield
+
+# Only set if framework modifications for nvcpl and shieldtech are available.
+NV_ANDROID_FRAMEWORK_ENHANCEMENTS := TRUE
+
+# Only set if framework modifications for blakepairing are available.
+NV_ANDROID_FRAMEWORK_ENHANCEMENTS_BLAKE := FALSE
