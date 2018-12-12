@@ -16,6 +16,10 @@
 
 TARGET_TEGRA_VARIANT := shield
 
+# Overlay
+DEVICE_PACKAGE_OVERLAYS += \
+    device/nvidia/shield-common/lineage
+
 # Only set if framework modifications for nvcpl and shieldtech are available.
 NV_ANDROID_FRAMEWORK_ENHANCEMENTS := TRUE
 
