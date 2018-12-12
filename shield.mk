@@ -15,3 +15,7 @@
 #
 
 TARGET_TEGRA_VARIANT := shield
+
+# Overlay
+DEVICE_PACKAGE_OVERLAYS += \
+    device/nvidia/shield-common/lineage
