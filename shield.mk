@@ -27,6 +27,33 @@ PRODUCT_PACKAGES += \
      android.hidl.manager@1.0 \
      android.hidl.manager@1.0-java
 
+# Input Device Configuration
+PRODUCT_PACKAGES += \
+    gpio_ir_recv.idc \
+    virtual-remote.idc \
+    Vendor_0955_Product_7210.idc \
+    Vendor_0955_Product_7212.idc \
+    Vendor_0955_Product_7213.idc \
+    Vendor_0955_Product_7214.idc
+
+# Key layouts
+PRODUCT_PACKAGES += \
+    gpio-keys.kl \
+    tegra-kbc.kl \
+    Vendor_0955_Product_7202.kl \
+    Vendor_0955_Product_7203.kl \
+    Vendor_0955_Product_7205.kl \
+    Vendor_0955_Product_7210.kl \
+    Vendor_0955_Product_7212.kl \
+    Vendor_0955_Product_7213.kl \
+    Vendor_0955_Product_7214.kl \
+    Vendor_0955_Product_7217.kl
+
+# Key layouts for steam controller (supported by upstream stock)
+PRODUCT_PACKAGES += \
+    Vendor_28de_Product_1102.kl \
+    Vendor_28de_Product_1142.kl
+
 # Only set if framework modifications for nvcpl and shieldtech are available.
 NV_ANDROID_FRAMEWORK_ENHANCEMENTS := TRUE
 
