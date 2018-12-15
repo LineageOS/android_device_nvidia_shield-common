@@ -19,3 +19,18 @@ TARGET_TEGRA_VARIANT := shield
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     device/nvidia/shield-common/lineage
+
+# Input Device Configuration
+PRODUCT_PACKAGES += \
+    gpio_ir_recv.idc \
+    virtual-remote.idc \
+    Vendor_0955_Product_7210.idc
+
+# Key layouts
+PRODUCT_PACKAGES += \
+    gpio-keys.kl \
+    tegra-kbc.kl \
+    Vendor_0955_Product_7202.kl \
+    Vendor_0955_Product_7203.kl \
+    Vendor_0955_Product_7205.kl \
+    Vendor_0955_Product_7210.kl
