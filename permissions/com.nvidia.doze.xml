@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config>
+    <allow-in-power-save package="com.android.providers.media" />
+    <allow-in-power-save package="com.plexapp.mediaserver.smb" />
+    <allow-in-power-save package="com.netflix.ninja" />
+    <allow-in-power-save package="com.nvidia.shield.ask" />
+    <allow-in-power-save package="com.nvidia.beyonder.server" />
+    <allow-in-power-save package="com.nvidia.shield.remote.server" />
+    <allow-in-power-save package="com.nvidia.stats" />
+</config>
