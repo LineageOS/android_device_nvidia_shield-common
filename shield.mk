@@ -27,6 +27,22 @@ PRODUCT_PACKAGES += \
      android.hidl.manager@1.0 \
      android.hidl.manager@1.0-java
 
+# Input Device Configuration
+PRODUCT_PACKAGES += \
+    gpio_ir_recv.idc \
+    virtual-remote.idc \
+    Vendor_0955_Product_7210.idc
+
+# Key layouts
+PRODUCT_PACKAGES += \
+    gpio-keys.kl \
+    tegra-kbc.kl \
+    Vendor_0955_Product_7202.kl \
+    Vendor_0955_Product_7203.kl \
+    Vendor_0955_Product_7205.kl \
+    Vendor_0955_Product_7210.kl \
+    Vendor_0955_Product_7217.kl
+
 # Only set if framework modifications for nvcpl and shieldtech are available.
 NV_ANDROID_FRAMEWORK_ENHANCEMENTS := TRUE
 
