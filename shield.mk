@@ -34,3 +34,10 @@ PRODUCT_PACKAGES += \
     Vendor_0955_Product_7203.kl \
     Vendor_0955_Product_7205.kl \
     Vendor_0955_Product_7210.kl
+
+# Shield Specific Permission files
+PRODUCT_PACKAGES += \
+    com.nvidia.doze.xml \
+    com.nvidia.shieldnext.xml \
+    privapp-permissions-nvidia.xml \
+    privapp-permissions-nvidia-system.xml
