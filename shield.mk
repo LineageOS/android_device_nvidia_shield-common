@@ -54,6 +54,12 @@ PRODUCT_PACKAGES += \
     Vendor_28de_Product_1102.kl \
     Vendor_28de_Product_1142.kl
 
+# Shield Specific Permission files
+PRODUCT_PACKAGES += \
+    com.nvidia.doze.xml \
+    com.nvidia.shieldnext.xml \
+    privapp-permissions-nvidia.xml
+
 # Only set if framework modifications for nvcpl and shieldtech are available.
 NV_ANDROID_FRAMEWORK_ENHANCEMENTS := TRUE
 
