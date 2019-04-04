@@ -138,8 +138,8 @@
 # ethernet
 /system/bin/rebindEthernet.sh		u:object_r:rebindEthernet_exec:s0
 # gps
-/system/bin/gps_select.sh		u:object_r:gpsd_exec:s0
-/system/bin/glgps_nvidiaTegra2android	u:object_r:gpsd_exec:s0
+(/system)?/vendor/bin/gps_select.sh		u:object_r:gpsd_exec:s0
+(/system)?/vendor/bin/glgps_nvidiaTegra2android	u:object_r:gpsd_exec:s0
 # adbenable.sh
 /system/bin/adbenable.sh		u:object_r:adb_enable_exec:s0
 # diag
