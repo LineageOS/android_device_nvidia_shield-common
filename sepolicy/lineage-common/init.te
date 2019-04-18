@@ -14,3 +14,7 @@
 
 # Shims
 allow init zygote:process noatsecure;
+
+# fstab formatable flag
+allow init rpx_block_device:blk_file rw_file_perms;
+allow init usercalib_block_device:blk_file rw_file_perms;
