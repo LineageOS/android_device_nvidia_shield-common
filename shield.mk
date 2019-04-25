@@ -195,6 +195,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7213.kl:system/usr/keylayout/Vendor_0955_Product_7213.kl \
     $(LOCAL_PATH)/keylayout/Vendor_0955_Product_7214.kl:system/usr/keylayout/Vendor_0955_Product_7214.kl
 
+# Sony controller keylayouts
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_054c_Product_05c4.kl:system/usr/keylayout/Vendor_054c_Product_05c4.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_054c_Product_09cc.kl:system/usr/keylayout/Vendor_054c_Product_09cc.kl \
+    $(LOCAL_PATH)/keylayout/Vendor_054c_Product_0ba0.kl:system/usr/keylayout/Vendor_054c_Product_0ba0.kl
+
 # Steam controller keylayouts
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/Vendor_28de_Product_1102.kl:system/usr/keylayout/Vendor_28de_Product_1102.kl \
