@@ -16,6 +16,11 @@
 
 TARGET_TEGRA_VARIANT := shield
 
+-include vendor/lineage/product/nvidia.mk
+ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),true)
+TARGET_TEGRA_TEGRAZONE := true
+endif
+
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
     device/nvidia/shield-common/lineage
