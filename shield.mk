@@ -14,7 +14,8 @@
 # limitations under the License.
 #
 
-TARGET_TEGRA_VARIANT := shield
+TARGET_TEGRA_VARIANT   := shield
+TARGET_TEGRA_TEGRAZONE := true
 
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += \
