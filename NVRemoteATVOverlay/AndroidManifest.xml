@@ -1,0 +1,5 @@
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.lineage.nvremoteatvoverlay">
+    <overlay android:targetPackage="android" android:priority="1338"/>
+</manifest>

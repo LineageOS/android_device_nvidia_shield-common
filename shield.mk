@@ -39,3 +39,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     com.nvidia.shield.xml \
     com.nvidia.shieldnext.xml
+
+PRODUCT_PACKAGES += \
+    NVRemoteATVOverlay

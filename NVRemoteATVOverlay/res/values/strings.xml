@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="config_tvRemoteServicePackage">com.google.android.tv.remote.service,com.nvidia.shield.remote.server</string>
+</resources>
