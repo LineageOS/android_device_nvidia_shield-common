@@ -206,6 +206,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/keylayout/Vendor_28de_Product_1102.kl:system/usr/keylayout/Vendor_28de_Product_1102.kl \
     $(LOCAL_PATH)/keylayout/Vendor_28de_Product_1142.kl:system/usr/keylayout/Vendor_28de_Product_1142.kl
 
+# Leanback apps
+ifeq ($(PRODUCT_IS_ATV),true)
+    $(call inherit-product-if-exists, device/lineage/atv/lineage_atv.mk)
+endif
+
 # Keymaster
 PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \

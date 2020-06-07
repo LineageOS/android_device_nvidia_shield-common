@@ -1,4 +1,8 @@
 [
+  {
+   "repository": "android_device_lineage_atv",
+   "target_path": "device/lineage/atv"
+  },
  {
    "repository": "android_hardware_nvidia_libstagefrighthw",
    "target_path": "hardware/nvidia/libstagefrighthw"
