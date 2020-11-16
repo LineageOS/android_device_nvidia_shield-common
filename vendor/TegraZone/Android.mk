@@ -1,4 +1,4 @@
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifneq ($(TARGET_TEGRA_VARIANT),)
-
 LOCAL_PATH := $(call my-dir)
+SHIELD_TEGRAZONE_PATH := ../../../../../vendor/nvidia/shield/TegraZone
 
-include $(call all-makefiles-under,$(LOCAL_PATH))
-
-endif
+include $(CLEAR_VARS)
+LOCAL_MODULE               := TegraZone_Next
+LOCAL_MODULE_TAGS          := optional
+LOCAL_SRC_FILES            := $(SHIELD_TEGRAZONE_PATH)/app/TegraZone_Next.apk
+LOCAL_CERTIFICATE          := PRESIGNED
+LOCAL_MODULE_CLASS         := APPS
+LOCAL_MODULE_SUFFIX        := $(COMMON_ANDROID_PACKAGE_SUFFIX)
+include $(BUILD_NVIDIA_COMMON_PREBUILT)

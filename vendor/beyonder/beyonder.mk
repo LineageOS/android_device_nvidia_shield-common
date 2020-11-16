@@ -1,4 +1,4 @@
-# Copyright (C) 2018 The LineageOS Project
+# Copyright (C) 2020 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifneq ($(TARGET_TEGRA_VARIANT),)
-
-LOCAL_PATH := $(call my-dir)
-
-include $(call all-makefiles-under,$(LOCAL_PATH))
-
-endif
+PRODUCT_PACKAGES += \
+                    BeyonderServer \
+                    privapp-permissions-nvidia-beyonder.xml
