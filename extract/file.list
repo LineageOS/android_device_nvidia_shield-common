@@ -1,0 +1,33 @@
+# NvAccessories
+stock-t210	vendor/app/AccessoryUiTv/AccessoryUiTv.apk		shield/accessories/app/AccessoryUiTv.apk
+stock-t210	vendor/app/NvAccessories/NvAccessories.apk		shield/accessories/app/NvAccessories.apk
+stock-t210	system/system/priv-app/NvAccProxy/NvAccProxy.apk	shield/accessories/app/NvAccProxy.apk
+stock-t210	vendor/app/NvCustomize/NvCustomize.apk			shield/accessories/app/NvCustomize.apk
+stock-t210	system/system/app/NvShieldService/NvShieldService.apk	shield/accessories/app/NvShieldService.apk
+stock-sif	vendor/bin/lota						shield/accessories/bin32/lota
+stock-t210	vendor/bin/lota						shield/accessories/bin64/lota
+stock-t210	vendor/lib64/libfirmwareupdate.so			shield/accessories/lib64/libfirmwareupdate.so
+stock-t210	vendor/lib64/libhidraw.so				shield/accessories/lib64/libhidraw.so
+stock-sif	vendor/lib/libfirmwareupdate.so				shield/accessories/lib/libfirmwareupdate.so
+stock-sif	vendor/lib/libhidraw.so					shield/accessories/lib/libhidraw.so
+
+# Accessory Firmware Updates
+stock-t210	vendor/oem/firmware/Blake.blkz			shield/accessories/firmware/Blake/Blake.blkz
+stock-t210	vendor/oem/firmware/Jarvis.blkz			shield/accessories/firmware/Jarvis/Jarvis.blkz
+stock-t210	vendor/oem/firmware/Pepper.blkz			shield/accessories/firmware/Pepper/Pepper.blkz
+stock-t210	vendor/oem/firmware/Thunderstrike.blkz		shield/accessories/firmware/Thunderstrike/Thunderstrike.blkz
+stock-t210	vendor/oem/firmware/Thunderstrike_locale.blkz	shield/accessories/firmware/Thunderstrike/Thunderstrike_locale.blkz
+stock-t210	vendor/oem/firmware/friday.blkz			shield/accessories/firmware/Friday/friday.blkz
+
+# Beyonder
+stock-t210	system/system/priv-app/BeyonderServer/BeyonderServer.apk	shield/beyonder/app/BeyonderServer.apk
+
+# ShieldTech
+stock-t210	system/system/priv-app/NvShieldTech/NvShieldTech.apk				shield/shieldtech/app/NvShieldTech.apk
+stock-sif	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service	shield/shieldtech/bin32/hw/vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service
+stock-t210	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service	shield/shieldtech/bin64/hw/vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service
+stock-sif	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.rpx@1.0-service			shield/shieldtech/bin32/hw/vendor.nvidia.hardware.shieldtech.rpx@1.0-service
+stock-t210	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.rpx@1.0-service			shield/shieldtech/bin64/hw/vendor.nvidia.hardware.shieldtech.rpx@1.0-service
+
+# TegraZone (Nvidia Games)
+stock-t210	system/system/app/TegraZone_Next/TegraZone_Next.apk	shield/TegraZone/app/TegraZone_Next.apk
