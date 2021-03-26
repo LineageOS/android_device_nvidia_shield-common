@@ -25,6 +25,7 @@ LOCAL_MODULE_SUFFIX        := $(COMMON_ANDROID_PACKAGE_SUFFIX)
 LOCAL_PRIVILEGED_MODULE    := true
 include $(BUILD_PREBUILT)
 
+ifeq ($(TARGET_SHIELDTECH_INPUTFLINGER),nvidia)
 include $(CLEAR_VARS)
 LOCAL_MODULE               := vendor.nvidia.hardware.shieldtech.inputflinger@2.0-service
 LOCAL_SRC_FILES_64         := $(SHIELD_SHIELDTECH_PATH)/bin64/hw/vendor.nvidia.hardware.shieldtech.inputflinger@2.0-service
@@ -37,6 +38,7 @@ LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := hw
 include $(BUILD_NVIDIA_PREBUILT)
+endif
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := vendor.nvidia.hardware.shieldtech.rpx@1.0-service
