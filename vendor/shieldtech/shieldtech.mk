@@ -14,7 +14,7 @@
 
 PRODUCT_PACKAGES += \
                     NvShieldTech \
-                    vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service \
+                    vendor.nvidia.hardware.shieldtech.inputflinger@2.0-service \
                     vendor.nvidia.hardware.shieldtech.rpx@1.0-service \
                     com.nvidia.shieldtech.xml \
                     privapp-permissions-nvidia-shieldtech.xml

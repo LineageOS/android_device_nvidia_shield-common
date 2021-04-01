@@ -24,8 +24,8 @@ stock-t210	system/system/priv-app/BeyonderServer/BeyonderServer.apk	shield/beyon
 
 # ShieldTech
 stock-t210	system/system/priv-app/NvShieldTech/NvShieldTech.apk				shield/shieldtech/app/NvShieldTech.apk
-stock-sif	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service	shield/shieldtech/bin32/hw/vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service
-stock-t210	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service	shield/shieldtech/bin64/hw/vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service
+stock-sif	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.inputflinger@2.0-service	shield/shieldtech/bin32/hw/vendor.nvidia.hardware.shieldtech.inputflinger@2.0-service
+stock-t210	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.inputflinger@2.0-service	shield/shieldtech/bin64/hw/vendor.nvidia.hardware.shieldtech.inputflinger@2.0-service
 stock-sif	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.rpx@1.0-service			shield/shieldtech/bin32/hw/vendor.nvidia.hardware.shieldtech.rpx@1.0-service
 stock-t210	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.rpx@1.0-service			shield/shieldtech/bin64/hw/vendor.nvidia.hardware.shieldtech.rpx@1.0-service
 

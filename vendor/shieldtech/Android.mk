@@ -26,12 +26,11 @@ LOCAL_PRIVILEGED_MODULE    := true
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service
-LOCAL_SRC_FILES_32         := $(SHIELD_SHIELDTECH_PATH)/bin32/hw/vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service
-LOCAL_SRC_FILES_64         := $(SHIELD_SHIELDTECH_PATH)/bin64/hw/vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service
-LOCAL_MULTILIB             := first
-LOCAL_INIT_RC              := etc/init/vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service.rc
-LOCAL_VINTF_FRAGMENTS      := vendor.nvidia.hardware.shieldtech.inputflinger@1.0-service.xml
+LOCAL_MODULE               := vendor.nvidia.hardware.shieldtech.inputflinger@2.0-service
+LOCAL_SRC_FILES_64         := $(SHIELD_SHIELDTECH_PATH)/bin64/hw/vendor.nvidia.hardware.shieldtech.inputflinger@2.0-service
+LOCAL_MULTILIB             := 64
+LOCAL_INIT_RC              := etc/init/vendor.nvidia.hardware.shieldtech.inputflinger@2.0-service.rc
+LOCAL_VINTF_FRAGMENTS      := vendor.nvidia.hardware.shieldtech.inputflinger@2.0-service.xml
 LOCAL_MODULE_CLASS         := EXECUTABLES
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
