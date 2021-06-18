@@ -20,7 +20,6 @@ LOCAL_MODULE               := com.nvidia.doze.xml
 LOCAL_SRC_FILES            := com.nvidia.doze.xml
 LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_CLASS         := ETC
-LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := sysconfig
 include $(BUILD_PREBUILT)
 
