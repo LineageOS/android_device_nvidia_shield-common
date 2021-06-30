@@ -37,6 +37,5 @@ PRODUCT_PACKAGES += \
 
 # Shield Specific Permission files
 PRODUCT_PACKAGES += \
-    com.nvidia.doze.xml \
     com.nvidia.shield.xml \
     com.nvidia.shieldnext.xml
