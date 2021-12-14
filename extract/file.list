@@ -3,7 +3,7 @@ stock-t210	vendor/app/AccessoryUiTv/AccessoryUiTv.apk		shield/accessories/app/Ac
 stock-t210	vendor/app/NvAccessories/NvAccessories.apk		shield/accessories/app/NvAccessories.apk
 stock-t210	system/system/priv-app/NvAccProxy/NvAccProxy.apk	shield/accessories/app/NvAccProxy.apk
 stock-t210	vendor/app/NvCustomize/NvCustomize.apk			shield/accessories/app/NvCustomize.apk
-stock-t210	system/system/app/NvShieldService/NvShieldService.apk	shield/accessories/app/NvShieldService.apk
+stock-t210	vendor/app/NvShieldService/NvShieldService.apk		shield/accessories/app/NvShieldService.apk
 stock-sif	vendor/bin/lota						shield/accessories/bin32/lota
 stock-t210	vendor/bin/lota						shield/accessories/bin64/lota
 stock-t210	vendor/lib64/libfirmwareupdate.so			shield/accessories/lib64/libfirmwareupdate.so
