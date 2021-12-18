@@ -16,15 +16,6 @@
 LOCAL_PATH:= $(call my-dir)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE        := gpio-keys.kl
-LOCAL_SRC_FILES     := gpio-keys.kl
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_VENDOR_MODULE := true
-LOCAL_MODULE_PATH   := $(TARGET_OUT_VENDOR)/usr/keylayout
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE        := tegra-kbc.kl
 LOCAL_SRC_FILES     := tegra-kbc.kl
 LOCAL_MODULE_TAGS   := optional

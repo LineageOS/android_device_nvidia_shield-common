@@ -28,7 +28,6 @@ PRODUCT_PACKAGES += \
 
 # Key layouts
 PRODUCT_PACKAGES += \
-    gpio-keys.kl \
     tegra-kbc.kl \
     Vendor_0955_Product_7202.kl \
     Vendor_0955_Product_7203.kl \
