@@ -16,6 +16,24 @@
       "message": "will this work on GSI? I\u0027m doubtful",
       "revId": "e89267251d1d04cc5288f4853fe8bded1bfca468",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a69573f1_654a1dd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2022-04-07T16:09:47Z",
+      "side": 1,
+      "message": "It ships on foster/darcy on vendor. I don\u0027t think it uses any special permissions anymore. Doesn\u0027t need to be privapp or have a sysconfig or anything like that. But it\u0027s not v+\u0027ed yet cause I need to explicitly verify a few things. Like what happens if cpl is missing.",
+      "parentUuid": "8a7d2512_47db573e",
+      "revId": "e89267251d1d04cc5288f4853fe8bded1bfca468",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
