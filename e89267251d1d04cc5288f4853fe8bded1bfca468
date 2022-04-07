@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a7d2512_47db573e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2022-04-07T15:40:12Z",
+      "side": 1,
+      "message": "will this work on GSI? I\u0027m doubtful",
+      "revId": "e89267251d1d04cc5288f4853fe8bded1bfca468",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
