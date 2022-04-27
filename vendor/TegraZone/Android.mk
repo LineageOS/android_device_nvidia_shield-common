@@ -16,12 +16,13 @@ LOCAL_PATH := $(call my-dir)
 SHIELD_TEGRAZONE_PATH := ../../../../../vendor/nvidia/shield/TegraZone
 
 include $(CLEAR_VARS)
-LOCAL_MODULE               := TegraZone_Next
-LOCAL_MODULE_TAGS          := optional
-LOCAL_SRC_FILES            := $(SHIELD_TEGRAZONE_PATH)/app/TegraZone_Next.apk
-LOCAL_CERTIFICATE          := PRESIGNED
-LOCAL_MODULE_CLASS         := APPS
-LOCAL_MODULE_SUFFIX        := $(COMMON_ANDROID_PACKAGE_SUFFIX)
-LOCAL_VENDOR_MODULE        := true
-LOCAL_DEX_PREOPT           := false
+LOCAL_MODULE                  := TegraZone_Next
+LOCAL_MODULE_TAGS             := optional
+LOCAL_SRC_FILES               := $(SHIELD_TEGRAZONE_PATH)/app/TegraZone_Next.apk
+LOCAL_CERTIFICATE             := PRESIGNED
+LOCAL_MODULE_CLASS            := APPS
+LOCAL_MODULE_SUFFIX           := $(COMMON_ANDROID_PACKAGE_SUFFIX)
+LOCAL_VENDOR_MODULE           := true
+LOCAL_DEX_PREOPT              := false
+LOCAL_OPTIONAL_USES_LIBRARIES := org.apache.http.legacy
 include $(BUILD_NVIDIA_COMMON_PREBUILT)
