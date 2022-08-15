@@ -34,6 +34,23 @@
       "parentUuid": "54ce9d84_dc8de928",
       "revId": "8108bf43712451023b468a6d47893b0e527cb645",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcdb74be_d1bf55fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 29654
+      },
+      "writtenOn": "2022-08-15T17:29:22Z",
+      "side": 1,
+      "message": "MindTheGApps overrides config_tvRemoteServicePackage with a runtime resource overlay, undoing the effect of this change.",
+      "revId": "8108bf43712451023b468a6d47893b0e527cb645",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
