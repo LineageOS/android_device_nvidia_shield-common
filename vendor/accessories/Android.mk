@@ -19,7 +19,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE               := AccessoryUiTv
 LOCAL_MODULE_TAGS          := optional
 LOCAL_SRC_FILES            := $(SHIELD_ACC_PATH)/app/AccessoryUiTv.apk
-LOCAL_CERTIFICATE          := PRESIGNED
+LOCAL_CERTIFICATE          := platform
 LOCAL_MODULE_CLASS         := APPS
 LOCAL_MODULE_SUFFIX        := $(COMMON_ANDROID_PACKAGE_SUFFIX)
 LOCAL_VENDOR_MODULE        := true
@@ -30,7 +30,7 @@ LOCAL_MODULE               := NvAccessories
 LOCAL_VINTF_FRAGMENTS      := vendor.nvidia.hardware.nvwifi@1.0.xml
 LOCAL_MODULE_TAGS          := optional
 LOCAL_SRC_FILES            := $(SHIELD_ACC_PATH)/app/NvAccessories.apk
-LOCAL_CERTIFICATE          := PRESIGNED
+LOCAL_CERTIFICATE          := platform
 LOCAL_MODULE_CLASS         := APPS
 LOCAL_MODULE_SUFFIX        := $(COMMON_ANDROID_PACKAGE_SUFFIX)
 LOCAL_VENDOR_MODULE        := true
@@ -41,7 +41,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE               := NvCustomize
 LOCAL_MODULE_TAGS          := optional
 LOCAL_SRC_FILES            := $(SHIELD_ACC_PATH)/app/NvCustomize.apk
-LOCAL_CERTIFICATE          := PRESIGNED
+LOCAL_CERTIFICATE          := platform
 LOCAL_MODULE_CLASS         := APPS
 LOCAL_MODULE_SUFFIX        := $(COMMON_ANDROID_PACKAGE_SUFFIX)
 include $(BUILD_NVIDIA_PREBUILT)
@@ -51,7 +51,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE               := NvAccProxy
 LOCAL_MODULE_TAGS          := optional
 LOCAL_SRC_FILES            := $(SHIELD_ACC_PATH)/app/NvAccProxy.apk
-LOCAL_CERTIFICATE          := PRESIGNED
+LOCAL_CERTIFICATE          := platform
 LOCAL_MODULE_CLASS         := APPS
 LOCAL_MODULE_SUFFIX        := $(COMMON_ANDROID_PACKAGE_SUFFIX)
 LOCAL_PRIVILEGED_MODULE    := true
@@ -61,7 +61,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE               := NvShieldService
 LOCAL_MODULE_TAGS          := optional
 LOCAL_SRC_FILES            := $(SHIELD_ACC_PATH)/app/NvShieldService.apk
-LOCAL_CERTIFICATE          := PRESIGNED
+LOCAL_CERTIFICATE          := platform
 LOCAL_MODULE_CLASS         := APPS
 LOCAL_MODULE_SUFFIX        := $(COMMON_ANDROID_PACKAGE_SUFFIX)
 LOCAL_VENDOR_MODULE        := true
