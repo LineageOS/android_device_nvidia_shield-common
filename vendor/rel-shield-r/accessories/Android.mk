@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ifeq ($(TARGET_TEGRA_DEFAULT_BRANCH),rel-shield-r)
 LOCAL_PATH := $(call my-dir)
-SHIELD_ACC_PATH := ../../../../../vendor/nvidia/shield/accessories
+SHIELD_ACC_PATH := ../../../../../../vendor/nvidia/shield/rel-shield-r/accessories
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := AccessoryUiTv
@@ -111,3 +112,4 @@ LOCAL_MODULE_OWNER         := nvidia
 LOCAL_VENDOR_MODULE        := true
 LOCAL_MODULE_RELATIVE_PATH := permissions
 include $(BUILD_PREBUILT)
+endif

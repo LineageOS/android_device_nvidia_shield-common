@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ifeq ($(TARGET_TEGRA_DEFAULT_BRANCH),rel-shield-r)
 LOCAL_PATH := $(call my-dir)
-SHIELD_BEYONDER_PATH := ../../../../../vendor/nvidia/shield/beyonder
+SHIELD_BEYONDER_PATH := ../../../../../../vendor/nvidia/shield/rel-shield-r/beyonder
 
 include $(CLEAR_VARS)
 LOCAL_MODULE               := BeyonderServer
@@ -33,3 +34,4 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_MODULE_RELATIVE_PATH := permissions
 include $(BUILD_PREBUILT)
+endif

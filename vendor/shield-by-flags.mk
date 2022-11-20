@@ -15,19 +15,27 @@
 LOCAL_PATH := device/nvidia/shield-common/vendor
 
 ifeq ($(NV_ANDROID_SHIELDTECH_ENHANCEMENTS),true)
-$(call inherit-product, $(LOCAL_PATH)/shieldtech/shieldtech.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/shieldtech/shieldtech.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/shieldtech/shieldtech.mk)
+endif
 endif
 
 ifeq ($(NV_ANDROID_BEYONDER_ENHANCEMENTS),true)
-$(call inherit-product, $(LOCAL_PATH)/beyonder/beyonder.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/beyonder/beyonder.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/beyonder/beyonder.mk)
+endif
 endif
 
 ifeq ($(NV_ANDROID_SHIELDTECH_ENHANCEMENTS),true)
-$(call inherit-product, $(LOCAL_PATH)/accessories/nvaccessories.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/accessories/nvaccessories.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/accessories/nvaccessories.mk)
+endif
 endif
 
 ifeq ($(TARGET_TEGRA_VARIANT),shield)
 ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),true)
-$(call inherit-product, $(LOCAL_PATH)/TegraZone/tegrazone.mk)
+ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/TegraZone/tegrazone.mk)","")
+$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/TegraZone/tegrazone.mk)
+endif
 endif
 endif
