@@ -17,10 +17,6 @@
 TARGET_TEGRA_VARIANT := shield
 TARGET_SHIELDTECH_INPUTFLINGER ?= nvidia
 
-# Overlay
-DEVICE_PACKAGE_OVERLAYS += \
-    device/nvidia/shield-common/overlay/lineage
-
 # Input Device Configuration
 PRODUCT_PACKAGES += \
     gpio_ir_recv.idc \
