@@ -31,11 +31,3 @@ ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/accessories/nvac
 $(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/accessories/nvaccessories.mk)
 endif
 endif
-
-ifeq ($(TARGET_TEGRA_VARIANT),shield)
-ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),true)
-ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/TegraZone/tegrazone.mk)","")
-$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/TegraZone/tegrazone.mk)
-endif
-endif
-endif
