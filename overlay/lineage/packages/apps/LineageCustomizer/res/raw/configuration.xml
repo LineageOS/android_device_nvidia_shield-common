@@ -2,19 +2,13 @@
     <!-- See LineageCustomizer for explanations of the sections -->
 
     <partner-favorite-apps-out-of-box-order>
-        <app name="TegraZone" package_name="com.nvidia.tegrazone3"/>
         <app name="Youtube" package_name="com.google.android.youtube.tv"/>
         <app name="SmartTube" package_name="com.teamsmart.videomanager.tv"/>
         <app name="STN Beta" package_name="com.liskovsoft.smarttubetv.beta"/>
         <app name="Google Movies" package_name="com.google.android.videos"/>
     </partner-favorite-apps-out-of-box-order>
 
-    <partner-games-out-of-box-order>
-        <app name="TegraZone" package_name="com.nvidia.tegrazone3"/>
-    </partner-games-out-of-box-order>
-
     <partner-channels-out-of-box-order>
-        <package-name>com.nvidia.tegrazone3</package-name>
         <package-name>com.google.android.youtube.tv</package-name>
         <package-name>com.teamsmart.videomanager.tv</package-name>
         <package-name>com.liskovsoft.smarttubetv.beta</package-name>
@@ -27,7 +21,6 @@
     </partner-package-notification-whitelist>
 
     <partner-app-channel-quota>
-        <app package_name="com.nvidia.tegrazone3" quota="8"/>
         <app package_name="com.google.android.youtube.tv" quota="8"/>
         <app package_name="com.teamsmart.videomanager.tv" quota="8"/>
         <app package_name="com.liskovsoft.smarttubetv.beta" quota="8"/>
