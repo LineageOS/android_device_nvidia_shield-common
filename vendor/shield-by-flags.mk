@@ -25,9 +25,3 @@ endif
 ifeq ($(NV_ANDROID_SHIELDTECH_ENHANCEMENTS),true)
 $(call inherit-product, $(LOCAL_PATH)/accessories/nvaccessories.mk)
 endif
-
-ifeq ($(TARGET_TEGRA_VARIANT),shield)
-ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),true)
-$(call inherit-product, $(LOCAL_PATH)/TegraZone/tegrazone.mk)
-endif
-endif
