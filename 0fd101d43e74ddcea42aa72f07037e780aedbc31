@@ -33,6 +33,24 @@
       "message": "\u003e Patch Set 4:\n\u003e \n\u003e or we could just move it to system? idk. on vendor makes no sense anyway\n\nFunny enough, it\u0027s set as a vendor module even though selinux label points to system.",
       "revId": "0fd101d43e74ddcea42aa72f07037e780aedbc31",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c71174_6c62c016",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 13648
+      },
+      "writtenOn": "2022-12-20T16:24:47Z",
+      "side": 1,
+      "message": "Oh, that\u0027s not selinux.",
+      "parentUuid": "76c19c87_1b7c8317",
+      "revId": "0fd101d43e74ddcea42aa72f07037e780aedbc31",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
