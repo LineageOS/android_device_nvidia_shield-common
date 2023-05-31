@@ -33,3 +33,12 @@ LOCAL_MODULE_TAGS          := optional
 LOCAL_MODULE_OWNER         := nvidia
 LOCAL_MODULE_RELATIVE_PATH := permissions
 include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE        := beyonder-remote.idc
+LOCAL_SRC_FILES     := etc/idc/beyonder-remote.idc
+LOCAL_MODULE_TAGS   := optional
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_VENDOR_MODULE := true
+LOCAL_MODULE_PATH   := $(TARGET_OUT_VENDOR)/usr/idc
+include $(BUILD_PREBUILT)
