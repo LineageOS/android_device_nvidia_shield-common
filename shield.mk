@@ -33,7 +33,8 @@ PRODUCT_PACKAGES += \
     Vendor_0955_Product_7202.kl \
     Vendor_0955_Product_7203.kl \
     Vendor_0955_Product_7205.kl \
-    Vendor_0955_Product_7210.kl
+    Vendor_0955_Product_7210.kl \
+    virtual-remote.kl
 
 # Shield Specific Permission files
 PRODUCT_PACKAGES += \
