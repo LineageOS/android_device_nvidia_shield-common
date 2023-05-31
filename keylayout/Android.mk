@@ -59,3 +59,12 @@ LOCAL_MODULE_CLASS  := ETC
 LOCAL_VENDOR_MODULE := true
 LOCAL_MODULE_PATH   := $(TARGET_OUT_VENDOR)/usr/keylayout
 include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
+LOCAL_MODULE        := virtual-remote.kl
+LOCAL_SRC_FILES     := virtual-remote.kl
+LOCAL_MODULE_TAGS   := optional
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_VENDOR_MODULE := true
+LOCAL_MODULE_PATH   := $(TARGET_OUT_VENDOR)/usr/keylayout
+include $(BUILD_PREBUILT)

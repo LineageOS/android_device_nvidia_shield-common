@@ -14,4 +14,5 @@
 
 PRODUCT_PACKAGES += \
                     BeyonderServer \
-                    privapp-permissions-nvidia-beyonder.xml
+                    privapp-permissions-nvidia-beyonder.xml \
+                    beyonder-remote.idc

@@ -25,6 +25,15 @@ LOCAL_MODULE_PATH   := $(TARGET_OUT_VENDOR)/usr/idc
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
+LOCAL_MODULE        := beyonder-remote.idc
+LOCAL_SRC_FILES     := beyonder-remote.idc
+LOCAL_MODULE_TAGS   := optional
+LOCAL_MODULE_CLASS  := ETC
+LOCAL_VENDOR_MODULE := true
+LOCAL_MODULE_PATH   := $(TARGET_OUT_VENDOR)/usr/idc
+include $(BUILD_PREBUILT)
+
+include $(CLEAR_VARS)
 LOCAL_MODULE        := virtual-remote.idc
 LOCAL_SRC_FILES     := virtual-remote.idc
 LOCAL_MODULE_TAGS   := optional
