@@ -16,6 +16,24 @@
       "message": "Multiple things here, that should probably be independent commits.\n1) Beyonder stuff should be in the vendor folder. Yeah, it can kinda go either way, but if it\u0027s installed by the vendor flag, the file should be in the vendor folder for consistency.\n2) Is virtual-remote a beyonder thing or is generic, maybe even aosp? I note the headers are aosp at least. Whereas the beyonder remote file has an nvidia header. If these aren\u0027t used even by beyonder, then they should probably dropped, including the existing idc.",
       "revId": "9b00c64cac9f7752db0c03a0536b6dc799fbac5e",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "591c0904_92f91aa7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2023-05-31T04:05:41Z",
+      "side": 1,
+      "message": "1) agreed\n2) not totally sure--it\u0027s in stock, but i can\u0027t find it in aosp or on the device, and you had just the idc in there already (minus the header)",
+      "parentUuid": "8ec6612a_7d742fdb",
+      "revId": "9b00c64cac9f7752db0c03a0536b6dc799fbac5e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
