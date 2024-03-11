@@ -34,8 +34,6 @@ endif
 
 ifeq ($(TARGET_TEGRA_VARIANT),shield)
 ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),true)
-ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/TegraZone/tegrazone.mk)","")
-$(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/TegraZone/tegrazone.mk)
-endif
+$(call inherit-product, $(LOCAL_PATH)/external/TegraZone/tegrazone.mk)
 endif
 endif
