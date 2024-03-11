@@ -28,6 +28,3 @@ stock-sif	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.inputflinger@2.0-servi
 stock-t210	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.inputflinger@2.0-service	shieldtech/bin64/hw/
 stock-sif	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.rpx@1.0-service			shieldtech/bin32/hw/
 stock-t210	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.rpx@1.0-service			shieldtech/bin64/hw/
-
-# TegraZone (Nvidia Games)
-stock-t210	system/system/app/TegraZone_Next/TegraZone_Next.apk	TegraZone/app/
