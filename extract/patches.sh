@@ -17,7 +17,7 @@ function fetch_tegrazone() {
   echo -n "Fetching TegraZone from Archive.org...";
 
   mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/shield/external/TegraZone/app
-  wget -q 'https://archive.org/download/com.nvidia.tegrazone3_5.51.31668050/com.nvidia.tegrazone3_5.51.31668050.apk' -O ${LINEAGE_ROOT}/${OUTDIR}/shield/external/TegraZone/app/TegraZone_Next.apk
+  wget -q 'https://archive.org/download/com.nvidia.tegrazone3_5.51.31668050/com.nvidia.tegrazone3_5.51.31668050.apk' -O $(realpath ${LINEAGE_ROOT}/${OUTDIR}/shield/external/TegraZone/app/TegraZone_Next.apk)
 
   echo "";
 }
