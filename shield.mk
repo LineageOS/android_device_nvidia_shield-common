@@ -23,17 +23,11 @@ DEVICE_PACKAGE_OVERLAYS += \
 
 # Input Device Configuration
 PRODUCT_PACKAGES += \
-    gpio_ir_recv.idc \
-    virtual-remote.idc \
-    Vendor_0955_Product_7210.idc
+    idc_data_shield
 
 # Key layouts
 PRODUCT_PACKAGES += \
-    tegra-kbc.kl \
-    Vendor_0955_Product_7202.kl \
-    Vendor_0955_Product_7203.kl \
-    Vendor_0955_Product_7205.kl \
-    Vendor_0955_Product_7210.kl
+    keylayout_data_shield
 
 # Shield Specific Permission files
 PRODUCT_PACKAGES += \
