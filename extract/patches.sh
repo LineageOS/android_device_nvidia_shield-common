@@ -14,11 +14,15 @@
 
 # Recovery image copy of tegrazone has invalid signature format
 function fetch_tegrazone() {
-  echo -n "Fetching TegraZone from Archive.org...";
-
-  mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/shield/external/TegraZone/app
-  wget -q 'https://archive.org/download/com.nvidia.tegrazone3_5.51.31668050/com.nvidia.tegrazone3_5.51.31668050.apk' -O $(realpath ${LINEAGE_ROOT}/${OUTDIR}/shield/external/TegraZone/app/TegraZone_Next.apk)
-
-  echo "";
+  if [ -n "${CACHEDIR}" -a -z "${PRIMECACHE}" ]; then
+    echo -n "Extracting TegraZone from cache...";
+    mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/shield/external/TegraZone/app
+    cp ${CACHEDIR}/play-store/TegraZone_Next.apk $(realpath ${LINEAGE_ROOT}/${OUTDIR}/shield/external/TegraZone/app/TegraZone_Next.apk)
+  else
+    echo -n "Fetching TegraZone from Archive.org...";
+    mkdir -p ${LINEAGE_ROOT}/${OUTDIR}/shield/external/TegraZone/app
+    wget -q 'https://archive.org/download/com.nvidia.tegrazone3_5.51.31668050/com.nvidia.tegrazone3_5.51.31668050.apk' -O $(realpath ${LINEAGE_ROOT}/${OUTDIR}/shield/external/TegraZone/app/TegraZone_Next.apk)
+    echo "";
+  fi
 }
 fetch_tegrazone;
