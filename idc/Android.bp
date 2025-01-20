@@ -18,5 +18,4 @@ prebuilt_usr_idc {
     name: "idc_data_shield",
     srcs: ["*.idc"],
     soc_specific: true,
-    no_full_install: true,
 }
