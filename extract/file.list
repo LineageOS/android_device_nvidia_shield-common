@@ -30,4 +30,4 @@ stock-sif	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.rpx@1.0-service			shie
 stock-t210	vendor/bin/hw/vendor.nvidia.hardware.shieldtech.rpx@1.0-service			shieldtech/bin64/hw/
 
 # TegraZone
-external	https://archive.org/download/com.nvidia.tegrazone3_5.51.31668050/com.nvidia.tegrazone3_5.51.31668050.apk	TegraZone/app/TegraZone_Next.apk
+stock-t210	system/system/app/TegraZone_Next/TegraZone_Next.apk	TegraZone/app/TegraZone_Next.apk
