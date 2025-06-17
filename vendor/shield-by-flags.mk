@@ -13,21 +13,27 @@
 # limitations under the License.
 
 LOCAL_PATH := device/nvidia/shield-common/vendor
+VENDOR_PATH := vendor/nvidia/shield
+
+PRODUCT_SOURCE_ROOT_DIRS += -$(LOCAL_PATH) -$(VENDOR_PATH)
 
 ifeq ($(NV_ANDROID_SHIELDTECH_ENHANCEMENTS),true)
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/shieldtech/shieldtech.mk)","")
+PRODUCT_SOURCE_ROOT_DIRS += $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/shieldtech $(VENDOR_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/shieldtech
 $(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/shieldtech/shieldtech.mk)
 endif
 endif
 
 ifeq ($(NV_ANDROID_BEYONDER_ENHANCEMENTS),true)
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/beyonder/beyonder.mk)","")
+PRODUCT_SOURCE_ROOT_DIRS += $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/beyonder $(VENDOR_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/beyonder
 $(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/beyonder/beyonder.mk)
 endif
 endif
 
 ifeq ($(NV_ANDROID_SHIELDTECH_ENHANCEMENTS),true)
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/accessories/nvaccessories.mk)","")
+PRODUCT_SOURCE_ROOT_DIRS += $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/accessories $(VENDOR_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/accessories
 $(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/accessories/nvaccessories.mk)
 endif
 endif
@@ -35,6 +41,7 @@ endif
 ifeq ($(TARGET_TEGRA_VARIANT),shield)
 ifeq ($(NV_ANDROID_FRAMEWORK_ENHANCEMENTS),true)
 ifneq ("$(wildcard $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/TegraZone/tegrazone.mk)","")
+PRODUCT_SOURCE_ROOT_DIRS += $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/TegraZone $(VENDOR_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/TegraZone
 $(call inherit-product, $(LOCAL_PATH)/$(TARGET_TEGRA_DEFAULT_BRANCH)/TegraZone/tegrazone.mk)
 endif
 endif

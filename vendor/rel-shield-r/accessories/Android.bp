@@ -1,0 +1,108 @@
+android_app_import {
+    name: "AccessoryUiTv",
+    owner: "nvidia",
+    apk: ":AccessoryUiTv-srcs",
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+    soc_specific: true,
+}
+
+android_app_import {
+    name: "NvAccessories",
+    owner: "nvidia",
+    apk: ":NvAccessories-srcs",
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+    soc_specific: true,
+    vintf_fragments: ["vendor.nvidia.hardware.nvwifi@1.0.xml"],
+    required: [
+        "libfirmwareupdate",
+        "libhidraw",
+    ],
+}
+
+android_app_import {
+    name: "NvCustomize",
+    owner: "nvidia",
+    apk: ":NvCustomize-srcs",
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+    soc_specific: true,
+}
+
+android_app_import {
+    name: "NvAccProxy",
+    owner: "nvidia",
+    apk: ":NvAccProxy-srcs",
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+    privileged: true,
+}
+
+android_app_import {
+    name: "NvShieldService",
+    owner: "nvidia",
+    apk: ":NvShieldService-srcs",
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "lota",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "lota_32-defaults",
+        "lota_64-defaults",
+    ],
+    compile_multilib: "first",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libfirmwareupdate",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libfirmwareupdate_32-defaults",
+        "libfirmwareupdate_64-defaults",
+    ],
+    compile_multilib: "first",
+    soc_specific: true,
+}
+
+cc_prebuilt_library_shared {
+    name: "libhidraw",
+    owner: "nvidia",
+    strip: {
+        none: true,
+    },
+    defaults: [
+        "libhidraw_32-defaults",
+        "libhidraw_64-defaults",
+    ],
+    compile_multilib: "first",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "privapp-permissions-nvidia-nvaccessories.xml",
+    src: "etc/permissions/privapp-permissions-nvidia-nvaccessories.xml",
+    relative_install_path: "permissions",
+    soc_specific: true,
+}

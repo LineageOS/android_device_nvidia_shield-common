@@ -1,0 +1,16 @@
+android_app_import {
+    name: "BeyonderServer",
+    owner: "nvidia",
+    apk: ":BeyonderServer-srcs",
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+    privileged: true,
+}
+
+prebuilt_etc_xml {
+    name: "privapp-permissions-nvidia-beyonder.xml",
+    src: "etc/permissions/privapp-permissions-nvidia-beyonder.xml",
+    relative_install_path: "permissions",
+}

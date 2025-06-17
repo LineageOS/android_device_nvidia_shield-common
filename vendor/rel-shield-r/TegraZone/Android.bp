@@ -1,0 +1,15 @@
+android_app_import {
+    name: "TegraZone_Next",
+    owner: "nvidia",
+    apk: ":TegraZone_Next-srcs",
+    preprocessed: true,
+    presigned: true,
+    dex_preopt: {
+        enabled: false,
+    },
+    soc_specific: true,
+    optional_uses_libs: [
+        "androidx.window.extensions",
+        "androidx.window.sidecar",
+    ],
+}
