@@ -15,3 +15,4 @@
 #
 
 FILELIST_PATHS+=("shield-common");
+PATCH_PATHS+=("shield-common");
